@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "^0.3.16",
+    "keystone": "https://github.com/keystonejs/keystone.git",
     "async": "^1.5.0",
     "underscore": "^1.8.3",
     "moment": "^2.10.6",
@@ -11,7 +11,7 @@
     "express-handlebars": "^1.1.0",
     "handlebars": "^2.0.0",
     "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.9.7", 
+    "node-sass-middleware": "^0.9.7",
     "dotenv": "^1.1.0"
   },
   "devDependencies": {
@@ -21,7 +21,7 @@
     "gulp-shell": "^0.5.0",
     "gulp-watch": "^4.3.5",
     "gulp-sass": "^2.0.4"
-    
+
   },
   "engines": {
     "node": ">=0.10.22",

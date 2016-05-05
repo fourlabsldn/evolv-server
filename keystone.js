@@ -14,13 +14,13 @@ keystone.init({
 
 	'name': 'Evolv',
 	'brand': 'Evolv',
-	
+
 	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'hbs',
-	
+
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
@@ -28,9 +28,9 @@ keystone.init({
 		helpers: new require('./templates/views/helpers')(),
 		extname: '.hbs'
 	}).engine,
-	
+
 	'emails': 'templates/emails',
-	
+
 	'auto update': true,
 	'session': true,
 	'auth': true,
@@ -82,13 +82,13 @@ keystone.set('email locals', {
 // Be sure to update this rule to include your site's actual domain, and add
 // other rules your email templates require.
 
-keystone.set('email rules', [{
-	find: '/images/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/'
-}, {
-	find: '/keystone/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/'
-}]);
+// keystone.set('email rules', [{
+// 	find: '/images/',
+// 	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/'
+// }, {
+// 	find: '/keystone/',
+// 	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/'
+// }]);
 
 // Load your project's email test routes
 
