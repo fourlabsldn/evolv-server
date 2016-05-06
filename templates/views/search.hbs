@@ -83,6 +83,35 @@
   <p class="js-search-info search-bar-info hidden"></p>
   <div class="js-property-list property-list">
 
+    {{#each data.properties}}
+      <div class="prop-tile">
+          <div class="prop-tile-crop">
+            <!-- TODO: Put a real link here -->
+            <a href="/properties/{{id}}">
+              <!-- TODO: Put real images in here -->
+              <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Placeholder&w=450&h=400"
+              alt="placeholder" />
+            </a>
+          </div>
+          <div class="prop-tile-description">
+            <h2 class="prop-tile-title-and-address">
+              <a href="/property.html">
+                <span class="prop-tile-street-name">
+                  {{ address.street }}
+                </span>
+                <span class="prop-tile-postcode">
+                  {{address.city}} {{address.postcode}}
+                </span>
+              </a>
+            </h2>
+
+            <p class="prop-tile-buy-info">
+              <span class="prop-tile-price"> {{#if price}}£ {{price}}{{/if}}</span>
+              <span class="prop-tile-ownership">{{ownership}}</span>
+            </p>
+          </div>
+        </div>
+    {{/each}}
   </div>
 </section>
 
