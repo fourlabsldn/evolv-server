@@ -2,7 +2,9 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jshintReporter = require('jshint-stylish');
 var watch = require('gulp-watch');
-var shell = require('gulp-shell')
+var shell = require('gulp-shell');
+var open = require('gulp-open');
+var os = require('os');
 
 var sass = require('gulp-sass');
 
@@ -50,4 +52,24 @@ gulp.task('watch', [
   'watch:lint'
 ]);
 
-gulp.task('default', ['watch', 'runKeystone']);
+gulp.task('open', function() {
+	let platform = os.platform;
+	let browserName;
+	switch (platform) {
+		case 'darwin': // OSX
+			browserName = 'google chrome';
+			break;
+		case 'win32': // Windows
+			browserName = 'chrome';
+			break;
+		default: // linux
+			browserName = 'google-chrome';
+	}
+	gulp.src(__filename)
+	.pipe(open({
+		uri: 'http://localhost:3000',
+		app: browserName
+	}));
+});
+
+gulp.task('default', ['watch', 'runKeystone', 'open']);
