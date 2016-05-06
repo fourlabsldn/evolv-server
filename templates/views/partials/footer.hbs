@@ -1,0 +1,65 @@
+<footer>
+  <div class="footer-links-row">
+    <div class="footer-logo-column footer-column">
+      <img src="img/logo-london.svg" alt="evolv - London">
+    </div>
+
+    <div class="footer-column">
+      <h2>Address</h2>
+      <nav>
+        <li>26a Adam and Eve Mews</li>
+        <li>Kensington</li>
+        <li>London</li>
+        <li>W8 6UJ</li>
+      </nav>
+    </div>
+
+    <div class="footer-column">
+      <h2>Contact</h2>
+      <nav>
+        <li>+44 (0)20 7937 0612</li>
+        <li>info@evolv.london</li>
+      </nav>
+    </div>
+
+    <div class="footer-column">
+      <h2>Links</h2>
+      <nav>
+        <li>About Us</li>
+        <li>Team</li>
+        <li>Careers</li>
+        <li>Contact Us</li>
+      </nav>
+    </div>
+
+    <div class="go-to-top footer-column">
+      <h2>Top</h2>
+      <button class="flat-btn"><i class="fa fa-chevron-up"></i></button>
+    </div>
+  </div>
+  <div class="footer-bottom">
+      <nav>
+        <li>@ 2016 Evolv London</li>
+        <li>All rights reserved</li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy</a></li>
+      </nav>
+      <div class="fourlabs-credit">
+        <a href="https://fourlabs.co.uk">Site by Four Labs</a>
+      </div>
+  </div>
+
+  <div class="bottom-shadow"></div>
+</footer>
+
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    element: document.querySelector('.go-to-top button'),
+    mainAudio: '/assets/elevator.mp3',
+    endAudio: '/assets/ding.mp3',
+    duration: 5000,
+  });
+}
+</script>

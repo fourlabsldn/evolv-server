@@ -1,0 +1,152 @@
+{
+  "properties" : [
+    {
+      "id": 1001,
+      "images": [ "/img/prop-img-1.jpg" ],
+      "floor-plan" : [ "/img/prop-img-1.jpg" ],
+      "epc" : "/img/epc-1.jpg",
+      "price" : "£2,960,000",
+      "sellRent": ["sell", "rent"],
+      "bedrooms": "2",
+      "size": "2,903 sq ft",
+      "type": "house",
+      "header-text" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a. Atque esse nisi inventore, obcaecati, veniam doloremque ab delectus tenetur aperiam fugiat possimus ex, modi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, consectetur, voluptas! Quo, nulla in voluptatum! Vitae sit, sunt, aliquam recusandae porro in non quaerat rerum nihil fuga alias, placeat, voluptatem.",
+      "location": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita in molestias veritatis harum atque perspiciatis, nemo sed quod eius magni! Qui reiciendis porro reprehenderit, nam natus sint obcaecati ipsa perspiciatis.",
+      "ownership": "Freehold",
+      "details-list": [
+        "6 bedrooms",
+        "4 bathrooms",
+        "Reception room",
+        "Family/media room",
+        "Kitchen breakfast room",
+        "Utility room",
+        "Swiming pool",
+        "Separate W.C.",
+        "Freehold",
+        "Aprox 2,902 sq ft (270 sq m)"
+      ],
+      "address" : {
+        "postcode": "SW6 4TJ",
+        "houseNumber": "124",
+        "street": "Alpha Street",
+        "area": "Parsons Green",
+        "city": "London",
+        "country": "England",
+        "latitude": 51.499887,
+        "longitude": -0.181306
+      }
+    },
+    {
+      "id": 1002,
+      "images": [ "/img/prop-img-2.jpg" ],
+      "floor-plan" : [ "/img/prop-img-2.jpg" ],
+      "epc" : "/img/epc-1.jpg",
+      "price" : "£2,960,000",
+      "sellRent": ["sell"],
+      "bedrooms": "3",
+      "size": "2,903 sq ft",
+      "type": "house",
+      "header-text" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a. Atque esse nisi inventore, obcaecati, veniam doloremque ab delectus tenetur aperiam fugiat possimus ex, modi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, consectetur, voluptas! Quo, nulla in voluptatum! Vitae sit, sunt, aliquam recusandae porro in non quaerat rerum nihil fuga alias, placeat, voluptatem.",
+      "location": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita in molestias veritatis harum atque perspiciatis, nemo sed quod eius magni! Qui reiciendis porro reprehenderit, nam natus sint obcaecati ipsa perspiciatis.",
+      "ownership": "Freehold",
+      "details-list": [
+        "6 bedrooms",
+        "4 bathrooms",
+        "Reception room",
+        "Family/media room",
+        "Back garden",
+        "Kitchen breakfast room",
+        "Utility room",
+        "Separate W.C.",
+        "Freehold",
+        "Aprox 2,902 sq ft (270 sq m)"
+      ],
+      "address" : {
+        "postcode": "SW6 4TJ",
+        "houseNumber": "124",
+        "street": "Beta Road",
+        "area": "Parsons Green",
+        "city": "London",
+        "country": "England",
+        "latitude": 51.499887,
+        "longitude": -0.161106
+      }
+    },
+    {
+      "id": 1003,
+      "images": [ "/img/prop-img-5.jpg", "/img/prop-img-6.jpg", "/img/prop-img-7.jpg" ],
+      "floor-plan" : [ "/img/prop-img-3.jpg" ],
+      "epc" : "/img/epc-1.jpg",
+      "price" : "£2,960,000",
+      "sellRent": ["rent"],
+      "bedrooms": "4",
+      "size": "2,903 sq ft",
+      "type": "house",
+      "header-text" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a. Atque esse nisi inventore, obcaecati, veniam doloremque ab delectus tenetur aperiam fugiat possimus ex, modi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, consectetur, voluptas! Quo, nulla in voluptatum! Vitae sit, sunt, aliquam recusandae porro in non quaerat rerum nihil fuga alias, placeat, voluptatem.",
+      "location": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita in molestias veritatis harum atque perspiciatis, nemo sed quod eius magni! Qui reiciendis porro reprehenderit, nam natus sint obcaecati ipsa perspiciatis.",
+      "ownership": "Freehold",
+      "details-list": [
+        "6 bedrooms",
+        "4 bathrooms",
+        "Reception room",
+        "Family/media room",
+        "Garage for three cars",
+        "Kitchen breakfast room",
+        "Utility room",
+        "Separate W.C.",
+        "Freehold",
+        "Aprox 2,902 sq ft (270 sq m)"
+      ],
+      "address" : {
+        "postcode": "SW6 4TJ",
+        "houseNumber": "124",
+        "street": "Charlie Avenue",
+        "area": "Parsons Green",
+        "city": "London",
+        "country": "England",
+        "latitude": 51.499887,
+        "longitude": -0.211406
+      }
+    },
+    {
+      "id": 1004,
+      "images": [ "/img/prop-img-4.jpg" ],
+      "floor-plan" : [ "/img/prop-img-4.jpg" ],
+      "epc" : "/img/epc-1.jpg",
+      "price" : "£2,960,000",
+      "sellRent": ["sell"],
+      "bedrooms": "4",
+      "size": "2,903 sq ft",
+      "type": "house",
+      "header-text" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a. Atque esse nisi inventore, obcaecati, veniam doloremque ab delectus tenetur aperiam fugiat possimus ex, modi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, consectetur, voluptas! Quo, nulla in voluptatum! Vitae sit, sunt, aliquam recusandae porro in non quaerat rerum nihil fuga alias, placeat, voluptatem.",
+      "location": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita in molestias veritatis harum atque perspiciatis, nemo sed quod eius magni! Qui reiciendis porro reprehenderit, nam natus sint obcaecati ipsa perspiciatis.",
+      "ownership": "Freehold",
+      "details-list": [
+        "6 bedrooms",
+        "4 bathrooms",
+        "Reception room",
+        "Family/media room",
+        "Garage for three cars",
+        "Kitchen breakfast room",
+        "Utility room",
+        "Separate W.C.",
+        "Freehold",
+        "Aprox 2,902 sq ft (270 sq m)"
+      ],
+      "address" : {
+        "postcode": "SW6 4TJ",
+        "houseNumber": "124",
+        "street": "Delta Alley",
+        "area": "Parsons Green",
+        "city": "London",
+        "country": "England",
+        "latitude": 51.499887,
+        "longitude": -0.192806
+      }
+    }
+  ]
+}

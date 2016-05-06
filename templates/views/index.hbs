@@ -1,21 +1,87 @@
-{{!< default}}
-<div class="container">
-	<div class="jumbotron"><img src="/images/logo.svg" width="160">
-		<h1>Welcome</h1>
-		<p>This is your new <a href='http://keystonejs.com' target='_blank'>KeystoneJS</a> website.</p>
-		<p>
-			It includes the latest versions of
-			<a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		</p>
-		<p>Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.</p>
-		<hr>
-		<p>We have created a default Admin user for you with the email <strong>marcelo@fourlabs.co.uk</strong> and the password <strong>#labs</strong>.</p>
-		<p><a href="/keystone/signin" style="margin-right: 10px" class="btn btn-lg btn-primary">Sign in</a> to use the Admin UI.</p>
-		<hr>
-		<p>
-			Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			<a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
-		</p>
-	</div>
-</div>
+{{!< public}}
+<script>
+  document.body.classList.add('navbar-main-page');
+  document.body.classList.add('index-page');
+  var PAGE_INFO = {
+    name: "home",
+  }
+</script>
+
+<section class="page-section arrival-section">
+  <img class="main-logo" src="img/logo-london.svg" alt="Evolv-london">
+
+  <div class="main-headers">
+    <h1 class="main-header">Constantly evolv(ing)</h1>
+    <h2 class="main-subheader">Luxury London Living</h2>
+  </div>
+
+  <div class="buttons-container">
+    <a href="buy.html" class="flat-btn flat-test">Sales</a>
+    <a href="rent.html" class="flat-btn flat-test">Lettings</a>
+  </div>
+</section>
+
+<section class="page-section grey-bg">
+  <h1>A little history of Evolv.</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum rerum itaque veritatis possimus, maxime minus modi id delectus, nostrum at unde sint velit error, suscipit repellat voluptatum quas deleniti recusandae!</p>
+
+  <div class="tabs">
+    <input id="evolv_history1" type="radio" name="items_tabs" checked>
+    <input id="evolv_history2" type="radio" name="items_tabs">
+    <input id="evolv_history3" type="radio" name="items_tabs">
+    <input id="evolv_history4" type="radio" name="items_tabs">
+
+    <label class="tab-label" for="evolv_history1"><i class="fa fa-suitcase"></i> <span>Item 1</span></label>
+    <label class="tab-label" for="evolv_history2"><i class="fa fa-rocket"></i><span>Item 2</span></label>
+    <label class="tab-label" for="evolv_history3"><i class="fa fa-car"></i><span>Item 3</span></label>
+    <label class="tab-label" for="evolv_history4"><i class="fa fa-university"></i><span>Item 4</span></label>
+
+    <div class="tab-content">
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque incidunt deleniti temporibus animi sequi minus exercitationem.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore adipisci, nam quas dolor vitae dolorem quis aspernatur consectetur, est optio natus molestias nulla soluta earum ducimus, mollitia. Aut, in, voluptate!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, nihil inventore maxime neque vero laborum quae delectus est culpa doloremque, saepe, sint expedita accusamus reprehenderit alias sapiente! Veniam, sit, nam.</p>
+    </div>
+
+    <div class="tab-content">
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, natus, ut perspiciatis quidem porro pariatur repellendus unde atque quas et in aliquam ea vero tempora, non dolorum dolorem accusantium id.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quod molestias quis perferendis dicta totam, illum aperiam itaque corporis quam eos pariatur natus modi. Explicabo blanditiis voluptas sapiente iste velit!</p>
+    </div>
+
+    <div class="tab-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat quod laboriosam totam eaque voluptates aliquid aspernatur quos ducimus perspiciatis temporibus saepe earum commodi vel veniam tenetur, optio, est corporis cupiditate.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, nihil inventore maxime neque vero laborum quae delectus est culpa doloremque, saepe, sint expedita accusamus reprehenderit alias sapiente! Veniam, sit, nam.</p>
+    </div>
+
+    <div class="tab-content">
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat iste labore soluta corporis consequatur, et ex ipsa, odit culpa distinctio, totam obcaecati, modi placeat eos. Facere aliquid corporis optio deleniti.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quod molestias quis perferendis dicta totam, illum aperiam itaque corporis quam eos pariatur natus modi. Explicabo blanditiis voluptas sapiente iste velit!</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="page-section light-blue-bg">
+  <h1>Recent listings</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ut itaque, voluptas dicta, repellendus amet aliquid.</p>
+</section>
+
+<section class="page-section image-tiles">
+  <a href="/property.html" class="tile">
+    <img src="/img/prop-img-1.jpg" alt="" />
+    <button class="flat-btn">144 Alpha Street</button>
+  </a>
+  <a href="/property.html" class="tile">
+    <img src="/img/prop-img-2.jpg" alt="" />
+    <button class="flat-btn">82B Beta Row</button>
+  </a>
+  <a href="/property.html" class="tile">
+    <img src="/img/prop-img-3.jpg" alt="" />
+    <button class="flat-btn">322 Charlie Mews</button>
+  </a>
+  <a href="/property.html" class="tile">
+    <img src="/img/prop-img-4.jpg" alt="" />
+    <button class="flat-btn">12 Delta Road</button>
+  </a>
+</section>
+
+<script src="js/index.js"></script>

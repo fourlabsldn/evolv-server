@@ -1,0 +1,22 @@
+{
+  "name": "evolv",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Lazamar @ FourLabs"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/fourlabsldn/evolv",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "build/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "arg.js": "~1.3.1"
+  }
+}

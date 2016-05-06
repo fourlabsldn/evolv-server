@@ -1,0 +1,100 @@
+<script>
+  document.body.classList.add('sales-page');
+</script>
+
+<!-- Beginning of search bar -->
+
+
+<input type="checkbox" id="show-hide-map-checkbox" class="hidden" checked="true"/>
+<section class="search-bar">
+  <div class="search-bar-filters">
+
+    <!-- The 'search' keyword in the criteria is there so that we can have
+        GET parameters like /?search=blablabla in the URL -->
+    <div class="search-bar-btn search-bar-search-box">
+      <input class="js-search-input"
+      data-criteria="search price postcode street bedrooms fullAddress details ownership"
+      type="search" placeholder="Type to search" />
+
+      <div class="search-bar-input-background"></div>
+      <i class="search-bar-search-icon fa fa-search"></i>
+    </div>
+
+    <input type="checkbox" id="search-bar-show-more-btn-checkbox" class="hidden">
+    <label for="search-bar-show-more-btn-checkbox" class="search-bar-btn  search-bar-show-more-btn">
+      <i class="fa fa-plus"></i>
+    </label>
+
+    <div class="search-bar-hideable">
+      <select class="js-search-input search-bar-btn" data-criteria="bedrooms" required>
+        <option value="" selected>Beds</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+
+      <select class="js-search-input search-bar-btn" data-criteria="price" required>
+        <option value="" selected>Price</option>
+        <option> < 1,000,000</option>
+        <option> < 1,500,000</option>
+        <option> < 2,000,000</option>
+        <option> < 2,500,000</option>
+        <option> < 3,000,000</option>
+        <option> < 4,000,000</option>
+        <option> < 5,000,000</option>
+      </select>
+
+      <select class="js-search-input search-bar-btn" data-criteria="details" required>
+        <option value="" selected>More</option>
+        <option>Pool</option>
+        <option>Garden</option>
+        <option>Garage</option>
+      </select>
+
+      <!-- This input is used to filter stuff but the user can't change its value -->
+      <select class="js-search-input search-bar-btn hidden" data-criteria="sellRent">
+        <option value="" selected>Buy/Rent</option>
+        <!-- The option value must be sell because that is how it is described
+            in the property's attributes. -->
+        <option value="Sell">sell</option>
+        <option>Rent</option>
+      </select>
+    </div>
+  </div>
+
+  <label for="show-hide-map-checkbox" class=" search-bar-map-toggle">
+    <i class="fa fa-map-marker search-bar-btn  map-icon"></i>
+    <i class="fa fa-th-large search-bar-btn list-icon"></i>
+  </label>
+</section>
+
+
+<!-- End of search bar -->
+
+
+<section class="property-map-container">
+  <div class="js-property-map property-map"></div>
+</section>
+
+<section class="property-list-container">
+  <!-- This info element will show search info such as 'No results found.' -->
+  <p class="js-search-info search-bar-info hidden"></p>
+  <div class="js-property-list property-list">
+
+  </div>
+</section>
+
+<section class="light-blue-bg page-section">
+  <h1>Looking to sell?</h1>
+  <p>Book a free valuation today or register your details</p>
+  <div>
+    <button>Get started</button>
+    <button>Register your search</button>
+  </div>
+</section>
+
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="js/sales.js"></script>
