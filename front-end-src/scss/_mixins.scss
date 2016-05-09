@@ -1,0 +1,149 @@
+@mixin media-queries($prop, $value-xs, $value-sm, $value-md, $value-lg) {
+  @media (max-width: $screen-xs-max) {
+    #{$prop}: $value-xs;
+  }
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    #{$prop}: $value-sm;
+  }
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    #{$prop}: $value-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    #{$prop}: $value-lg;
+  }
+}
+
+// Style text box placeholders
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content};
+  &:-moz-placeholder           {@content};
+  &::-moz-placeholder          {@content};
+  &:-ms-input-placeholder      {@content};
+}
+
+
+// Style a crop container to crop an image
+@mixin crop-img($height-percentage) {
+  width: 100%;
+  padding-bottom: $height-percentage;
+  position: relative;
+  overflow: hidden;
+  img {
+    min-width: 100%;
+    height: 100%;
+    width: auto;
+
+    position: absolute;
+    margin: auto;
+    top: 0; bottom: 0;
+    left: -50%; right: -50%;
+  }
+}
+
+@mixin darken-img-on-hover {
+  img {
+    transition: filter 0.2s ease;
+    filter: brightness(1);
+  }
+
+  &:hover img {
+    filter: brightness(0.6);
+  }
+}
+
+@mixin flat-btn() {
+  display: inline-block;
+  // min-height: 55px;
+  // min-width: 70px;
+  background-color: transparent;
+  border: 1px solid $white;
+  cursor: pointer;
+  text-align: center;
+  color: $white;
+  font-size: inherit;
+  padding: 0.7em 1em;
+  outline: none;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  border-radius: 0;
+  white-space: nowrap;
+
+  &:hover {
+    color: $orange;
+    border-color: $orange;
+  }
+
+  &:active {
+    color: $navy;
+    border-color: $navy;
+    outline: 0;
+  }
+  & > *,
+  &:active > *,
+  &:focus,
+  &:focus > *,
+  &:link,
+  &:link > * {
+    // border-color: $navy;
+    outline: 0;
+  }
+}
+
+@mixin flat-btn-color ($normal, $hover) {
+  .flat-btn {
+    border-color: $normal;
+    color: $normal;
+
+    :hover {
+      border-color: $hover;
+      color: $hover;
+    }
+  }
+}
+
+@mixin xs-screen {
+  @media (max-width: $screen-xs-max) {
+    @content;
+  }
+}
+
+@mixin sm-to-lg-screen {
+  @media (min-width: $screen-sm-min) {
+    @content;
+  }
+}
+
+
+@keyframes fadeInUp{
+  from { opacity: 0; transform: translate3d(0, 50px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@mixin cascade-fade-in-up ($inital-delay:0, $animation-duration:.4s, $delay-between-elements:.2s) {
+  animation-delay: $inital-delay;
+  animation-duration: $animation-duration;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
+
+  @for $i from 2 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: ($inital-delay + ($i * $delay-between-elements));
+    }
+  }
+}
+
+@keyframes fadeOutDown {
+  from { opacity: 1; transform: translate3d(0, 0, 0); }
+  to { opacity: 0; transform: translate3d(0, 50px, 0); }
+}
+@mixin cascade-fade-out-down ($inital-delay:0, $animation-duration:.4s, $delay-between-elements:.2s) {
+  animation-delay: $inital-delay;
+  animation-duration: $animation-duration;
+  animation-fill-mode: both;
+  animation-name: fadeOutDown;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: ($inital-delay + ($i * $delay-between-elements));
+    }
+  }
+}

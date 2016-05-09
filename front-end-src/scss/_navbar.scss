@@ -1,0 +1,453 @@
+$navbar-transition-delay: 350ms;
+$navbar-transition-timing: cubic-bezier(.55, 0, .1, 1);
+$navbar-height: 65px + $padding-top-bottom-md;
+$navbar-mobile-displacement: $screen-xs-max; //=========================================
+// Navbar common
+//=========================================
+#navbar-toggle-checkbox { // scss-lint:disable all
+
+  display: none;
+}
+
+.navbar-container {
+  position: relative;
+  background-color: $navy;
+}
+
+.navbar {
+  @extend .navy-bg;
+  align-items: stretch;
+  display: flex;
+  flex-flow: row nowrap;
+  height: $navbar-height;
+  justify-content: space-between;
+  margin-bottom: -1px;
+  max-height: $navbar-height;
+  padding: 0 70px;
+  position: relative;
+  user-select: none;
+  z-index: 99;
+
+  .navbar-left-side,
+  .navbar-right-side {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: none;
+    z-index: 99;
+
+    .navbar-button {
+      margin: auto;
+    }
+  }
+
+  a {
+    color: $white;
+
+    &:active,
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+
+.navigation-buttons {
+  align-content: stretch;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: $font-small;
+  list-style: none;
+
+  li {
+    align-items: stretch;
+    display: flex;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  a {
+    border-bottom: 2px inset solid transparent;
+    display: flex;
+    margin: none;
+    padding: $padding-top-bottom-md 30px;
+    width: 100%;
+  }
+
+  span {
+    margin: auto;
+  }
+
+  .active {
+    border-bottom: 2px solid $orange;
+  }
+}
+
+.navbar-button {
+  @extend .flat-btn;
+  font-size: $font-small;
+  white-space: nowrap;
+
+  &:active {
+    color: $white;
+  }
+}
+
+.navbar-logo {
+  display: flex;
+  padding: 0 20px;
+
+  img {
+    margin: auto;
+    width: 100px;
+  }
+}
+
+.website-search {
+  display: flex;
+  position: relative;
+
+  > * {
+    margin: auto;
+  }
+}
+
+.active-highlight {
+  background-color: $orange;
+
+  @include xs-screen {
+    left: 0;
+    margin: auto;
+    max-width: 8em;
+    right: 0;
+  }
+}
+
+// -----------------
+// navbar search bar
+// ---------------
+.navbar-dropdown-search {
+  @extend .navy-bg;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  z-index: 3;
+  transform: translate3d(0, 0, 0); //Hiding
+  transition: .6s cubic-bezier(.33,.27,.08,.99);
+
+  padding: 2em;
+
+  //Stuff to be inherited;
+  border-color: $white;
+  color: $white;
+}
+
+// ---------
+//  navbar search open
+//  --------
+.dropdown-search-open {
+  .navbar-dropdown-search {
+    transform: translate3d(0, 100%, 0); // Showing
+    transition: .6s cubic-bezier(.33,.27,.08,.99);
+  }
+
+  .website-search > .navbar-button {
+    @extend .navbar-button:hover;
+  }
+}
+
+.navbar-dropdown-search-input,
+.navbar-dropdown-search-btn {
+  @include flat-btn();
+  min-height: 2.7em; // mobile screen may squash the buttons otherwise.
+}
+
+.navbar-dropdown-search-input {
+  text-align: left;
+  background-color: $white;
+  border-color: inherit;
+  color: $navy;
+  @include placeholder {
+    color: $navy;
+  }
+
+  &:hover, &:focus{
+    color: $navy;
+    border-color: $orange;
+    @include placeholder {
+      color: $navy;
+    }
+  }
+}
+
+.navbar-dropdown-search-btn {
+  margin-left: .5em;
+
+
+  &:hover{
+    background-color: $orange;
+    color: $navy;
+    border-color: $orange;
+  }
+
+  &:active {
+    background-color: $white;
+    color: $navy;
+    border-color: inherit;
+  }
+
+}
+
+//==========
+// Common mobile styles
+//==========
+$mobile-padding: 15px;
+$navbar-mobile-height: ($navbar-height - $padding-top-bottom-md);
+
+@media (max-width: $screen-xs-max) {
+  .navbar-container {
+    height: $navbar-mobile-height;
+    position: relative;
+    width: 100%;
+  }
+
+  .navbar {
+    display: block;
+    height: auto;
+    max-height: none;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+
+    .navbar-logo {
+      display: none;
+    }
+
+    .navbar-toggle,
+    .website-search {
+      padding: 0;
+      position: absolute;
+      top: $mobile-padding;
+    }
+
+    .navbar-toggle {
+      display: flex;
+      left: $mobile-padding;
+    }
+
+    .website-search {
+      right: $mobile-padding;
+      z-index: 0;
+    }
+
+    .navigation-buttons {
+      background-color: $navy;
+      display: block;
+      min-height: 200vh;
+      padding-top: calc(#{$mobile-padding} + 3em);
+      position: absolute;
+      transition: opacity ($navbar-transition-delay * 4 / 3) cubic-bezier(1, 0, .73, .86),
+                  visibility 0s linear ($navbar-transition-delay * 4 / 3);
+      width: 100%;
+      z-index: 2;
+
+      li {
+        display: block;
+        text-align: center;
+        transition: transform $navbar-transition-delay cubic-bezier(.55, 0, .1, 1);
+      }
+
+      .active {
+        border: 0;
+      }
+    }
+  }
+
+  //======
+  // search bar hidden
+  //======
+  .navbar-dropdown-search {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    overflow-y: auto;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, -3%, 0);
+    transition-duration: .5s;
+    transition: opacity ease 0,
+                visibility ease .5s,
+                transform ease 0;
+
+
+    padding-top: calc(#{$navbar-mobile-height} + 2em);
+
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  .navbar-dropdown-search-input{
+    text-align: center;
+    width: 100%;
+  }
+  .navbar-dropdown-search-btn {
+    margin: 1em 0 0;
+  }
+
+  //======
+  // search bar showing
+  //======
+  .navbar-container.dropdown-search-open {
+
+    // This is making the body jump, so let's stay without it.
+    // It was here to prevent people from scrolling while in the search page.
+    // position: fixed;
+    // top: -1px;
+    // z-index: 5;
+
+    .navbar-dropdown-search {
+      opacity: 1;
+      visibility: visible;
+      transform: translate3d(0, 0, 0);
+      transition-delay: 0;
+    }
+  }
+  //======
+  // Menu Hiding
+  //======
+  // .navbar-container {
+  // }
+  .navbar {
+    .navigation-buttons {
+      opacity: 0;
+      visibility: hidden;
+
+      li {
+        transform: translate3d(-$navbar-mobile-displacement, 0, 0);
+      }
+    }
+  }
+  //======
+  // Menu Showing
+  //======
+  #navbar-toggle-checkbox:checked ~ .navbar { // scss-lint:disable all
+    position: fixed;
+
+    .navigation-buttons {
+      opacity: 1;
+      transition-delay: 0s;
+      transition-timing-function: ease-in;
+      visibility: visible;
+
+      li {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .navbar-toggle {
+      @include open-hamburger('.hamburger-icon');
+    }
+  }
+}
+// ======
+//  Common medium size screen styles
+// ======
+@media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+  .navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .navigation-buttons a {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+//=========================================
+// Navbar "main-page style"
+//=========================================
+// NOTE: The navbar gets in the main page style if the body tag
+// contains the navbar-main-page class.
+// This style also is not in place for small screens.
+@media (min-width: $screen-sm-min) {
+  // ==============
+  // common
+  // ==============
+  .navbar-main-page { //The body tag
+    //Put navbar just before the beginning of the body
+    .navbar-container {
+      position: absolute;
+      top: (-1 * ($navbar-height - 1px));
+      width: 100%;
+    }
+
+    .navbar {
+      height: $navbar-height;
+      max-height: $navbar-height;
+      padding-left: 2%;
+      padding-right: 2%;
+      padding-top: 0;
+
+      .navbar-logo {
+        display: none;
+      }
+
+      .navbar-toggle {
+        display: flex;
+      }
+
+      .navbar-toggle,
+      .website-search {
+        transform: translate3d(0, $navbar-height, 0);
+        transition: transform .5s ease;
+      }
+    }
+  }
+  //===============
+  // Navbar Hiding
+  //==============
+  .navbar-main-page { //the body tag
+    transform: translate3d(0, 0, 0);
+    transition: transform .5s ease;
+  }
+
+  //===============
+  // Navbar Showing
+  //==============
+  // For the navbar to appear we slide the body down
+  .navbar-main-page.show-navbar { //the body tag
+    transform: translate3d(0, $navbar-height, 0);
+    // we also slide the burger icon and the search button back to their
+    // places.
+    .navbar-toggle,
+    .website-search {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+//=========================================
+// Navbar "main-page style" mobile
+//=========================================
+@media (max-width: $screen-xs-max) {
+  .navbar-main-page { // the body element
+    .navbar-container {
+      background-color: transparent;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}

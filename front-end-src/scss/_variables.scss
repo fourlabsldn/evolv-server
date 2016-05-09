@@ -1,0 +1,46 @@
+// Colours
+$white         : #fff;
+$grey          : #f3f3f3;
+$beige         : #EDE5D2;
+$light-blue    : #B9C0CD;
+$dark-blue     : #6F7684;
+$darker-blue   : darken($dark-blue, 20%);
+$darkmost-blue : darken($dark-blue, 30%);
+$navy          : #00263A;
+$orange        : #FF742F;
+
+//Screen sizes
+$screen-xs-max: 768px;
+$screen-sm-min: ($screen-xs-max + 1px);
+$screen-sm-max: 992px;
+$screen-md-min: ($screen-sm-max + 1px);
+$screen-md-max: 1200px;
+$screen-lg-min: ($screen-md-max + 1px);
+
+//Font sizes
+$font-tiny     : 12px;
+$font-small    : 15px;
+$font-medium   : 18px;
+$font-big      : 26px;
+$font-huge     : 45px;
+
+//Paddings for containers
+$padding-side-xs-screen: 10px;
+$padding-side-sm-screen: 15px;
+$padding-side-md-screen: $padding-side-sm-screen;
+$padding-side-lg-screen:  70px;
+
+$padding-top-bottom-md: 15px;
+
+// Element paddings
+$padding-el-tiny   : 5px;
+$padding-el-small  : 10px;
+$padding-el-medium : 15px;
+$padding-el-big    : 20px;
+$padding-el-bigger : 25px;
+$padding-el-huge   : 45px;
+
+$content-width-xs-screen: calc(100vw - $padding-side-xs-screen);
+$content-width-sm-screen: 700px;
+$content-width-md-screen: 900px;
+$content-width-lg-screen: 1150px;

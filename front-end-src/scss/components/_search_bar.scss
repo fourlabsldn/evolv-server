@@ -1,0 +1,270 @@
+
+
+
+//=========================================
+// Search bar common
+//=========================================
+.search-bar {
+  @extend .light-blue-bg;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-between;
+
+  width: 100%;
+  padding-top: $padding-top-bottom-md;
+  padding-bottom: $padding-top-bottom-md;
+}
+
+.search-bar-btn {
+  @include flat-btn();
+  font-size: $font-small;
+  text-align: left;
+  color: $white;
+  border-color: $white;
+
+  position: relative;
+  margin-top: $padding-top-bottom-md;
+  margin-bottom: $padding-top-bottom-md;
+
+  min-height: 3 * $font-small;
+  height: 3 * $font-small;
+  cursor: pointer;
+
+  flex-grow: 4;
+  flex-shrink: 1;
+  transition: background-color .1s ease;
+
+  > * {
+    transition: background-color .1s ease;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    @extend .search-bar-btn-active;
+  }
+
+  // Buttons with an input inside
+  &:hover input,
+  input:focus {
+    @extend .search-bar-btn-active;
+    & ~ * {
+      @extend .search-bar-btn-active;
+    }
+    & ~ .search-bar-input-background {
+     display: block;
+     opacity: 1;
+     background-color: $beige;
+   }
+  }
+}
+
+@mixin search-bar-btn-active () {
+  color: $navy;
+  background-color: $beige;
+  border-color: $navy;
+  transition: background-color .1s ease;
+
+  > * {
+    color: $navy;
+  }
+}
+
+
+
+.search-bar-hideable {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  flex-shrink: 1;
+  flex-grow: 3;
+}
+
+.search-bar-filters {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  select{
+    appearance: none;
+  }
+
+  // select:valid {
+  //   @extend .search-bar-btn-active;
+  // }
+}
+
+
+$search-icon-width: (3 * $font-small);
+.search-bar-search-box {
+  padding: 0 0 0 $padding-top-bottom-md;
+  display: flex;
+  flex-flow: row nowrap;
+
+  & > * {
+    margin: auto;
+  }
+
+  input[type="search"] {
+    height: 2.2em;
+    width: calc(100% - #{$search-icon-width});
+
+    color: white;
+    font-size: $font-small;
+
+    outline: none;
+    border: none;
+    border-right: 1px solid $white;
+
+    z-index: 1;
+    background-color: transparent;
+
+    @include placeholder {
+      color: white;
+    }
+
+    &:focus, &:hover, &:active {
+      background-color: transparent;
+      @include placeholder {
+        color: $navy;
+      }
+    }
+    // Increase icon size when entering input box
+    &:focus ~ i {
+      font-size: 1.4em;
+    }
+    // Keep other siblings on top of backgorund
+    & ~ * {
+      z-index: 1;
+    }
+  }
+
+  //This box will be on top of the parent and will simulate it
+  //including its borders, that's why the width and height
+  //exclude the border size
+}
+
+.search-bar-input-background{
+  z-index: 0 !important;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: -1px -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border: 1px solid transparent;
+}
+
+.search-bar-search-icon {
+  font-size: 1em;
+  text-align: center;
+  max-width: $search-icon-width;
+  width: $search-icon-width;
+  transition: all 0.1s ease-out;
+
+  &:before {
+    transition: all 0.1s ease-out;
+  }
+}
+
+// Make "+" button pressed when checkbox is active
+#search-bar-show-more-btn-checkbox:checked ~ .search-bar-show-more-btn {
+  @extend .search-bar-btn:active;
+}
+
+.search-bar-show-more-btn {
+  max-width: 3em;
+  width: 3em;
+  text-align: center;
+  padding: 0 0.9em;
+  margin-left: 5px;
+  display: flex;
+  & > * {
+    margin: auto;
+  }
+}
+
+.search-bar-map-toggle {
+  display: flex;
+
+  & > * {
+    width: 3em;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    position: relative;
+    text-align: center;
+    &:before {
+      position: absolute;
+      top: 0; bottom: 0; left:0; right: 0;
+      font-size: $font-medium;
+      margin: auto;
+      height: 1em;
+    }
+  }
+}
+
+//Map show/hide functionality
+#show-hide-map-checkbox:checked {
+  & ~ .search-bar .map-icon {
+    color: white;
+  }
+  & ~ .search-bar .list-icon {
+    color: $orange;
+  }
+}
+.map-icon {
+  color: $orange;
+}
+
+.search-bar-btn-active {
+  @include search-bar-btn-active();
+  color: $navy !important;
+
+  input {
+    color: $navy !important;
+    border-color: $navy !important;
+  }
+}
+//=========================================
+// Search bar large
+//=========================================
+@media (min-width: $screen-sm-min) {
+  .search-bar-btn {
+    margin-right: 20px;
+  }
+  .search-bar-hideable .search-bar-btn {
+    min-width: 10em;
+  }
+  .search-bar-show-more-btn {
+    display: none ;
+  }
+}
+
+//=========================================
+// Search bar mobile
+//=========================================
+@media (max-width: $screen-xs-max) {
+  .search-bar {
+    .search-bar-filters,
+    .search-bar-hideable,
+    .search-bar-hideable > * {
+      width: 100%;
+    }
+    .search-bar-map-toggle {
+      display: none;
+    }
+
+    .search-bar-hideable {
+      overflow-y: hidden;
+      height: auto;
+      max-height: 0px;
+      transition: max-height 0.3s ease-out;
+    }
+    // Show/hide mechanism
+    #search-bar-show-more-btn-checkbox:checked ~ .search-bar-hideable {
+      max-height: 16em;
+    }
+  }
+}

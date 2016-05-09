@@ -1,0 +1,186 @@
+
+* {
+  box-sizing: border-box;
+}
+.navy-bg {
+  background-color: $navy;
+  color: $white;
+  @include flat-btn-color ($white, $orange);
+}
+.grey-bg {
+  background-color: $grey;
+  color: $navy;
+  @include flat-btn-color ($navy, $orange);
+}
+.light-blue-bg {
+  background-color: $light-blue;
+  color: $grey;
+  @include flat-btn-color ($grey, $navy);
+}
+.dark-blue-bg {
+  background-color: $dark-blue;
+  color: $white;
+  @include flat-btn-color ($grey, $navy);
+}
+.orange-bg {
+  background-color: $orange;
+}
+.beige-bg {
+  background-color: $beige;
+}
+
+.hidden {
+  display: none !important;
+}
+
+$body-bg: darken($dark-blue, 15%);
+body {
+  font-family: 'Lato', sans-serif;
+  color: $navy;
+  background-color: darken($dark-blue, 15%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  font-family: 'Ovo', serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: $font-huge;
+  margin-top: 10px;
+  margin-bottom: 35px;
+}
+
+p {
+  font-size: $font-medium;
+  line-height: 1.6em;
+  // font-weight: 100;
+  margin-bottom: 50px;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    color: $orange;
+  }
+}
+
+
+section {
+  width: 100%;
+  background-size: cover;
+  padding-top: 70px;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+
+  margin:0;
+  max-width:100%;
+
+  @media (max-width: $screen-xs-max) {
+    padding-left: $padding-side-xs-screen;
+    padding-right: $padding-side-xs-screen;
+  }
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    padding-left: $padding-side-sm-screen;
+    padding-right: $padding-side-sm-screen;
+  }
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    padding-left: $padding-side-md-screen;
+    padding-right: $padding-side-md-screen;
+  }
+  @media (min-width: $screen-lg-min) {
+    padding-left: $padding-side-lg-screen;
+    padding-right: $padding-side-lg-screen;
+  }
+}
+
+// Set default widths for various screen sizes
+.section-content-width {
+  // margin: auto;
+  // margin-top: 0;
+  // margin-bottom: 0;
+
+  @media (max-width: $screen-xs-max) {
+    // width: $content-width-xs-screen;
+    padding-right: calc((100% - #{$content-width-xs-screen}) / 2);
+    padding-left: calc((100% - #{$content-width-xs-screen}) / 2);
+  }
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    // width: $content-width-sm-screen;
+    padding-right: calc((100% - #{$content-width-sm-screen}) / 2);
+    padding-left: calc((100% - #{$content-width-sm-screen}) / 2);
+  }
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    // width: $content-width-md-screen;
+    padding-right: calc((100% - #{$content-width-md-screen}) / 2);
+    padding-left: calc((100% - #{$content-width-md-screen}) / 2);
+  }
+  @media (min-width: $screen-lg-min) {
+    // width: $content-width-lg-screen;
+    padding-right: calc((100% - #{$content-width-lg-screen}) / 2);
+    padding-left: calc((100% - #{$content-width-lg-screen}) / 2);
+  }
+}
+
+.page-section {
+  text-align: center;
+  @extend .section-content-width;
+
+  button {
+    @extend .flat-btn;
+    font-size: $font-medium;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width: 250px;
+  }
+}
+@media (max-width: $screen-xs-max) {
+  .page-section{
+    button {
+      margin: 10px;
+    }
+  }
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+
+.flat-btn {
+  @include flat-btn();
+}
+
+.navy-link {
+  color: $navy;
+  &:visited {
+    color: $navy;
+  }
+  &:hover {
+    color: $orange;
+  }
+}
+
+.hide-on-mobile {
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+.active-highlight {
+  background-color: $orange;
+  bottom: 0;
+  content: ' ';
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transition: transform .2s ease-in-out,
+              width .2s ease-in-out;
+  width: 100%;
+  will-change: transform;
+}

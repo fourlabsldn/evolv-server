@@ -1,0 +1,103 @@
+$b-height: 0.45em;
+$b-border-width: (0.3 * $b-height); //Width of the borders and 'buns'
+$b-bun-width: (2.7 * $b-height); //Width of the 'buns'
+$b-bun-height: $b-border-width; //Height of the 'buns'
+
+
+$b-trans-speed: .2s; //Transition speed settings
+$b-transition: all $b-trans-speed ease; //Transitions
+
+@keyframes slideInLeft {
+  0% {
+    transform: translate3d(-250px, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-250px, 0, 0);
+    visibility: hidden;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.b-bun {
+  background: white;
+  position: relative;
+  transition: $b-transition;
+
+  &--top {
+    height: $b-bun-height;
+    top: 0;
+    width: $b-bun-width;
+  }
+
+  &--mid {
+    height: $b-bun-height;
+    top: ($b-height / 2);
+    width: $b-bun-width;
+  }
+
+  &--bottom {
+    height: $b-bun-height;
+    top: $b-height;
+    width: $b-bun-width;
+  }
+}
+
+.hamburger-icon {
+  min-height: 1em;
+  &.open {
+    .b-bun--top {
+      background: white;
+      top: ($b-bun-height * 3);
+      left: ($b-bun-height / -4);
+      transform: rotate(45deg);
+    }
+
+    .b-bun--mid {
+      opacity: 0;
+    }
+
+    .b-bun--bottom {
+      background: white;
+      top: ($b-height / 3);
+      right: ($b-bun-height / -2);
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@mixin open-hamburger($radius) {
+  #{$radius} {
+    .b-bun--top {
+      background: white;
+      top: ($b-bun-height * 3);
+      left: ($b-bun-height / -4);
+      transform: rotate(45deg);
+    }
+
+    .b-bun--mid {
+      opacity: 0;
+    }
+
+    .b-bun--bottom {
+      background: white;
+      top: ($b-height / 3);
+      right: ($b-bun-height / -2);
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.slider {
+  padding: 0;
+  width: 100%;
+
+  /*
+  Controlling the height:
+  The padding bottom controls the height. It is a percentage of the
+  width, which allows us to basically set a desired aspect ratio.
+  */
+  padding-bottom: 60%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+.slider * {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.slider input { display: none; }
+
+.slide-container { display: block; }
+
+.slide {
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  position: absolute;
+
+  // transform: scale(0);
+
+  transition: all .3s ease-in-out;
+}
+
+.slide img {
+  bottom: 0;
+  height: auto;
+  left: 0;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+}
+
+.slider-nav label {
+  bottom: 0;
+  color: #FFF;
+  cursor: pointer;
+  display: none;
+  font-size: 60px; // Arrow size
+  height: 2em;
+  line-height: 100%;
+  margin: auto;
+  opacity: .8;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 0 25px #000;
+  top: 0;
+  transition: opacity .6s;
+  width: 1.5em;
+  z-index: 1;
+}
+
+.slider-nav label:hover { opacity: 1; }
+
+.slider-nav .next { right: 0; }
+
+input:checked + .slide-container  .slide {
+  opacity: 1;
+
+  transform: scale(1);
+
+  transition: opacity 1s ease-in-out;
+}
+
+input:checked + .slide-container .slider-nav label { display: block; }

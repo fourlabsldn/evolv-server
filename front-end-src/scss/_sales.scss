@@ -1,0 +1,156 @@
+//============================
+//    Common sales style
+//============================
+
+.sales-page {
+  .property-list-container {
+    @extend .grey-bg;
+    @extend .section-content-width;
+  }
+
+  .property-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .prop-tile {
+    @include darken-img-on-hover();
+    margin: 0;
+    display: inline-block;
+    padding: 1px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    border-radius: .3em;
+
+    &:hover {
+      background-color: $light-blue ;
+    }
+
+    .prop-tile-crop {
+      // Crop the img for 75%
+      @include crop-img(75%);
+    }
+
+    a {
+      @extend .navy-link;
+    }
+  }
+
+  .prop-tile-description{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+
+    & > * {
+      max-width: 50%;
+    }
+
+    span {
+      display: block;
+    }
+
+    .prop-tile-title-and-address, .prop-tile-buy-info {
+      font-weight: 400;
+      line-height: 1.5em !important;
+      display: inline-block;
+    }
+
+    .prop-tile-title-and-address {
+      flex-base: 2;
+      font-size: $font-medium !important;
+      color: $navy;
+    }
+
+    .prop-tile-buy-info {
+      text-align: right;
+      color: $darker-blue;
+      flex-base: 1;
+      font-size: ($font-medium * 0.9) !important;
+    }
+
+    .prop-tile-ownership {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.property-map-container {
+  padding: 0;
+}
+
+.property-map {
+  width: 100%;
+  min-height: 200px;
+  height: 50vw;
+}
+
+.search-bar-info {
+  margin: 0;
+  font-size: $font-small;
+  font-weight: bold;
+  padding-left: 30px;
+  color: $orange;
+}
+
+//============================
+//    Sales mobile  styles
+//============================
+@media (max-width: $screen-xs-max) {
+  .sales-page {
+    .property-map {
+      max-height: 80vh;
+    }
+
+    //Show map and properties list
+    .property-map-container {
+      position: relative;
+      right: 0;
+    }
+    .property-list {
+      display: block;
+    }
+
+    //Make properties list show only one tile per line
+    .property-list {
+      .prop-tile {
+        width: 100%;
+        padding: $padding-top-bottom-md;
+      }
+    }
+  }
+}
+
+//============================
+//    Sales medim and big  styles
+//============================
+@media (min-width: $screen-sm-min) {
+  .sales-page {
+    //Show two tiles per line
+    .prop-tile {
+      width: 50%;
+      padding: (2 * $padding-top-bottom-md);
+    }
+
+
+    //Map show/hide functionality
+    #show-hide-map-checkbox:checked {
+      & ~ .property-map-container {
+        position: absolute;
+        right: -100%;
+      }
+      & ~ .property-list-container {
+        display: block;
+      }
+    }
+
+    .property-map-container {
+      position: relative;
+      right: 0;
+    }
+    .property-list-container {
+      display: none;
+    }
+  }
+}

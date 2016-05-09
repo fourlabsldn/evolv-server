@@ -1,0 +1,24 @@
+
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Ovo);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+
+
+@import '_variables';
+@import '_normalise';
+@import '_mixins';
+@import '_common';
+
+// Components
+@import 'components/_burger_btn';
+@import 'components/_search_bar';
+@import 'components/_tabs';
+@import 'components/_image_slider';
+
+// Pages
+@import '_footer';
+@import '_navbar';
+@import '_index';
+@import '_sales';
+@import '_property';

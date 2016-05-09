@@ -1,0 +1,184 @@
+.index-page {
+  section {
+    @extend .section-content-width;
+  }
+  .arrival-section {
+    @extend .full-height;
+    background-image: url('/img/london-stock.jpg');
+    background-position: bottom;
+    color: $white;
+    margin-top: -2px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    .flat-btn {
+      margin: 20px;
+      min-width: 250px;
+      font-size: 1.875em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      &:hover {
+        background-color: $white;
+      }
+    }
+
+    .flat-test:hover {
+      border-color: $white;
+      background-color: $orange;
+      color: $white;
+    }
+  }
+
+  .main-logo{
+    max-height: 135px;
+    min-width: 150px;
+    width: 23%;
+    margin: 0 auto;
+  }
+
+  .main-header {
+    font-family: 'Lato';
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 35px;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+  }
+
+  .main-subheader {
+    font-size: $font-big;
+  }
+
+  .image-tiles {
+    align-items: stretch;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    overflow: hidden;
+    .tile {
+      position: relative;
+      margin: -1px;
+      width: 50%;
+      height: 35vw;
+      min-width: 300px;
+      display: flex;
+      overflow: hidden;
+
+      // Flex item code
+      flex-grow: 2;
+      flex-shrink: 1;
+      //Flex parent code
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        &::after {
+          background-color: rgba(0, 0, 0, .4);
+        }
+        button {
+          @extend .flat-btn:hover;
+          z-index: 2;
+        }
+      }
+      img {
+        position: absolute;
+        z-index: -1;
+        filter: contrast(0.80) brightness(1);
+
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: auto;
+        max-height: none;
+        max-width: none;
+        min-height: 100%;
+        min-width: 100%;
+        transform: translate(-50%, -50%);
+        transition: filter 0.2s ease;
+      }
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: transparent;
+        transition: background-color .2s ease;
+      }
+      button {
+        font-family: 'Ovo', serif;
+        font-size: 1.875em;
+      }
+    }
+  }
+
+  .tabs {
+    max-width: $content-width-lg-screen;
+    // width: 72%;
+    margin: 30px auto 0 auto;
+
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    .tab-label {
+      padding: 15px 25px 30px 25px;
+      margin: 15px;
+      flex-grow: 1;
+      border-bottom: 1px solid $light-blue !important;
+      font-size: $font-medium;
+      font-weight: 100;
+      position: relative;
+      span {
+        color: $navy !important;
+      }
+      i {
+        display: block;
+        font-size: $font-medium + 12px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .active-highlight {
+      height: 1px;
+      bottom: -1px;
+      z-index: 5;
+    }
+
+    .tab-content {
+      column-count: 2;
+      flex-grow: 4;
+      padding: 14px;
+      text-align: left;
+      p {
+        font-size: $font-small !important;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .index-page {
+    .tabs {
+      width: 100%;
+      label {
+        width: 10%;
+        span {
+          display: none;
+        }
+        i {
+          margin-bottom: 0px;
+        }
+      }
+      .tab-content {
+        column-count: 1;
+      }
+    }
+  }
+}
