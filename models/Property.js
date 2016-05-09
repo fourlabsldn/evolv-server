@@ -1,13 +1,14 @@
-const keystone = require('keystone');
-const Types = keystone.Field.Types;
+var keystone = require('keystone');
+var Types = keystone.Field.Types;
 
 /**
  * Property Model
- * ==================
+ * ==========
  */
 
-const Property = new keystone.List('Property', {
-  autokey: { from: 'postcode', path: 'key', unique: true }
+var Property = new keystone.List('Property', {
+	map: { name: 'postcode' },
+	autokey: { path: 'slug', from: 'postcode', unique: true }
 });
 
 Property.add({
@@ -18,7 +19,6 @@ Property.add({
   size: { type: Number },
   type: {
     type: Types.Select,
-    default: 0,
     index: true,
     options: [
       { value: 'apartment', label: 'House' },
@@ -32,6 +32,7 @@ Property.add({
       { value: 'freehold', label: 'Freehold' },
       { value: 'leasehold', label: 'Leasehold' },
     ] },
+  image: { type: Types.CloudinaryImage },
   postcode: { type: String, required: true, initial: true },
   houseNumber: { type: String },
   street: { type: String },
@@ -40,5 +41,5 @@ Property.add({
   country: { type: String },
 });
 
-Property.defaultColumns = 'name';
+Property.defaultColumns = 'street, houseNumber|20%, postcode|20%, type|20%';
 Property.register();
