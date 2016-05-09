@@ -15,7 +15,7 @@
     "arrow-body-style": [0, "always"],
     "no-use-before-define": [0, { "functions": true, "classes": true }],
     "no-console": 0,
-    "comma-dangle": [0, "never"],
+    "comma-dangle": [1, "never"],
     # "prefer-arrow-callback": 0,
     # "vars-on-top": 0,
     # "no-var": 0,

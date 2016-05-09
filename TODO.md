@@ -15,6 +15,7 @@
 
 ## Database
 - Fix default values and required values in the database
+- Add latitude and longitude on property addition
 
 
 ## Future work
