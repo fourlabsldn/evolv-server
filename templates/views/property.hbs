@@ -1,15 +1,17 @@
+{{#with data.property}}
   <section class="page-section grey-bg">
     <article class="property-article">
       <div class="article-row property-article-header">
-        <h1>Bradbourne Street, London SW6 4TJ</h1>
+        <h1>
+          {{#if street}}{{street}},{{/if}}
+          {{city}} {{postcode}}</h1>
+
+          <!--  TODO: Add a link to this button -->
         <button class="flat-btn">Book a viewing</button>
       </div>
 
       <div class="article-tabs tabs">
-        <input id="article_property1" type="radio" name="article_property" checked>
-        <input id="article_property2" type="radio" name="article_property">
-        <input id="article_property3" type="radio" name="article_property">
-        <input id="article_property4" type="radio" name="article_property">
+        <input id="photos_tab" type="radio" name="article_property" checked>
         <div class="tab-content"> <!-- image slider -->
           <div class="img-slider">
             <ul class="slider">
@@ -17,7 +19,7 @@
                 <input type="radio" name="radio-btn" id="img-1" checked />
                 <li class="slide-container">
             		<div class="slide">
-            			<img src="{{data.property.image.secure_url}}" />
+            			<img src="{{image.secure_url}}" />
                     </div>
             		<div class="slider-nav">
             			<label for="img-2" class="next"><i class="fa fa-angle-right"></i></label>
@@ -69,24 +71,35 @@
             </ul>
           </div>
         </div> <!-- / image slider -->
-        <div class="tab-content property-image">
-          <img src="img/floor-plan.jpg" alt="EPC">
-        </div>
-        <div class="tab-content property-image">
-          <img src="img/epc-1.jpg" alt="EPC">
-        </div>
+
+        {{#if floorPlan.secure_url}}
+          <input id="floorPlan_tab" type="radio" name="article_property">
+          <div class="tab-content property-image">
+            <img src="{{floorPlan.secure_url}}" alt="Floor Plan">
+          </div>
+        {{/if}}
+        {{#if epc.secure_url}}
+          <input id="epc_tab" type="radio" name="article_property">
+          <div class="tab-content property-image">
+            <img src="{{epc.secure_url}}" alt="EPC">
+          </div>
+        {{/if}}
+
+        <input id="map_tab" type="radio" name="article_property">
         <div class="tab-content">
           <div class="js-property-map property-map"></div>
         </div>
+
         <div class="article-row article-tabs-bottom-bar">
           <nav class="article-tabs-labels js-property-article-tab-labels">
-            <li><label for="article_property1">Photos    </label></li>
-            <li><label for="article_property2">Floor Plan</label></li>
-            <li><label for="article_property3">EPC       </label></li>
-            <li><label for="article_property4" class="js-map-label">Map       </label></li>
+            <li><label for="photos_tab">Photos    </label></li>
+            <li><label for="floorPlan_tab">Floor Plan</label></li>
+            <li><label for="epc_tab">EPC       </label></li>
+            <li><label for="map_tab" class="js-map-label">Map       </label></li>
           </nav>
           <ul class="property-article-side-buttons">
             <li class="js-article-print"><i class="fa fa-print"></i></li>
+            <!-- TODO: add funcionality to these two share buttons -->
             <!-- <li class="js-article-mail"><i class="fa fa-envelope-o"></i></li>
             <li class="js-article-share"><i class="fa fa-share"></i></li> -->
           </ul>
@@ -95,14 +108,26 @@
       <div class="property-article-content">
         <div class="article-row property-article-header-info">
           <div class="property-article-left-column">
+            <!-- TODO: Add capitalisation to CSS in here -->
             <ul class="property-info-list">
-              <li>£2,960,000</li>
-              <li>Freehold</li>
-              <li>6 beds</li>
-              <li>House</li>
-              <li>2,903 sq ft</li>
+              {{#if price}}
+               <!-- TODO: add a helper to format currency -->
+                <li>{{formatCurrency price}}</li>
+              {{/if}}
+              {{#if ownership}}
+                <li>{{ownership}}</li>
+              {{/if}}
+              {{#if bedrooms}}
+                <li>{{bedrooms}} beds</li>
+              {{/if}}
+              {{#if type}}
+                <li>{{type}}</li>
+              {{/if}}
+              {{#if size}}
+                <li>{{formatSize size}}</li>
+              {{/if}}
             </ul>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a.</p>
+            {{{summary}}}
           </div>
           <div class="property-article-right-column">
             <ul class="property-article-contact-info">
@@ -114,13 +139,18 @@
 
         <div class="article-row property-article-body-info">
           <div class="property-article-left-column">
-            <h2>Description</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi neque, dolorem voluptates. Animi, a. Atque esse nisi inventore, obcaecati, veniam doloremque ab delectus tenetur aperiam fugiat possimus ex, modi. <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, consectetur, voluptas! Quo, nulla in voluptatum! Vitae sit, sunt, aliquam recusandae porro in non quaerat rerum nihil fuga alias, placeat, voluptatem.</p>
+            {{#if description}}
+              <h2>Description</h2>
+              {{{description}}}
+            {{/if}}
 
-            <h2>Location</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita in molestias veritatis harum atque perspiciatis, nemo sed quod eius magni! Qui reiciendis porro reprehenderit, nam natus sint obcaecati ipsa perspiciatis.</p>
+            {{#if locationDescription}}
+              <h2>Location</h2>
+              {{{locationDescription}}}
+            {{/if}}
           </div>
           <div class="property-article-right-column">
+            <!-- TODO: Make these details work -->
             <h2>Details</h2>
             <ul>
               <li>6 bedrooms</li>
@@ -142,8 +172,11 @@
 
 
   <script>
+  // TODO: remove this for something that works
    var PROPERTY_INFO = { "address" : { "latitude": 51.499887, "longitude": -0.181306 } };
 
   </script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="/js/property.js"></script>
+
+{{/with}}
