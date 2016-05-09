@@ -19,6 +19,7 @@
 
 ## Server
 - Put helpers in different files
+- FILTER BUY and SELL for search pages!
 
 ## Future work
 - Design a 404 and 505 page
