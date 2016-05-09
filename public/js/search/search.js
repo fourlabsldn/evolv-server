@@ -31,21 +31,6 @@ babelHelpers.createClass = function () {
 
 babelHelpers;
 
-// Bug checking function that will throw an error whenever
-// the condition sent to it is evaluated to false
-function assert(condition, errorMessage) {
-  if (!condition) {
-    var completeErrorMessage = '';
-
-    if (assert.caller && assert.caller.name) {
-      completeErrorMessage = assert.caller.name + ': ';
-    }
-
-    completeErrorMessage += errorMessage;
-    throw new Error(completeErrorMessage);
-  }
-}
-
 // ==ClosureCompiler==
 // @compilation_level ADVANCED_OPTIMIZATIONS
 // @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/maps/google_maps_api_v3_3.js
@@ -1447,6 +1432,21 @@ var MapController = function () {
   return MapController;
 }();
 
+// Bug checking function that will throw an error whenever
+// the condition sent to it is evaluated to false
+function assert(condition, errorMessage) {
+  if (!condition) {
+    var completeErrorMessage = '';
+
+    if (assert.caller && assert.caller.name) {
+      completeErrorMessage = assert.caller.name + ': ';
+    }
+
+    completeErrorMessage += errorMessage;
+    throw new Error(completeErrorMessage);
+  }
+}
+
 // class-wide globals
 
 // Search filters options containing a 'selected' attribute will be considered
@@ -1964,6 +1964,46 @@ function showOnMap(coordinates, mapController) {
   mapController.createCluster();
 }
 
+function fillSearchFromQueryParameters(searchController) {
+  var Arg = MakeArg(); // eslint-disable-line new-cap
+  var getParameters = Arg.all();
+  var getParametersKeys = Object.keys(getParameters);
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = getParametersKeys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var par = _step.value;
+
+      var filter = searchController.getFilterByCriterion(par);
+      if (filter) {
+        var value = getParameters[par];
+        value = typeof value === 'string' ? value : value.toString();
+        searchController.fillFilter(filter, value);
+      }
+    }
+
+    // Now we apply the filter.
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  searchController.applyFilters();
+}
+
 function initPage() {
   // Start control of search bar
   var searchControllerConfig = {
@@ -1974,13 +2014,13 @@ function initPage() {
     // filter applied callback
     filtersAppliedcallback: function filtersAppliedcallback(matches) {
       var coordinates = [];
-      var _iteratorNormalCompletion3 = true;
-      var _didIteratorError3 = false;
-      var _iteratorError3 = undefined;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
       try {
-        for (var _iterator3 = matches[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var tile = _step3.value;
+        for (var _iterator2 = matches[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var tile = _step2.value;
 
           coordinates.push({
             latitude: tile.dataset.latitude,
@@ -1988,16 +2028,16 @@ function initPage() {
           });
         }
       } catch (err) {
-        _didIteratorError3 = true;
-        _iteratorError3 = err;
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion3 && _iterator3.return) {
-            _iterator3.return();
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
           }
         } finally {
-          if (_didIteratorError3) {
-            throw _iteratorError3;
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
       }
@@ -2007,10 +2047,11 @@ function initPage() {
   };
 
   var searchController = new SearchController(searchControllerConfig);
+  fillSearchFromQueryParameters(searchController);
 
   // Create map and instantiate a controller
   var mapController = new MapController(MAP_TARGET_SELECTOR);
 }
 
 initPage();
-//# sourceMappingURL=sales.js.map
+//# sourceMappingURL=search.js.map

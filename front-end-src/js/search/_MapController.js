@@ -1,5 +1,5 @@
 /* globals google*/
-import MarkerClusterer from './MarkerClusterer.js';
+import MarkerClusterer from './_MarkerClusterer.js';
 
 export default class MapController {
   constructor(targetSelector) {

@@ -4,7 +4,7 @@ import assert from './_shared/assert.js';
 assert(PROPERTY_INFO, 'No PROPERTY_INFO object provided.');
 
 import ActiveHighlighter from './_shared/ActiveHighlighter';
-import MapController from './_sales/MapController.js';
+import MapController from './search/_MapController.js';
 
 const MAP_TARGET_SELECTOR = '.js-property-map';
 const MAP_LABEL_SELECTOR = '.js-map-label';
