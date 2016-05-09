@@ -382,28 +382,19 @@ function initSearchBarToggle() {
 }
 
 function initSearchBarButtons() {
-  var searchBarSelector = '.js-navbar-dropdown-search-input';
-  var searchBar = document.querySelector(searchBarSelector);
-
-  var buyBtnSelector = '.js-navbar-dropdow-search-buy-btn';
-  var buyBtn = document.querySelector(buyBtnSelector);
-  assert(buyBtn && buyBtn.nodeName, 'No buy button found.');
-  buyBtn.dataset.targetSearch = '/buy.html?';
+  var searchFormSelector = '.js-navbar-dropdown-search';
+  var searchForm = document.querySelector(searchFormSelector);
+  assert(searchForm && searchForm.nodeName, 'No search form found.');
 
   var rentBtnSelector = '.js-navbar-dropdow-search-rent-btn';
+  var rentBtnTarget = '/rent';
   var rentBtn = document.querySelector(rentBtnSelector);
   assert(rentBtn && rentBtn.nodeName, 'No rent button found.');
-  rentBtn.dataset.targetSearch = '/rent.html?';
 
-  function goToSearchPage() {
-    var searchValue = searchBar.value;
-    var destination = window.location.origin + this.dataset.targetSearch;
-    destination += '&search=' + searchValue;
-    window.location.href = destination;
-  }
-
-  buyBtn.addEventListener('click', goToSearchPage);
-  rentBtn.addEventListener('click', goToSearchPage);
+  rentBtn.addEventListener('click', function () {
+    searchForm.action = rentBtnTarget;
+    searchForm.submit();
+  });
 }
 
 function controlNavbar(pageName) {

@@ -50,9 +50,18 @@
       </div>
     </div>
   </div>
-  <div class="navbar-dropdown-search">
-    <input class="navbar-dropdown-search-input js-navbar-dropdown-search-input" type="search" placeholder="Search">
-    <button class="navbar-dropdown-search-btn js-navbar-dropdow-search-buy-btn">Buy</button>
-    <button class="navbar-dropdown-search-btn js-navbar-dropdow-search-rent-btn">Rent</button>
-  </div>
+  <form class="navbar-dropdown-search js-navbar-dropdown-search" method="GET" action="/buy">
+    <input class="navbar-dropdown-search-input js-navbar-dropdown-search-input"
+           type="search"
+           placeholder="Search"
+           name="search"
+           >
+    <input type="submit"
+           class="navbar-dropdown-search-btn"
+           value="Buy"/>
+    <input type="button"
+           class="navbar-dropdown-search-btn js-navbar-dropdow-search-rent-btn"
+           value="Rent"
+           />
+  </form>
 </div>

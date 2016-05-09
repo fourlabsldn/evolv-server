@@ -149,28 +149,19 @@ function initSearchBarToggle() {
 }
 
 function initSearchBarButtons() {
-  const searchBarSelector = '.js-navbar-dropdown-search-input';
-  const searchBar = document.querySelector(searchBarSelector);
-
-  const buyBtnSelector = '.js-navbar-dropdow-search-buy-btn';
-  const buyBtn = document.querySelector(buyBtnSelector);
-  assert(buyBtn && buyBtn.nodeName, 'No buy button found.');
-  buyBtn.dataset.targetSearch = '/buy.html?';
+  const searchFormSelector = '.js-navbar-dropdown-search';
+  const searchForm =  document.querySelector(searchFormSelector);
+  assert(searchForm && searchForm.nodeName, 'No search form found.');
 
   const rentBtnSelector = '.js-navbar-dropdow-search-rent-btn';
+  const rentBtnTarget = '/rent';
   const rentBtn = document.querySelector(rentBtnSelector);
   assert(rentBtn && rentBtn.nodeName, 'No rent button found.');
-  rentBtn.dataset.targetSearch = '/rent.html?';
 
-  function goToSearchPage() {
-    const searchValue = searchBar.value;
-    let destination = window.location.origin + this.dataset.targetSearch;
-    destination += `&search=${searchValue}`;
-    window.location.href = destination;
-  }
-
-  buyBtn.addEventListener('click', goToSearchPage);
-  rentBtn.addEventListener('click', goToSearchPage);
+  rentBtn.addEventListener('click', () => {
+    searchForm.action = rentBtnTarget;
+    searchForm.submit();
+  });
 }
 
 export default function controlNavbar(pageName) {

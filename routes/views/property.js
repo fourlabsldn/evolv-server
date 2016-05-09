@@ -19,7 +19,6 @@ exports = module.exports = (req, res) => {
 				slug: locals.filters.slug
 			})
       .exec((err, result) => {
-				console.dir(result);
         locals.data.property = result;
         return next(err);
       });
