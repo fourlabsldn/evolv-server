@@ -54,6 +54,10 @@ function initPage() {
     filtersAppliedcallback: (matches) => {
       const coordinates = [];
       for (const tile of matches) {
+        if (!tile.dataset.longitude || !tile.dataset.latitude) {
+          continue;
+        }
+
         coordinates.push({
           latitude: tile.dataset.latitude,
           longitude: tile.dataset.longitude
