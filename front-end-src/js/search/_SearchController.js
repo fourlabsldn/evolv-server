@@ -1,4 +1,5 @@
 /* globals */
+/* eslint-env browser */
 import assert from '../_shared/assert.js';
 
 // class-wide globals
@@ -70,7 +71,7 @@ export default class SearchController {
     if (typeof filtersAppliedcallback === 'function') {
       this.filtersAppliedcallback = filtersAppliedcallback;
     } else {
-      this.filtersAppliedcallback = () => { return null; }
+      this.filtersAppliedcallback = () => { return null; };
     }
 
     // Begin UI control

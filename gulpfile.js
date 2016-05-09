@@ -78,7 +78,7 @@ gulp.task('rollup', () => {
 });
 
 gulp.task('watch:rollup', () => {
-	gulp.watch(paths.js.src, ['sass']);
+	gulp.watch(paths.js.src, ['rollup']);
 });
 
 gulp.task('assets', () => {
@@ -87,7 +87,7 @@ gulp.task('assets', () => {
 });
 
 gulp.task('watch:assets', () => {
-	gulp.watch(paths.js.src, ['sass']);
+	gulp.watch(paths.js.src, ['assets']);
 });
 
 gulp.task('img', () => {
@@ -96,7 +96,7 @@ gulp.task('img', () => {
 });
 
 gulp.task('watch:img', () => {
-	gulp.watch(paths.js.src, ['sass']);
+	gulp.watch(paths.js.src, ['img']);
 });
 
 gulp.task('runKeystone', shell.task('node keystone.js'));

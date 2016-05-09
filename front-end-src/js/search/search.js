@@ -1,4 +1,4 @@
-/* globals MakeArg*/
+import MakeArg from '../_shared/MakeArg';
 import MapController from './_MapController.js';
 import SearchController from './_SearchController.js';
 
@@ -42,6 +42,7 @@ function fillSearchFromQueryParameters(searchController) {
   searchController.applyFilters();
 }
 
+
 function initPage() {
   // Start control of search bar
   const searchControllerConfig = {
@@ -64,10 +65,11 @@ function initPage() {
   };
 
   const searchController = new SearchController(searchControllerConfig);
-  fillSearchFromQueryParameters(searchController);
 
   // Create map and instantiate a controller
   const mapController = new MapController(MAP_TARGET_SELECTOR);
+
+  fillSearchFromQueryParameters(searchController, mapController);
 }
 
 initPage();
