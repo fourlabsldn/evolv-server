@@ -17,6 +17,8 @@
 - Fix default values and required values in the database
 - Add latitude and longitude on property addition
 
+## Server
+- Put helpers in different files
 
 ## Future work
 - Design a 404 and 505 page

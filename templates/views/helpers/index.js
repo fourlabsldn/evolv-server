@@ -349,6 +349,9 @@ module.exports = function() {
 		return obj._[underscoreMethod].format();
 	};
 
+	// =========================================================================
+	// Helpers
+	// =========================================================================
 	// TODO: Make formatCurrency actually do something
 	_helpers.formatCurrency = (number) => {
 		return number ? `£ ${number}` : '';
@@ -357,6 +360,35 @@ module.exports = function() {
 	// TODO: Make formatSize actually do something
 	_helpers.formatSize = (number) => {
 		return number ? `${number} sq ft` : '';
+	};
+
+
+	// TODO: separate html from here
+	_helpers.imageSlider = (imagesArray = []) => {
+		let sliderContent = '';
+		imagesArray.forEach((image, index) => {
+			const labelToPrev = index > 0
+				? `<label for="img-${index - 1}" class="prev"><i class="fa fa-angle-left"></i></label>`
+				: '';
+			const labelToNext = index + 1 < imagesArray.length
+				? `<label for="img-${index + 1}" class="next"><i class="fa fa-angle-right"></i></label>`
+				: '';
+			const checked = index === 0 ? 'checked' : '';
+
+			sliderContent += `
+			<input type="radio" name="radio-btn" id="img-${index}" ${checked} />
+			<li class="slide-container">
+			<div class="slide">
+				<img src="${image.secure_url}" />
+					</div>
+			<div class="slider-nav">
+				${labelToPrev}
+				${labelToNext}
+			</div>
+			</li>`;
+		});
+
+		return sliderContent;
 	};
 
 	return _helpers;

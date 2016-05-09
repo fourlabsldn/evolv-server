@@ -12,7 +12,7 @@ const Property = new keystone.List('Property', {
 });
 
 Property.add({
-	image: { type: Types.CloudinaryImages },
+	images: { type: Types.CloudinaryImages },
 	floorPlan: { type: Types.CloudinaryImage },
 	epc: { type: Types.CloudinaryImage },
   price: { type: Number },

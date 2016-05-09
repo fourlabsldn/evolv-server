@@ -11,63 +11,12 @@
       </div>
 
       <div class="article-tabs tabs">
+        <!-- TODO: Only show gallery if there are images -->
         <input id="photos_tab" type="radio" name="article_property" checked>
         <div class="tab-content"> <!-- image slider -->
           <div class="img-slider">
             <ul class="slider">
-
-                <input type="radio" name="radio-btn" id="img-1" checked />
-                <li class="slide-container">
-            		<div class="slide">
-            			<img src="{{image.secure_url}}" />
-                    </div>
-            		<div class="slider-nav">
-            			<label for="img-2" class="next"><i class="fa fa-angle-right"></i></label>
-            		</div>
-                </li>
-
-                <input type="radio" name="radio-btn" id="img-2" />
-                <li class="slide-container">
-                    <div class="slide">
-                      <img src="img/prop-img-6.jpg" />
-                    </div>
-            		<div class="slider-nav">
-            			<label for="img-1" class="prev"><i class="fa fa-angle-left"></i></label>
-            			<label for="img-3" class="next"><i class="fa fa-angle-right"></i></label>
-            		</div>
-                </li>
-
-                <input type="radio" name="radio-btn" id="img-3" />
-                <li class="slide-container">
-                    <div class="slide">
-                      <img src="img/prop-img-7.jpg" />
-                    </div>
-            		<div class="slider-nav">
-            			<label for="img-2" class="prev"><i class="fa fa-angle-left"></i></label>
-                  <label for="img-4" class="next"><i class="fa fa-angle-right"></i></label>
-            		</div>
-                </li>
-
-                <input type="radio" name="radio-btn" id="img-4" />
-                <li class="slide-container">
-                    <div class="slide">
-                      <img src="img/prop-img-8.jpg" />
-                    </div>
-                <div class="slider-nav">
-                  <label for="img-3" class="prev"><i class="fa fa-angle-left"></i></label>
-                  <label for="img-5" class="next"><i class="fa fa-angle-right"></i></label>
-                </div>
-                </li>
-
-                <input type="radio" name="radio-btn" id="img-5" />
-                <li class="slide-container">
-                    <div class="slide">
-                      <img src="img/prop-img-9.jpg" />
-                    </div>
-                <div class="slider-nav">
-                  <label for="img-4" class="prev"><i class="fa fa-angle-left"></i></label>
-                </div>
-                </li>
+              {{{imageSlider images}}}
             </ul>
           </div>
         </div> <!-- / image slider -->
