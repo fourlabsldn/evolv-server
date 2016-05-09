@@ -388,12 +388,12 @@ function initSearchBarButtons() {
   var buyBtnSelector = '.js-navbar-dropdow-search-buy-btn';
   var buyBtn = document.querySelector(buyBtnSelector);
   assert(buyBtn && buyBtn.nodeName, 'No buy button found.');
-  buyBtn.dataset.targetSearch = '/buy?';
+  buyBtn.dataset.targetSearch = '/buy.html?';
 
   var rentBtnSelector = '.js-navbar-dropdow-search-rent-btn';
   var rentBtn = document.querySelector(rentBtnSelector);
   assert(rentBtn && rentBtn.nodeName, 'No rent button found.');
-  rentBtn.dataset.targetSearch = '/rent?';
+  rentBtn.dataset.targetSearch = '/rent.html?';
 
   function goToSearchPage() {
     var searchValue = searchBar.value;
@@ -463,8 +463,6 @@ var Elevator = function Elevator(n) {
 };
 
 controlNavbar();
-
-window.assert = assert;
 
 window.elevator = Elevator;
 //# sourceMappingURL=common.js.map

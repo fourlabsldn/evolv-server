@@ -31,6 +31,21 @@ babelHelpers.createClass = function () {
 
 babelHelpers;
 
+// Bug checking function that will throw an error whenever
+// the condition sent to it is evaluated to false
+function assert(condition, errorMessage) {
+  if (!condition) {
+    var completeErrorMessage = '';
+
+    if (assert.caller && assert.caller.name) {
+      completeErrorMessage = assert.caller.name + ': ';
+    }
+
+    completeErrorMessage += errorMessage;
+    throw new Error(completeErrorMessage);
+  }
+}
+
 // ==ClosureCompiler==
 // @compilation_level ADVANCED_OPTIMIZATIONS
 // @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/maps/google_maps_api_v3_3.js
@@ -1431,8 +1446,6 @@ var MapController = function () {
   }]);
   return MapController;
 }();
-
-/* globals assert */
 
 // class-wide globals
 

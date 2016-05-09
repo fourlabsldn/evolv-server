@@ -33,12 +33,12 @@ babelHelpers;
 
 // Bug checking function that will throw an error whenever
 // the condition sent to it is evaluated to false
-function assert$1(condition, errorMessage) {
+function assert(condition, errorMessage) {
   if (!condition) {
     var completeErrorMessage = '';
 
-    if (assert$1.caller && assert$1.caller.name) {
-      completeErrorMessage = assert$1.caller.name + ': ';
+    if (assert.caller && assert.caller.name) {
+      completeErrorMessage = assert.caller.name + ': ';
     }
 
     completeErrorMessage += errorMessage;
@@ -56,13 +56,13 @@ var Highlight = function () {
   babelHelpers.createClass(Highlight, [{
     key: 'translateX',
     value: function translateX(val) {
-      assert$1(typeof val === 'number', 'translateX value is not a number');
+      assert(typeof val === 'number', 'translateX value is not a number');
       this.bar.style.transform = 'translate3d(' + val + 'px, 0, 0)';
     }
   }, {
     key: 'setWidth',
     value: function setWidth(val) {
-      assert$1(typeof val === 'number', 'translateX value is not a number');
+      assert(typeof val === 'number', 'translateX value is not a number');
       this.bar.style.width = val + 'px';
     }
   }, {
@@ -97,7 +97,7 @@ var Highlight = function () {
         this.bar = null;
       }
 
-      assert$1(el && el.nodeName, 'Invalid element passed to setActive');
+      assert(el && el.nodeName, 'Invalid element passed to setActive');
       this.parent = el;
       this.bar = document.createElement('div');
       this.bar.classList.add('active-highlight');
@@ -1614,10 +1614,6 @@ var MapController = function () {
   }]);
   return MapController;
 }();
-
-/* globals assert, PROPERTY_INFO*/
-
-assert(PROPERTY_INFO, 'No PROPERTY_INFO object provided.');
 
 var MAP_TARGET_SELECTOR = '.js-property-map';
 var MAP_LABEL_SELECTOR = '.js-map-label';
