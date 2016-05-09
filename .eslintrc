@@ -9,6 +9,7 @@
 
   },
   "rules": {
+    "indent": [0, "tab"],
     "no-bitwise": 0,
     "strict": [0, "function"],
     "arrow-body-style": [0, "always"],

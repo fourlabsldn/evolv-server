@@ -38,7 +38,7 @@ exports = module.exports = function(app) {
 	app.get('/', routes.views.index);
 	app.get('/rent', routes.views.search);
 	app.get('/buy', routes.views.search);
-	app.get('/property/', routes.views.property);
+	app.get('/property/:slug', routes.views.property);
 
 	// Keynote.js demo views
 	app.get('/blog/:category?', routes.views.blog);
