@@ -86,12 +86,13 @@
     {{#each data.properties}}
       <!-- The data-attributes will be used in the search -->
       <div class="prop-tile"
-        data-price={{price}}
-        data-postcode={{postcode}}
-        data-street={{street}}
-        data-bedrooms={{bedrooms}}
-        data-details={{details}}
-        data-ownership={{ownership}}>
+        data-price="{{price}}"
+        data-postcode="{{postcode}}"
+        data-street="{{street}}"
+        data-bedrooms="{{bedrooms}}"
+        data-details="{{details}}"
+        data-ownership="{{ownership}}"
+        >
           <div class="prop-tile-crop">
             <a href="/property/{{slug}}">
               <img src="{{images.[0].secure_url}}"

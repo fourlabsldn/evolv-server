@@ -13,13 +13,13 @@
       <div class="article-tabs tabs">
         <!-- TODO: Only show gallery if there are images -->
         <input id="photos_tab" type="radio" name="article_property" checked>
-        <div class="tab-content"> <!-- image slider -->
+        <div class="tab-content">
           <div class="img-slider">
             <ul class="slider">
               {{{imageSlider images}}}
             </ul>
           </div>
-        </div> <!-- / image slider -->
+        </div>
 
         {{#if floorPlan.secure_url}}
           <input id="floorPlan_tab" type="radio" name="article_property">
@@ -27,6 +27,7 @@
             <img src="{{floorPlan.secure_url}}" alt="Floor Plan">
           </div>
         {{/if}}
+
         {{#if epc.secure_url}}
           <input id="epc_tab" type="radio" name="article_property">
           <div class="tab-content property-image">
