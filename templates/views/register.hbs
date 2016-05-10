@@ -1,7 +1,8 @@
 <section class="page-section white-bg">
-  <form class="ContactForm_container">
+  <form method="post" class="ContactForm_container">
     <h1 class="ContactForm_mainTitle">{{data.formTitle}}</h1>
 
+    <input type="hidden" name="action" value="register">
 
     {{#each data.formFields}}
       <{{tag}}
@@ -10,7 +11,12 @@
         class="ContactForm_input-{{type}}"
         {{#if required}}required{{/if}}>
           {{#each options}}
-              <option value="value" {{#if disabled}}disabled{{/if}} {{#if selected}}selected{{/if}} >{{text}}</option>
+              <option
+                value="value"
+                {{#if disabled}}disabled{{/if}}
+                {{#if selected}}selected{{/if}}>
+                    {{text}}
+              </option>
           {{/each}}
 {{! Remove freaking whites spaces with {{#-}/}{{/-}/}/}}
 {{#-}}{{/-}}</{{tag}}>
