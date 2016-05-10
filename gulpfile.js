@@ -8,7 +8,8 @@ const babel = require('rollup-plugin-babel');
 const rollup = require('gulp-rollup');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
-
+const autoprefixer = require('autoprefixer');
+const postcss = require('gulp-postcss');
 
 const paths = {
 	src: [
@@ -61,8 +62,11 @@ gulp.task('watch:sass', () => {
 
 gulp.task('sass', () => {
 	gulp.src(paths.style.src)
-		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest(paths.style.dest));
+	.pipe(sourcemaps.init())
+	.pipe(sass().on('error', sass.logError))
+	.pipe(postcss([autoprefixer({ browsers: ['last 15 versions'] })]))
+	.pipe(sourcemaps.write('.'))
+	.pipe(gulp.dest(paths.style.dest));
 });
 
 
