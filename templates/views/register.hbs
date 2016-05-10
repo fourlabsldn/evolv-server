@@ -1,15 +1,18 @@
 <section class="page-section white-bg">
-  <div class="ContactForm-container">
-    <h1 class="ContactForm-mainTitle">{{data.formTitle}}</h1>
+  <div class="ContactForm_container">
+    <h1 class="ContactForm_mainTitle">{{data.formTitle}}</h1>
 
     {{#each data.formFields}}
       {{#is type 'select'}}
-        Rendering select
+          <select class="ContactForm_select" name="{{name}}">
+            {{#each options}}
+              <option value="value">{{text}}</option>
+            {{/each}}
+          </select>
       {{else}}
-        Rendering text
+          <input type="{type}" name="{{name}}" class="ContactForm_{{type}}" placeholder="{{placeholder}}">
       {{/is}}
     {{/each}}
-
-    <button type="submit" name="button" class="flat-btn navy-bg"></button>
+    <button type="submit" name="button" class="ContactForm_submitBtn"></button>
   </div>
 </section>

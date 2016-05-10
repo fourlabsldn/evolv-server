@@ -1,0 +1,35 @@
+.ContactForm_container {
+  @extend .grey-bg;
+  padding: 2em;
+  max-width: 700px;
+  margin: auto;
+}
+.ContactForm_mainTitle {
+
+}
+
+@mixin ContactForm_field {
+  width: 100%;
+  min-height: 3em;
+  margin: 0 0 .1em;
+}
+
+.ContactForm_select {
+  @include ContactForm_field();
+}
+.ContactForm_text {
+  @include ContactForm_field();
+
+}
+.ContactForm_textarea {
+  @include ContactForm_field();
+
+}
+.ContactForm_checkbox {
+  @include ContactForm_field();
+
+}
+.ContactForm_submitBtn {
+  @include ContactForm_field();
+  margin: 0;
+}

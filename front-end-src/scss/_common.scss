@@ -152,15 +152,16 @@ section {
 .page-section {
   text-align: center;
   @extend .section-content-width;
-
-  button {
-    @extend .flat-btn;
-    font-size: $font-medium;
-    margin-left: 20px;
-    margin-right: 20px;
-    min-width: 250px;
-  }
 }
+
+.page-section_button {
+  @extend .flat-btn;
+  font-size: $font-medium;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 250px;
+}
+
 @media (max-width: $screen-xs-max) {
   .page-section{
     button {
