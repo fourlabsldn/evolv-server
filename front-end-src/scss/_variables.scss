@@ -44,3 +44,10 @@ $content-width-xs-screen: calc(100vw - $padding-side-xs-screen);
 $content-width-sm-screen: 700px;
 $content-width-md-screen: 900px;
 $content-width-lg-screen: 1150px;
+
+
+// Navbar
+$navbar-transition-delay      : 350ms;
+$navbar-transition-timing     : cubic-bezier(.55, 0, .1, 1);
+$navbar-height                : 65px + $padding-top-bottom-md;
+$navbar-mobile-displacement   : $screen-xs-max;

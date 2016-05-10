@@ -129,3 +129,4 @@ gulp.task('open', () => {
 });
 
 gulp.task('default', ['rollup', 'watch', 'runKeystone', 'open']);
+gulp.task('build-watch', ['rollup', 'sass', 'assets', 'img', 'watch']);

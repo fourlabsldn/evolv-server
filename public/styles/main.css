@@ -485,6 +485,17 @@ section {
     section {
       padding-left: 70px;
       padding-right: 70px; } }
+  section .main-headers {
+    margin: auto; }
+  section .main-header {
+    font-family: 'Lato';
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 35px;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px; }
+  section .main-subheader {
+    font-size: 26px; }
 
 @media (max-width: 768px) {
   .section-content-width, .page-section, .index-page section, .sales-page .property-list-container {
@@ -520,6 +531,9 @@ section {
 
 .full-height, .index-page .arrival-section {
   min-height: 100vh; }
+
+.full-height-minus-navbar {
+  min-height: calc(100vh - 80px); }
 
 .flat-btn, .page-section button, .navbar-button {
   display: inline-block;
@@ -569,6 +583,9 @@ section {
   transition: transform .2s ease-in-out, width .2s ease-in-out;
   width: 100%;
   will-change: transform; }
+
+.flex {
+  display: flex; }
 
 @keyframes slideInLeft {
   0% {
@@ -1345,17 +1362,6 @@ input:checked + .slide-container .slider-nav label {
   min-width: 150px;
   width: 23%;
   margin: 0 auto; }
-
-.index-page .main-header {
-  font-family: 'Lato';
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 35px;
-  letter-spacing: 0.1em;
-  margin-bottom: 30px; }
-
-.index-page .main-subheader {
-  font-size: 26px; }
 
 .index-page .image-tiles {
   align-items: stretch;

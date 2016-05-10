@@ -96,6 +96,23 @@ section {
     padding-left: $padding-side-lg-screen;
     padding-right: $padding-side-lg-screen;
   }
+
+  .main-headers {
+    margin: auto;
+  }
+
+  .main-header {
+    font-family: 'Lato';
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 35px;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+  }
+
+  .main-subheader {
+    font-size: $font-big;
+  }
 }
 
 // Set default widths for various screen sizes
@@ -150,6 +167,10 @@ section {
   min-height: 100vh;
 }
 
+.full-height-minus-navbar {
+  min-height: calc(100vh - #{$navbar-height});
+}
+
 
 .flat-btn {
   @include flat-btn();
@@ -183,4 +204,8 @@ section {
               width .2s ease-in-out;
   width: 100%;
   will-change: transform;
+}
+
+.flex {
+  display: flex;
 }
