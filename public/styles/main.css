@@ -421,6 +421,16 @@ textarea {
       border-color: #FF742F;
       color: #FF742F; }
 
+.white-bg {
+  background-color: #fff;
+  color: #292c31; }
+  .white-bg .flat-btn, .white-bg .page-section button, .page-section .white-bg button, .white-bg .navbar-button {
+    border-color: #00263A;
+    color: #00263A; }
+    .white-bg .flat-btn :hover, .white-bg .page-section button :hover, .page-section .white-bg button :hover, .white-bg .navbar-button :hover {
+      border-color: #FF742F;
+      color: #FF742F; }
+
 .grey-bg, .sales-page .property-list-container {
   background-color: #f3f3f3;
   color: #00263A; }
@@ -481,7 +491,7 @@ h1 {
 
 p {
   font-size: 18px;
-  line-height: 1.6em;
+  line-height: 1.8em;
   margin-bottom: 50px; }
 
 a {
@@ -2199,9 +2209,46 @@ input:checked + .slide-container .slider-nav label {
   @page :right {
     margin: .8cm; } }
 
-.let-firstSection {
+.let_firstSection {
   background-image: url("/img/let-background.jpg");
   background-position: bottom;
   color: #fff; }
+
+.TwoColumns {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%; }
+
+.TwoColumns_column {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 400px;
+      -ms-flex: 1 1 400px;
+          flex: 1 1 400px;
+  max-width: 450px;
+  padding: 1em; }
+  @media (max-width: 992px) {
+    .TwoColumns_column {
+      max-width: none;
+      width: 100%; } }
+
+.TwoColumns_header {
+  margin-bottom: 2em;
+  font-size: 26px;
+  font-weight: normal; }
+
+.TwoColumns_text {
+  font-size: 1em; }
+
+.let_promotionText {
+  font-size: 26px; }
 
 /*# sourceMappingURL=main.css.map */

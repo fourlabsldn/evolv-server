@@ -7,6 +7,11 @@
   color: $white;
   @include flat-btn-color ($white, $orange);
 }
+.white-bg {
+  background-color: $white;
+  color: $darkmost-blue;
+  @include flat-btn-color ($navy, $orange);
+}
 .grey-bg {
   background-color: $grey;
   color: $navy;
@@ -58,7 +63,7 @@ h1 {
 
 p {
   font-size: $font-medium;
-  line-height: 1.6em;
+  line-height: 1.8em;
   // font-weight: 100;
   margin-bottom: 50px;
 }
