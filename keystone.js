@@ -3,39 +3,37 @@
 require('dotenv').load();
 
 // Require keystone
-var keystone = require('keystone');
-var handlebars = require('express-handlebars');
+const keystone = require('keystone');
+const handlebars = require('express-handlebars');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
 keystone.init({
-
-	'name': 'Evolv',
-	'brand': 'Evolv',
-
-	'sass': 'public',
-	'static': 'public',
-	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',
+	name: 'Evolv',
+	brand: 'Evolv',
+	'signin logo': ['public/img/logo-invert.svg', 200, 100],
+	sass: 'public',
+	static: 'public',
+	favicon: 'public/favicon.ico',
+	views: 'templates/views',
 	'view engine': 'hbs',
 
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
 		defaultLayout: 'admin-ui',
-		helpers: new require('./templates/views/helpers')(),
+		helpers: new require('./templates/views/helpers')(), // eslint-ignore-line new-cap
 		extname: '.hbs'
 	}).engine,
 
-	'emails': 'templates/emails',
+	emails: 'templates/emails',
 
 	'auto update': true,
-	'session': true,
-	'auth': true,
+	session: true,
+	auth: true,
 	'user model': 'User'
-
 });
 
 // Load your project's Models
@@ -45,9 +43,9 @@ keystone.import('models');
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
 // for each request) should be added to ./routes/middleware.js
-
+const _ = require('underscore');
 keystone.set('locals', {
-	_: require('underscore'),
+	_,
 	env: keystone.get('env'),
 	utils: keystone.utils,
 	editable: keystone.content.editable
@@ -62,7 +60,7 @@ keystone.set('routes', require('./routes'));
 // default email templates, you may remove them if you're using your own.
 
 keystone.set('email locals', {
-	logo_src: '/images/logo-email.gif',
+	logo_src: '/img/logo-invert.svg',
 	logo_width: 194,
 	logo_height: 76,
 	theme: {
