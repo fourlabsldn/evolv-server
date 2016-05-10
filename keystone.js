@@ -13,7 +13,7 @@ const handlebars = require('express-handlebars');
 keystone.init({
 	name: 'Evolv',
 	brand: 'Evolv',
-	'signin logo': ['public/img/logo-invert.svg', 200, 100],
+	'signin logo': ['/img/logo-invert.svg', 200, 100],
 	sass: 'public',
 	static: 'public',
 	favicon: 'public/favicon.ico',
