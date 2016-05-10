@@ -1147,34 +1147,106 @@ input:checked + .slide-container .slider-nav label {
 
 .ContactForm_container {
   padding: 2em;
-  max-width: 700px;
+  max-width: 600px;
   margin: auto; }
 
 .ContactForm_select {
   width: 100%;
   min-height: 3em;
-  margin: 0 0 .1em; }
+  margin: 0 0 1em;
+  padding: .5em 1em .5em 1em;
+  border: 0;
+  outline-color: #292c31;
+  background-color: #fff;
+  color: #292c31;
+  text-align: left; }
+  .ContactForm_select::-webkit-input-placeholder {
+    color: #292c31; }
+  .ContactForm_select:-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_select::-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_select:-ms-input-placeholder {
+    color: #292c31; }
 
 .ContactForm_text {
   width: 100%;
   min-height: 3em;
-  margin: 0 0 .1em; }
+  margin: 0 0 1em;
+  padding: .5em 1em .5em 1em;
+  border: 0;
+  outline-color: #292c31;
+  background-color: #fff;
+  color: #292c31;
+  text-align: left; }
+  .ContactForm_text::-webkit-input-placeholder {
+    color: #292c31; }
+  .ContactForm_text:-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_text::-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_text:-ms-input-placeholder {
+    color: #292c31; }
 
 .ContactForm_textarea {
   width: 100%;
   min-height: 3em;
-  margin: 0 0 .1em; }
+  margin: 0 0 1em;
+  padding: .5em 1em .5em 1em;
+  border: 0;
+  outline-color: #292c31;
+  background-color: #fff;
+  color: #292c31;
+  text-align: left; }
+  .ContactForm_textarea::-webkit-input-placeholder {
+    color: #292c31; }
+  .ContactForm_textarea:-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_textarea::-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_textarea:-ms-input-placeholder {
+    color: #292c31; }
 
 .ContactForm_checkbox {
   width: 100%;
   min-height: 3em;
-  margin: 0 0 .1em; }
+  margin: 0 0 1em;
+  padding: .5em 1em .5em 1em;
+  border: 0;
+  outline-color: #292c31;
+  background-color: #fff;
+  color: #292c31;
+  text-align: left; }
+  .ContactForm_checkbox::-webkit-input-placeholder {
+    color: #292c31; }
+  .ContactForm_checkbox:-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_checkbox::-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_checkbox:-ms-input-placeholder {
+    color: #292c31; }
 
 .ContactForm_submitBtn {
   width: 100%;
   min-height: 3em;
-  margin: 0 0 .1em;
-  margin: 0; }
+  margin: 0 0 1em;
+  padding: .5em 1em .5em 1em;
+  border: 0;
+  outline-color: #292c31;
+  background-color: #fff;
+  color: #292c31;
+  text-align: left;
+  color: #fff;
+  background-color: #00263A;
+  text-align: center; }
+  .ContactForm_submitBtn::-webkit-input-placeholder {
+    color: #292c31; }
+  .ContactForm_submitBtn:-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_submitBtn::-moz-placeholder {
+    color: #292c31; }
+  .ContactForm_submitBtn:-ms-input-placeholder {
+    color: #292c31; }
 
 .footer {
   display: block; }

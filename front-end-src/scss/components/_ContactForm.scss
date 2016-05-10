@@ -1,7 +1,7 @@
 .ContactForm_container {
   @extend .grey-bg;
   padding: 2em;
-  max-width: 700px;
+  max-width: 600px;
   margin: auto;
 }
 .ContactForm_mainTitle {
@@ -11,7 +11,20 @@
 @mixin ContactForm_field {
   width: 100%;
   min-height: 3em;
-  margin: 0 0 .1em;
+  margin: 0 0 1em;
+  padding: .5em 1em .5em 1em;
+
+  border: 0;
+  outline-color: $darkmost-blue;
+
+  background-color: $white;
+  color: $darkmost-blue;
+
+  text-align: left;
+
+  @include placeholder {
+    color: $darkmost-blue;
+  }
 }
 
 .ContactForm_select {
@@ -31,5 +44,7 @@
 }
 .ContactForm_submitBtn {
   @include ContactForm_field();
-  margin: 0;
+  color: $white;
+  background-color: $navy;
+  text-align: center;
 }
