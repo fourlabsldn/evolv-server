@@ -2251,4 +2251,11 @@ input:checked + .slide-container .slider-nav label {
 .let_promotionText {
   font-size: 26px; }
 
+.sell_firstSection {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), url("/img/sell-background.jpg");
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/img/sell-background.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/img/sell-background.jpg");
+  background-position: bottom;
+  color: #fff; }
+
 /*# sourceMappingURL=main.css.map */

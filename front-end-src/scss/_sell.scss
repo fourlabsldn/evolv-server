@@ -1,9 +1,11 @@
-.let_firstSection {
-  background-image: url('/img/let-background.jpg');
+.sell_firstSection {
+  background-image:
+    linear-gradient(hsla(0, 0, 0, .2), hsla(0, 0, 0, .2)), 
+    url('/img/sell-background.jpg');
   background-position: bottom;
   color: $white;
 }
 
-.let_promotionText {
-  font-size: $font-big;
+.sell_signature {
+
 }
