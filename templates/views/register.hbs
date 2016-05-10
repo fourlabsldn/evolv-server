@@ -3,12 +3,11 @@
     <h1 class="ContactForm-mainTitle">{{data.formTitle}}</h1>
 
     {{#each data.formFields}}
-      {{#ifeq type 'select'}}
+      {{#is type 'select'}}
         Rendering select
-      {{/ifeq}}
-      {{#ifeq type 'text'}}
+      {{else}}
         Rendering text
-      {{/ifeq}}
+      {{/is}}
     {{/each}}
 
     <button type="submit" name="button" class="flat-btn navy-bg"></button>
