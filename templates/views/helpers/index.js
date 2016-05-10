@@ -391,5 +391,12 @@ module.exports = function() {
 		return sliderContent;
 	};
 
+	_helpers.ifeq = (a, b, options) => {
+		if (a === b) {
+			return options.fn(this);
+		}
+		return options.inverse(this);
+	};
+
 	return _helpers;
 };

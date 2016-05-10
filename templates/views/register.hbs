@@ -1,0 +1,16 @@
+<section class="page-section white-bg">
+  <div class="ContactForm-container">
+    <h1 class="ContactForm-mainTitle">{{data.formTitle}}</h1>
+
+    {{#each data.formFields}}
+      {{#ifeq type 'select'}}
+        Rendering select
+      {{/ifeq}}
+      {{#ifeq type 'text'}}
+        Rendering text
+      {{/ifeq}}
+    {{/each}}
+
+    <button type="submit" name="button" class="flat-btn navy-bg"></button>
+  </div>
+</section>
