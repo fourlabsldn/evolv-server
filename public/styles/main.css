@@ -2258,4 +2258,7 @@ input:checked + .slide-container .slider-nav label {
   background-position: bottom;
   color: #fff; }
 
+.sell_signature {
+  font-weight: lighter; }
+
 /*# sourceMappingURL=main.css.map */

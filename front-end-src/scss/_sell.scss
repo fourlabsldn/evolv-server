@@ -1,11 +1,11 @@
 .sell_firstSection {
   background-image:
-    linear-gradient(hsla(0, 0, 0, .2), hsla(0, 0, 0, .2)), 
+    linear-gradient(hsla(0, 0, 0, .2), hsla(0, 0, 0, .2)),
     url('/img/sell-background.jpg');
   background-position: bottom;
   color: $white;
 }
 
 .sell_signature {
-
+  font-weight: lighter;
 }
