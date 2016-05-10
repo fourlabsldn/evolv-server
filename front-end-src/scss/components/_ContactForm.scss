@@ -1,6 +1,6 @@
 .ContactForm_container {
   @extend .grey-bg;
-  padding: 2em;
+  padding: 2em 5em;
   max-width: 600px;
   margin: auto;
 }
@@ -8,11 +8,11 @@
 
 }
 
-@mixin ContactForm_field {
+[class*="ContactForm_input"] {
   width: 100%;
   min-height: 3em;
   margin: 0 0 1em;
-  padding: .5em 1em .5em 1em;
+  padding: 1em 2em;
 
   border: 0;
   outline-color: $darkmost-blue;
@@ -27,23 +27,17 @@
   }
 }
 
-.ContactForm_select {
-  @include ContactForm_field();
+.ContactForm_input-select {
 }
-.ContactForm_text {
-  @include ContactForm_field();
+.ContactForm_input-text {
+}
+.ContactForm_input-textarea {
+  min-height: 7em;
+}
+.ContactForm_input-checkbox {
 
 }
-.ContactForm_textarea {
-  @include ContactForm_field();
-
-}
-.ContactForm_checkbox {
-  @include ContactForm_field();
-
-}
-.ContactForm_submitBtn {
-  @include ContactForm_field();
+.ContactForm_input-submitBtn {
   color: $white;
   background-color: $navy;
   text-align: center;

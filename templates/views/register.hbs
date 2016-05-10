@@ -1,18 +1,21 @@
 <section class="page-section white-bg">
-  <div class="ContactForm_container">
+  <form class="ContactForm_container">
     <h1 class="ContactForm_mainTitle">{{data.formTitle}}</h1>
 
+
     {{#each data.formFields}}
-      {{#is type 'select'}}
-          <select class="ContactForm_select" name="{{name}}">
-            {{#each options}}
-              <option value="value">{{text}}</option>
-            {{/each}}
-          </select>
-      {{else}}
-          <input type="{type}" name="{{name}}" class="ContactForm_{{type}}" placeholder="{{placeholder}}">
-      {{/is}}
+      <{{tag}}
+        placeholder="{{placeholder}}"
+        name="{{name}}"
+        class="ContactForm_input-{{type}}"
+        {{#if required}}required{{/if}}>
+          {{#each options}}
+              <option value="value" {{#if disabled}}disabled{{/if}} {{#if selected}}selected{{/if}} >{{text}}</option>
+          {{/each}}
+{{! Remove freaking whites spaces with {{#-}/}{{/-}/}/}}
+{{#-}}{{/-}}</{{tag}}>
     {{/each}}
-    <button type="submit" name="button" class="ContactForm_submitBtn" value="Submit">Submit</button>
-  </div>
+
+    <button type="submit" name="button" class="ContactForm_input-submitBtn" value="Submit">Submit</button>
+  </form>
 </section>
