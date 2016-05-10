@@ -25,5 +25,6 @@ exports = module.exports = (req, res) => {
   });
 
 	// Render the view
-	view.render('property', { layout: 'public' });
+	const viewName = 'property';
+	view.render(viewName, { layout: 'public' });
 };

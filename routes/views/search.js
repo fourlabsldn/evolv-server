@@ -29,7 +29,6 @@ exports = module.exports = (req, res) => {
   });
 
   // Render the view
-  view.render('search', {
-    layout: 'public'
-  });
+  const viewName = 'search';
+	view.render(viewName, { layout: 'public' });
 };

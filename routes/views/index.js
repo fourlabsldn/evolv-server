@@ -10,6 +10,7 @@ exports = module.exports = function(req, res) {
 	locals.section = 'home';
 
 	// Render the view
-	view.render('index', { layout: 'public' });
+	const viewName = 'index';
+	view.render(viewName, { layout: 'public' });
 
 };
