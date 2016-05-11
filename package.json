@@ -37,7 +37,8 @@
   },
   "scripts": {
     "start": "node keystone.js",
-    "dev": "gulp"
+    "dev": "gulp",
+    "build-watch": "gulp build-watch"
   },
   "main": "keystone.js"
 }

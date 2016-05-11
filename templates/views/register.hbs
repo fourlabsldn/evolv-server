@@ -4,24 +4,28 @@
 
     <input type="hidden" name="action" value="register">
 
-    {{#each data.formFields}}
-      <{{tag}}
-        placeholder="{{placeholder}}"
-        name="{{name}}"
-        class="ContactForm_input-{{type}}"
-        {{#if required}}required{{/if}}>
-          {{#each options}}
-              <option
-                value="value"
-                {{#if disabled}}disabled{{/if}}
-                {{#if selected}}selected{{/if}}>
-                    {{text}}
-              </option>
-          {{/each}}
-{{! Remove freaking whites spaces with {{#-}/}{{/-}/}/}}
-{{#-}}{{/-}}</{{tag}}>
-    {{/each}}
+    {{#if registrationSuccessful}}
+      Thank you for registering!
 
+    {{else}}
+        {{#each data.formFields}}
+          <{{tag}}
+            placeholder="{{placeholder}}"
+            name="{{name}}"
+            class="ContactForm_input-{{type}}"
+            {{#if required}}required{{/if}}
+          >
+              {{#each options}}
+                  <option
+                    value="value"
+                    {{#if disabled}}disabled{{/if}}
+                    {{#if selected}}selected{{/if}}>
+                      {{text}}
+                  </option>
+              {{/each}}
+          </{{tag}}>
+        {{/each}}
+    {{/if}}
     <button type="submit" name="button" class="ContactForm_input-submitBtn" value="Submit">Submit</button>
   </form>
 </section>

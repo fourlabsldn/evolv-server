@@ -58,6 +58,7 @@ const registerFormFields = [
 ];
 
 const keystone = require('keystone');
+const Registration = keystone.list('Registration');
 
 exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
@@ -69,7 +70,28 @@ exports = module.exports = (req, res) => {
   // On POST requests, add the Enquiry item to the database
   view.on('post', { action: 'register' }, (next) => {
     console.log(`Post received. Content: \n${JSON.stringify(req.body)}`);
-    next();
+
+    const newRegistration = new Registration.model(); // eslint-disable-line new-cap
+		const updater = newRegistration.getUpdateHandler(req);
+
+		updater.process(
+			req.body,
+      {
+				flashErrors: true,
+				fields: 'sellRent, firstName, lastName, email, ' +
+					'telephone, maxPrice, minPrice, otherRequirements',
+				errorMessage: 'There was a problem submitting your enquiry:'
+			},
+			(err) => {
+				if (err) {
+					locals.validationErrors = err.errors;
+          console.log(`Validation errors: ${err.errors}`);
+				} else {
+					locals.registrationSuccessful = true;
+				}
+				next();
+			}
+		);
   });
 
   const viewName = 'register';
