@@ -15,8 +15,7 @@ const cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">')
 const cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
 
 
-module.exports = function() {
-
+module.exports = function () {
 	const _helpers = {};
 
 	/**
@@ -353,8 +352,12 @@ module.exports = function() {
 	// Helpers
 	// =========================================================================
 	// TODO: Make formatCurrency actually do something
-	_helpers.formatCurrency = (number) => {
-		return number ? `£ ${number}` : '';
+	_helpers.formatCurrency = (rawNumber) => {
+    const num = Number(rawNumber);
+    const result = num
+      ? num.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })
+      : '';
+		return result;
 	};
 
 	// TODO: Make formatSize actually do something
@@ -398,13 +401,14 @@ module.exports = function() {
 		return options.inverse(this);
 	};
 
-	// Register Swag helpers
-	const swagRegister = {
+	// Register library helpers
+	const helperRegisterer = {
 		registerHelper(helperName, helperFunc) {
 			_helpers[helperName] = helperFunc;
 		}
 	};
-	Swag.registerHelpers(swagRegister);
+
+	Swag.registerHelpers(helperRegisterer);
 
 	return _helpers;
 };
