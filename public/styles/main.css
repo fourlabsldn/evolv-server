@@ -2103,7 +2103,8 @@ input:checked + .slide-container .slider-nav label {
   list-style: none;
   padding: 0;
   position: relative;
-  left: -15px; }
+  left: -15px;
+  text-transform: capitalize; }
   .property-info-list li {
     display: inline;
     border-right: 1px solid #00263A;
