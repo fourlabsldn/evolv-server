@@ -8,7 +8,14 @@
       Thank you for registering!
 
     {{else}}
+
         {{#each data.formFields}}
+          {{#if validationErrors.[name]}}
+            <p>
+              validationErrors[name].message
+            </p>
+          {{/if}}
+
           <{{tag}}
             placeholder="{{placeholder}}"
             name="{{name}}"
