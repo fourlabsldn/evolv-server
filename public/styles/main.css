@@ -2171,7 +2171,8 @@ input:checked + .slide-container .slider-nav label {
     background-color: #f3f3f3; }
 
 .property-image {
-  position: relative; }
+  position: relative;
+  background-color: white; }
   .property-image > img {
     max-width: 100%;
     margin: auto;
