@@ -6,11 +6,12 @@ exports = module.exports = (req, res) => {
   const locals = res.locals;
   locals.data = {
     formTitle: 'Register',
-    formFields: generateFormFields(Registration, excludeFields)
+    formFields: generateFormFields(Registration, excludeFields),
+    successMessage: 'Thank you for registering'
   };
 
   // On POST requests, add the Enquiry item to the database
-  view.on('post', { action: 'register' }, next => handlePost(next, locals, req));
+  view.on('post', { action: 'register' }, next => handlePost(next, locals.data, req));
 
   const viewName = 'register';
   locals.section = viewName;
@@ -59,32 +60,40 @@ function generateFormFields(databaseModel, exclude) {
   return formFields;
 }
 
-function handlePost(next, locals, req) {
+/**
+ * Handles a form submission
+ * @method handlePost
+ * @param  {Function} next [description]
+ * @param  {Object} data - Object to add the error or success properties
+ * @param  {Object} req - Request object
+ * @return {void}
+ */
+function handlePost(next, data, req) {
   const newRegistration = new Registration.model(); // eslint-disable-line new-cap
   const updater = newRegistration.getUpdateHandler(req);
 
   const updateConfig = {
     flashErrors: true,
     // Comma separated field names
-    fields: locals.data.formFields.map(field => field.name).join(', '),
+    fields: data.formFields.map(field => field.name).join(', '),
     errorMessage: 'There was a problem submitting your enquiry:'
   };
 
   const updateCallback = (updateProblems) => {
     if (!updateProblems) {
-      locals.registrationSuccessful = true;
+      data.submissionSuccessful = true;
     } else {
       const errors = updateProblems.errors;
 
       // Add error message to fields
-      locals.data.formFields.forEach((field) => {
+      data.formFields.forEach((field) => {
         if (errors[field.name]) {
           field.errorMessage = errors[field.name].message;
         }
       });
 
       console.log(`Validation errors: ${JSON.stringify(errors)}`);
-      locals.registrationSuccessful = false;
+      data.submissionSuccessful = false;
     }
     next();
   };
