@@ -41,6 +41,7 @@ exports = module.exports = function(app) {
 	app.get('/property/:slug', routes.views.property);
 	app.get('/let', routes.views.let);
 	app.get('/sell', routes.views.sell);
+	app.all('/register', routes.views.register);
 
 	// Keynote.js demo views
 	app.get('/blog/:category?', routes.views.blog);

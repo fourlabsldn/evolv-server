@@ -1,23 +1,23 @@
-var moment = require('moment');
-var _ = require('underscore');
-var hbs = require('handlebars');
-var keystone = require('keystone');
-var cloudinary = require('cloudinary');
-
+const moment = require('moment');
+const _ = require('underscore');
+const hbs = require('handlebars');
+const keystone = require('keystone');
+const cloudinary = require('cloudinary');
+const Swag = require('swag');
 
 // Declare Constants
-var CLOUDINARY_HOST = 'http://res.cloudinary.com';
+const CLOUDINARY_HOST = 'http://res.cloudinary.com';
 
 // Collection of templates to interpolate
-var linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
-var scriptTemplate = _.template('<script src="<%= src %>"></script>');
-var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
-var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
+const linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
+const scriptTemplate = _.template('<script src="<%= src %>"></script>');
+const cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
+const cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
 
 
 module.exports = function() {
 
-	var _helpers = {};
+	const _helpers = {};
 
 	/**
 	 * Generic HBS Helpers
@@ -390,6 +390,21 @@ module.exports = function() {
 
 		return sliderContent;
 	};
+
+	_helpers.ifeq = (a, b, options) => {
+		if (a === b) {
+			return options.fn(this);
+		}
+		return options.inverse(this);
+	};
+
+	// Register Swag helpers
+	const swagRegister = {
+		registerHelper(helperName, helperFunc) {
+			_helpers[helperName] = helperFunc;
+		}
+	};
+	Swag.registerHelpers(swagRegister);
 
 	return _helpers;
 };
