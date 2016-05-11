@@ -191,12 +191,18 @@
 
 .property-image {
   position: relative;
-  background-color: white;
+  background-color: $white;
   > img {
     max-width: 100%;
     margin: auto;
     display: block;
   }
+}
+
+.property-map {
+  width: 100%;
+  min-height: 200px;
+  height: 50vw;
 }
 
 @media (max-width: $screen-xs-max) {
