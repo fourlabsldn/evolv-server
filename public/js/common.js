@@ -284,10 +284,9 @@ function activeButton(pageNameParam) {
     navbarActiveButton = buttonsContainer.querySelector('[name=' + pageName + ']');
   }
 
-  // If we still didn't get anything, let's just highlight the buy button.
+  // If we still didn't get anything, let's not activate the highlighter.
   if (!navbarActiveButton) {
-    pageName = 'buy';
-    navbarActiveButton = buttonsContainer.querySelector('[name=' + pageName + ']');
+    return;
   }
   assert(navbarActiveButton, 'Error finding navbar\'s active button.');
 
