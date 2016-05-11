@@ -42,10 +42,14 @@
 
         <div class="article-row article-tabs-bottom-bar">
           <nav class="article-tabs-labels js-property-article-tab-labels">
-            <li><label for="photos_tab">Photos    </label></li>
-            <li><label for="floorPlan_tab">Floor Plan</label></li>
-            <li><label for="epc_tab">EPC       </label></li>
-            <li><label for="map_tab" class="js-map-label">Map       </label></li>
+            <li><label for="photos_tab">Photos</label></li>
+            {{#if floorPlan.secure_url}}
+              <li><label for="floorPlan_tab">Floor Plan</label></li>
+            {{/if}}
+            {{#if epc.secure_url}}
+              <li><label for="epc_tab">EPC</label></li>
+            {{/if}}
+            <li><label for="map_tab" class="js-map-label">Map</label></li>
           </nav>
           <ul class="property-article-side-buttons">
             <li class="js-article-print"><i class="fa fa-print"></i></li>
