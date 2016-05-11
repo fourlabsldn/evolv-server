@@ -13,8 +13,8 @@
       <div class="article-tabs tabs">
         <!-- TODO: Only show gallery if there are images -->
         <input id="photos_tab" type="radio" name="article_property" checked>
-        <div class="tab-content">
-          <div class="img-slider">
+        <div class="tab-content property-tab">
+          <div class="img-slider property-tab-content">
             <ul class="slider">
               {{{imageSlider images}}}
             </ul>
@@ -23,21 +23,21 @@
 
         {{#if floorPlan.secure_url}}
           <input id="floorPlan_tab" type="radio" name="article_property">
-          <div class="tab-content property-image">
-            <img src="{{floorPlan.secure_url}}" alt="Floor Plan">
+          <div class="tab-content property-tab property-image">
+            <img class="property-tab-content" src="{{floorPlan.secure_url}}" alt="Floor Plan">
           </div>
         {{/if}}
 
         {{#if epc.secure_url}}
           <input id="epc_tab" type="radio" name="article_property">
-          <div class="tab-content property-image">
-            <img src="{{epc.secure_url}}" alt="EPC">
+          <div class="tab-content property-tab property-image">
+            <img src="{{epc.secure_url}}" class="property-tab-content" alt="EPC">
           </div>
         {{/if}}
 
         <input id="map_tab" type="radio" name="article_property">
-        <div class="tab-content">
-          <div class="js-property-map property-map"></div>
+        <div class="tab-content property-tab">
+          <div class="js-property-map property-map property-tab-content"></div>
         </div>
 
         <div class="article-row article-tabs-bottom-bar">

@@ -1,13 +1,7 @@
 .slider {
   padding: 0;
   width: 100%;
-
-  /*
-  Controlling the height:
-  The padding bottom controls the height. It is a percentage of the
-  width, which allows us to basically set a desired aspect ratio.
-  */
-  padding-bottom: 60%;
+  height: 100%;
   display: block;
   margin: 0 auto;
   position: relative;
@@ -15,11 +9,6 @@
 
 .slider * {
   user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 
 .slider input { display: none; }
