@@ -13,9 +13,9 @@ const Registration = new keystone.List('Registration', {
 
 Registration.add({
 	firstName: { type: Types.Name, required: true },
-	lastName: { type: Types.Email, required: true },
+	lastName: { type: Types.Name, required: true },
   sellRent: { type: String },
-	email: { type: String, required: true },
+	email: { type: Types.Email, required: true },
 	telephone: { type: String },
   maxPrice: { type: String },
   minPrice: { type: String },

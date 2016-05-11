@@ -85,7 +85,7 @@ exports = module.exports = (req, res) => {
 			(err) => {
 				if (err) {
 					locals.validationErrors = err.errors;
-          console.log(`Validation errors: ${err.errors}`);
+          console.log(`Validation errors: ${JSON.stringify(err.errors)}`);
 				} else {
 					locals.registrationSuccessful = true;
 				}
