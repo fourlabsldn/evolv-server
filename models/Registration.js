@@ -12,14 +12,19 @@ const Registration = new keystone.List('Registration', {
 });
 
 Registration.add({
-	firstName: { type: Types.Name, required: true },
-	lastName: { type: Types.Name, required: true },
-  sellRent: { type: String },
-	email: { type: Types.Email, required: true },
-	telephone: { type: String },
-  maxPrice: { type: String },
-  minPrice: { type: String },
-  otherRequirements: { type: String }
+  sellRent: { type: Types.Select, label: 'Sell or Rent', required: true, options: [
+    { value: 'sell', label: 'Sell' },
+    { value: 'rent', label: 'Rent' },
+    { value: 'both', label: 'Both' }
+  ] },
+	firstName: { type: Types.Text, required: true, label: 'First Name' },
+	lastName: { type: Types.Text, label: 'Last Name' },
+	email: { type: Types.Email, label: 'Email', required: true },
+	phone: { type: Types.Number, label: 'Telephone' },
+  maxPrice: { type: Types.Money, label: 'Maximum price', currency: 'en-gb' },
+  minPrice: { type: Types.Money, label: 'Minimum price', currency: 'en-gb' },
+  otherRequirements: { type: Types.Textarea, label: 'Other requirements', height: 200 },
+  sentAt: { type: Types.Datetime, label: 'Sent at', default: Date.now }
 });
 
 Registration.schema.pre('save', function (next) {
@@ -50,7 +55,6 @@ Registration.schema.methods.sendNotificationEmail = function (callback) {
         callback(err);
         return;
       }
-
 			new keystone.Email('registration-notification').send({
 					to: admins,
 					from: {
@@ -63,6 +67,6 @@ Registration.schema.methods.sendNotificationEmail = function (callback) {
 		});
 };
 
-Registration.defaultSort = '-createdAt';
-Registration.defaultColumns = 'firstName, email, sellRent, createdAt';
+Registration.defaultSort = '-sentAt';
+Registration.defaultColumns = 'sentAt, firstName, email, sellRent';
 Registration.register();

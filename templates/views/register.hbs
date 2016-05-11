@@ -1,26 +1,27 @@
 <section class="page-section white-bg">
   <form method="post" class="ContactForm_container">
-    <h1 class="ContactForm_mainTitle">{{data.formTitle}}</h1>
-
-    <input type="hidden" name="action" value="register">
 
     {{#if registrationSuccessful}}
-      Thank you for registering!
+      <h1>Thank you for registering.</h1>
     {{else}}
+        <h1 class="ContactForm_mainTitle">{{data.formTitle}}</h1>
+
+        <input type="hidden" name="action" value="register">
         {{#each data.formFields}}
           {{#if errorMessage}}
             <p class="ContactForm_errorMessage"> {{errorMessage}} </p>
           {{/if}}
 
-          <{{tag}} placeholder="{{placeholder}}" name="{{name}}" class="ContactForm_input-{{type}}" {{#if required}}required{{/if}}>
+          <{{tag}} type={{type}} placeholder="{{placeholder}}" name="{{name}}" class="ContactForm_input-{{type}}" {{#if required}}required{{/if}}>
               {{#each options}}
-                  <option value="value" {{#if disabled}}disabled{{/if}} {{#if selected}}selected{{/if}}>
-                      {{text}}
+                  <option value="{{value}}">
+                      {{label}}
                   </option>
               {{/each}}
           </{{tag}}>
         {{/each}}
+
+        <button type="submit" name="button" class="ContactForm_input-submitBtn" value="Submit">Submit</button>
     {{/if}}
-    <button type="submit" name="button" class="ContactForm_input-submitBtn" value="Submit">Submit</button>
   </form>
 </section>
