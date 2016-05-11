@@ -6,27 +6,15 @@
 
     {{#if registrationSuccessful}}
       Thank you for registering!
-
     {{else}}
-
         {{#each data.formFields}}
-          {{#if validationErrors.[name]}}
-            <p>
-              validationErrors[name].message
-            </p>
+          {{#if errorMessage}}
+            <p class="ContactForm_errorMessage"> {{errorMessage}} </p>
           {{/if}}
 
-          <{{tag}}
-            placeholder="{{placeholder}}"
-            name="{{name}}"
-            class="ContactForm_input-{{type}}"
-            {{#if required}}required{{/if}}
-          >
+          <{{tag}} placeholder="{{placeholder}}" name="{{name}}" class="ContactForm_input-{{type}}" {{#if required}}required{{/if}}>
               {{#each options}}
-                  <option
-                    value="value"
-                    {{#if disabled}}disabled{{/if}}
-                    {{#if selected}}selected{{/if}}>
+                  <option value="value" {{#if disabled}}disabled{{/if}} {{#if selected}}selected{{/if}}>
                       {{text}}
                   </option>
               {{/each}}

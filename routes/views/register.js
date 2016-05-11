@@ -74,24 +74,34 @@ exports = module.exports = (req, res) => {
     const newRegistration = new Registration.model(); // eslint-disable-line new-cap
 		const updater = newRegistration.getUpdateHandler(req);
 
-		updater.process(
-			req.body,
-      {
-				flashErrors: true,
-				fields: 'sellRent, firstName, lastName, email, ' +
-					'telephone, maxPrice, minPrice, otherRequirements',
-				errorMessage: 'There was a problem submitting your enquiry:'
-			},
-			(err) => {
-				if (err) {
-					locals.validationErrors = err.errors;
-          console.log(`Validation errors: ${JSON.stringify(err.errors)}`);
-				} else {
-					locals.registrationSuccessful = true;
-				}
-				next();
-			}
-		);
+    const updateConfig = {
+      flashErrors: true,
+      // Comma separated field names
+      fields: registerFormFields.map(field => field.name).join(', '),
+      errorMessage: 'There was a problem submitting your enquiry:'
+    };
+
+    const updateCallback = (updateProblems) => {
+      if (!updateProblems) {
+        locals.registrationSuccessful = true;
+      } else {
+        const errors = updateProblems.errors;
+
+        // Add error message to fields
+        locals.data.formFields.forEach((field) => {
+          if (errors[field.name]) {
+            field.errorMessage = errors[field.name].message;
+          }
+        });
+
+        console.log(`Validation errors: ${JSON.stringify(errors)}`);
+        locals.registrationSuccessful = false;
+      }
+      next();
+    };
+
+    // Try to add record to database.
+		updater.process(req.body, updateConfig, updateCallback);
   });
 
   const viewName = 'register';

@@ -398,7 +398,6 @@ module.exports = function() {
 		return options.inverse(this);
 	};
 
-
 	// Register Swag helpers
 	const swagRegister = {
 		registerHelper(helperName, helperFunc) {
