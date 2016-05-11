@@ -46,23 +46,36 @@
 .article-tabs-bottom-bar {
   padding-bottom: 0;
   padding-top: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  min-height: 70px;
+}
 
-  li {
-    display: inline-block;
-    position: relative;
-    padding: $padding-el-bigger $padding-el-small;
+.article-tabs-labels {
+  min-height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
 
-    :hover {
-      color: $orange;
-    }
+.article-tabs-button {
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  position: relative;
+  min-height: 100%;
+  min-width: 50px;
+  padding: 0 1em;
+
+  &:hover .article-tabs-button-text{
+    color: $orange;
   }
 }
 
-.article-tabs-labels label {
+.article-tabs-button-text {
+  margin: auto;
   font-size: $font-medium;
-  color: $white;
-  padding: 0;
-  cursor: pointer;
+  transition: .1s;
 }
 
 .property-article-side-buttons {
@@ -218,7 +231,6 @@
 
 @media (max-width: $screen-xs-max) {
   .article-row {
-    padding: $padding-el-medium $padding-el-tiny;
     flex-flow: row wrap;
 
     h1, h2, h3 {
@@ -252,7 +264,6 @@
       padding: 0;
       display: flex;
       & > * {
-        margin: auto;
         padding-bottom: $padding-el-medium;
         padding-top: $padding-el-medium;
       }

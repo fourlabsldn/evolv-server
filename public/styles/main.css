@@ -2042,19 +2042,49 @@ input:checked + .slide-container .slider-nav label {
 
 .article-tabs-bottom-bar {
   padding-bottom: 0;
-  padding-top: 0; }
-  .article-tabs-bottom-bar li {
-    display: inline-block;
-    position: relative;
-    padding: 25px 10px; }
-    .article-tabs-bottom-bar li :hover {
-      color: #FF742F; }
+  padding-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 70px; }
 
-.article-tabs-labels label {
+.article-tabs-labels {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
+
+.article-tabs-button {
+  position: relative;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  min-height: 100%;
+  min-width: 50px;
+  padding: 0 1em; }
+  .article-tabs-button:hover .article-tabs-button-text {
+    color: #FF742F; }
+
+.article-tabs-button-text {
+  margin: auto;
   font-size: 18px;
-  color: #fff;
-  padding: 0;
-  cursor: pointer; }
+  -webkit-transition: .1s;
+  transition: .1s; }
 
 .property-article-side-buttons {
   -webkit-align-self: flex-end;
@@ -2191,7 +2221,6 @@ input:checked + .slide-container .slider-nav label {
 
 @media (max-width: 768px) {
   .article-row {
-    padding: 15px 5px;
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap; }
@@ -2227,7 +2256,6 @@ input:checked + .slide-container .slider-nav label {
       display: flex; }
       .article-tabs-bottom-bar .property-article-side-buttons > *,
       .article-tabs-bottom-bar .article-tabs-labels > * {
-        margin: auto;
         padding-bottom: 15px;
         padding-top: 15px; }
   .property-info-list {
