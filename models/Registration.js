@@ -20,7 +20,7 @@ Registration.add({
 	firstName: { type: Types.Text, required: true, label: 'First Name' },
 	lastName: { type: Types.Text, label: 'Last Name' },
 	email: { type: Types.Email, label: 'Email', required: true },
-	phone: { type: Types.Number, label: 'Telephone' },
+	phone: { type: Types.Text, label: 'Telephone' },
   maxPrice: { type: Types.Money, label: 'Maximum price', currency: 'en-gb' },
   minPrice: { type: Types.Money, label: 'Minimum price', currency: 'en-gb' },
   otherRequirements: { type: Types.Textarea, label: 'Other requirements', height: 200 },
