@@ -1150,6 +1150,13 @@ input:checked + .slide-container .slider-nav label {
   max-width: 600px;
   margin: auto; }
 
+.ContactForm_errorMessage {
+  color: red;
+  margin: 0;
+  font-size: 14px; }
+  .ContactForm_errorMessage + [class*="ContactForm_input"] {
+    margin-top: 0; }
+
 [class*="ContactForm_input"] {
   width: 100%;
   min-height: 3em;
