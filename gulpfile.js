@@ -10,6 +10,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
+const imagemin = require('gulp-imagemin');
 
 const paths = {
 	src: [
@@ -96,6 +97,9 @@ gulp.task('watch:assets', () => {
 
 gulp.task('img', () => {
 	gulp.src(paths.img.src)
+  .pipe(imagemin({
+    progressive: true
+  }))
 	.pipe(gulp.dest(paths.img.dest));
 });
 
