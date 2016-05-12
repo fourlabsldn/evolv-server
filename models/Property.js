@@ -43,5 +43,16 @@ Property.add({
   country: { type: String }
 });
 
+
+// Adds placeholder image url and creates an array of image URLs.
+const placeholderImage = '/img/property-placeholder.svg';
+
+Property.schema.virtual('images_urls').get(function () {
+  if (!this.images || this.images.length === 0) {
+    return [placeholderImage];
+  }
+	return this.images.map(image => image.secure_url);
+});
+
 Property.defaultColumns = 'street, houseNumber|20%, postcode|20%, type|20%';
 Property.register();

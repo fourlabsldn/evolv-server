@@ -367,13 +367,13 @@ module.exports = function () {
 
 
 	// TODO: separate html from here
-	_helpers.imageSlider = (imagesArray = []) => {
+	_helpers.imageSlider = (imagesUrlsArray = []) => {
 		let sliderContent = '';
-		imagesArray.forEach((image, index) => {
+		imagesUrlsArray.forEach((url, index) => {
 			const labelToPrev = index > 0
 				? `<label for="img-${index - 1}" class="prev"><i class="fa fa-angle-left"></i></label>`
 				: '';
-			const labelToNext = index + 1 < imagesArray.length
+			const labelToNext = index + 1 < imagesUrlsArray.length
 				? `<label for="img-${index + 1}" class="next"><i class="fa fa-angle-right"></i></label>`
 				: '';
 			const checked = index === 0 ? 'checked' : '';
@@ -382,7 +382,7 @@ module.exports = function () {
 			<input type="radio" name="radio-btn" id="img-${index}" ${checked} />
 			<li class="slide-container">
 			<div class="slide">
-				<img src="${image.secure_url}" />
+				<img src="${url}" />
 					</div>
 			<div class="slider-nav">
 				${labelToPrev}
