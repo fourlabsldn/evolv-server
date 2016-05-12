@@ -11,7 +11,6 @@ const sass = require('gulp-sass');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const imagemin = require('gulp-imagemin');
-const uglify = require('gulp-uglify');
 const cssmin = require('gulp-cssmin');
 
 const paths = {
@@ -34,7 +33,8 @@ const paths = {
 			'!./front-end-src/js/**/_*.*',
 			'!./front-end-src/js/**/_*/*'
 		],
-		dest: './public/js/'
+		dest: './public/js/',
+    all: ['./front-end-src/js/**/*']
 	},
 	assets: {
 		src: './front-end-src/assets/**/*.*',
@@ -81,13 +81,12 @@ gulp.task('rollup', () => {
       plugins: [
   			babel({ exclude: 'node_modules/**', presets: ['es2015-rollup'] })
   		] }))
-    .pipe(uglify())
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.js.dest));
 });
 
 gulp.task('watch:rollup', () => {
-	gulp.watch(paths.js.src, ['rollup']);
+	gulp.watch(paths.js.all, ['rollup']);
 });
 
 gulp.task('assets', () => {
