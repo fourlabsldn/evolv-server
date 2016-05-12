@@ -1,0 +1,32 @@
+$modal-transition-time: .2s;
+
+.modal-background {
+  @extend .section-content-width;
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  top: 0;
+
+
+  z-index: 999999;
+  display: flex;
+  background-color: hsla(0, 0, 0, .5);
+
+  visibility: visible;
+  transition-property: opacity visibility;
+  transition-delay: 0 0;
+  transition-duration: $modal-transition-time 0;
+
+  &.modal--hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition-delay: 0 $modal-transition-time;
+  }
+}
+
+.modal-container {
+  margin: auto; //Center container given that parent is flex.
+  background-color: $grey;
+}
