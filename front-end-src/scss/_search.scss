@@ -21,10 +21,9 @@
     padding: 1px;
     position: relative;
     transition: background-color 0.3s ease;
-    border-radius: .3em;
 
     &:hover {
-      background-color: $light-blue ;
+      background-color: $dark-grey ;
     }
 
     .prop-tile-crop {

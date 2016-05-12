@@ -1169,6 +1169,11 @@ input:checked + .slide-container .slider-nav label {
   [class*="ContactForm_input"]:-ms-input-placeholder {
     color: #292c31; }
 
+.ContactForm_input-select {
+  -webkit-appearance: menulist-button;
+     -moz-appearance: menulist-button;
+          appearance: menulist-button; }
+
 .ContactForm_input-textarea {
   min-height: 7em; }
 
@@ -1884,9 +1889,7 @@ input:checked + .slide-container .slider-nav label {
   padding: 1px;
   position: relative;
   -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
-  -webkit-border-radius: .3em;
-          border-radius: .3em; }
+  transition: background-color 0.3s ease; }
   .sales-page .prop-tile img {
     -webkit-transition: -webkit-filter 0.2s ease;
     transition: -webkit-filter 0.2s ease;
@@ -1898,7 +1901,7 @@ input:checked + .slide-container .slider-nav label {
     -webkit-filter: brightness(0.6);
             filter: brightness(0.6); }
   .sales-page .prop-tile:hover {
-    background-color: #B9C0CD; }
+    background-color: #EDEDEF; }
   .sales-page .prop-tile .prop-tile-crop {
     width: 100%;
     padding-bottom: 75%;
@@ -2325,7 +2328,9 @@ input:checked + .slide-container .slider-nav label {
     margin: .8cm; } }
 
 .let_firstSection {
-  background-image: url("/img/let-background.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.1))), url("/img/let-background.jpg");
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/img/let-background.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/img/let-background.jpg");
   background-position: bottom;
   color: #fff; }
 

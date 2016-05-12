@@ -1,5 +1,7 @@
 .let_firstSection {
-  background-image: url('/img/let-background.jpg');
+  background-image:
+      linear-gradient(hsla(0, 0, 0, .1), hsla(0, 0, 0, .1)),
+      url('/img/let-background.jpg');
   background-position: bottom;
   color: $white;
 }
