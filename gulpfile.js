@@ -11,6 +11,8 @@ const sass = require('gulp-sass');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const imagemin = require('gulp-imagemin');
+const uglify = require('gulp-uglify');
+const cssmin = require('gulp-cssmin');
 
 const paths = {
 	src: [
@@ -64,9 +66,10 @@ gulp.task('watch:sass', () => {
 gulp.task('sass', () => {
 	gulp.src(paths.style.src)
 	.pipe(sourcemaps.init())
-	.pipe(sass().on('error', sass.logError))
-	.pipe(postcss([autoprefixer({ browsers: ['last 15 versions'] })]))
-	.pipe(sourcemaps.write('.'))
+  	.pipe(sass().on('error', sass.logError))
+  	.pipe(postcss([autoprefixer({ browsers: ['last 15 versions'] })]))
+    .pipe(cssmin())
+	.pipe(sourcemaps.write())
 	.pipe(gulp.dest(paths.style.dest));
 });
 
@@ -74,11 +77,12 @@ gulp.task('sass', () => {
 gulp.task('rollup', () => {
   gulp.src(paths.js.src)
   .pipe(sourcemaps.init())
-  .pipe(rollup({
-    plugins: [
-			babel({ exclude: 'node_modules/**', presets: ['es2015-rollup'] })
-		] }))
-  .pipe(sourcemaps.write('.'))
+    .pipe(rollup({
+      plugins: [
+  			babel({ exclude: 'node_modules/**', presets: ['es2015-rollup'] })
+  		] }))
+    .pipe(uglify())
+  .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.js.dest));
 });
 

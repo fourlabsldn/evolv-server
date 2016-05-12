@@ -16,7 +16,7 @@ keystone.init({
 	'signin logo': ['/img/logo-invert.svg', 200, 100],
 	sass: 'public',
 	static: 'public',
-	favicon: 'public/favicon.ico',
+	favicon: 'public/img/logo.ico',
 	views: 'templates/views',
 	'view engine': 'hbs',
 
