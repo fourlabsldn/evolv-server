@@ -215,7 +215,8 @@ var ActiveHighlighter = function ActiveHighlighter() {
 };
 
 var modalHiddenClass = 'modal--hidden';
-var modalContentSelector = '.modal-content';
+var modalContentSelector = '.js-modal-content';
+var closeBtnSelector = '.js-modal-closeBtn';
 
 var ModalController = function () {
   function ModalController(modalEl, toggleButton) {
@@ -228,6 +229,12 @@ var ModalController = function () {
 
     this.modalContent = modalEl.querySelector(modalContentSelector);
     assert(this.modalContent, 'No modal content element found.');
+
+    this.closeBtn = modalEl.querySelector(closeBtnSelector);
+    assert(this.modalContent, 'No close button found for modal.');
+    this.closeBtn.addEventListener('click', function () {
+      return _this.close();
+    });
 
     if (toggleButton) {
       this.toggleButton = toggleButton;
@@ -283,7 +290,6 @@ var ModalController = function () {
       var insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;
       var insideHorizontally = contentRect.left < e.pageX && e.pageX < contentRect.right;
 
-      console.log('Click inside ' + (insideVertically && insideHorizontally));
       return !(insideVertically && insideHorizontally);
     }
   }]);

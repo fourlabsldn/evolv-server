@@ -2,7 +2,8 @@
 import assert from './assert';
 
 const modalHiddenClass = 'modal--hidden';
-const modalContentSelector = '.modal-content';
+const modalContentSelector = '.js-modal-content';
+const closeBtnSelector = '.js-modal-closeBtn';
 
 export default class ModalController {
   constructor(modalEl, toggleButton) {
@@ -12,6 +13,9 @@ export default class ModalController {
     this.modalContent = modalEl.querySelector(modalContentSelector);
     assert(this.modalContent, 'No modal content element found.');
 
+    this.closeBtn = modalEl.querySelector(closeBtnSelector);
+    assert(this.modalContent, 'No close button found for modal.');
+    this.closeBtn.addEventListener('click', () => this.close());
 
     if (toggleButton) {
       this.toggleButton = toggleButton;
@@ -61,7 +65,6 @@ export default class ModalController {
     const insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;
     const insideHorizontally = contentRect.left < e.pageX && e.pageX < contentRect.right;
 
-    console.log(`Click inside ${(insideVertically && insideHorizontally)}`);
     return !(insideVertically && insideHorizontally);
   }
 }
