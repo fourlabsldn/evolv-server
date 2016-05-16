@@ -9,8 +9,8 @@ const Types = keystone.Field.Types;
  */
 
 const Let = new keystone.List('Let', {
-	// nocreate: true,
-  // nodelete: true
+	nocreate: true,
+  nodelete: true
    plural: 'Let', // Never show 'lets' in admin UI
    label: 'Let' // Never show 'lets' in admin UI
 });
