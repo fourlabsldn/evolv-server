@@ -27,7 +27,7 @@ Let.add(
       main_subheading: { type: Types.Text, required: true, default: 'Letting and property management for residential Landlords', label: 'Main subheading' }
     }
   },
-  'Sectio 2',
+  'Section 2',
   {
     section_2: {
       heading: { type: Types.Text, required: true, default: 'A very personal approach', label: 'Heading' },

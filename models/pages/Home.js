@@ -22,7 +22,7 @@ Home.add(
       main_subheading: { type: Types.Text, required: true, default: 'Luxury London Living', label: 'Main subheading' },
     }
   },
-  'Sectio 2',
+  'Section 2',
   {
     section_2: {
       heading: { type: Types.Text, required: true, default: 'A little history of Evolv.', label: 'Heading' },
