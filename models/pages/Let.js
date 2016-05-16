@@ -11,15 +11,11 @@ const Types = keystone.Field.Types;
 const Let = new keystone.List('Let', {
 	// nocreate: true,
   // nodelete: true
-   map: { name: 'page_name' },
-   plural: 'Let', // Never whos 'lets' in admin UI
-   label: 'Let' // Never whos 'lets' in admin UI
+   plural: 'Let', // Never show 'lets' in admin UI
+   label: 'Let' // Never show 'lets' in admin UI
 });
 
 Let.add(
-  {
-    page_name: { type: Types.Text, hidden: true, default: 'Let', required: true }
-  },
   'Section 1',
   {
     section_1: {

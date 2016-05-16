@@ -10,7 +10,9 @@ const Types = keystone.Field.Types;
 
 const Sell = new keystone.List('Sell', {
 	// nocreate: true,
-  // nodelete: true
+  // nodelete: true,
+  plural: 'Sell', // Never show 'Sells' in admin UI
+  label: 'Sell'
 });
 
 Sell.add(

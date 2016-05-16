@@ -8,13 +8,12 @@ const Types = keystone.Field.Types;
 
 const Home = new keystone.List('Home', {
 	// nocreate: true,
-  // nodelete: true
+  // nodelete: true,
+  plural: 'Home', // Never show 'Home' in admin UI
+  label: 'Home' // Never show 'Home' in admin UI
 });
 
 Home.add(
-  {
-    page_name: { type: Types.Text, hidden: true, default: 'Home', required: true }
-  },
   'Section 1',
   {
     section_1: {
@@ -54,5 +53,5 @@ Home.add(
   }
 );
 
-Home.defaultColumns = 'section_1.main_heading, section_1.main_subheading';
+Home.defaultColumns = 'section_1.main_heading|40%, section_1.main_subheading|40%';
 Home.register();

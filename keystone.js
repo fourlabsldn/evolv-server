@@ -28,6 +28,7 @@ keystone.init({
 		extname: '.hbs'
 	}).engine,
 
+ 'admin path': 'admin',
 	emails: 'templates/emails',
 
 	'auto update': true,
@@ -98,7 +99,8 @@ keystone.set('nav', {
 	'forms': ['enquiries', 'registrations', 'valuation-requests'],
   'properties': 'properties',
   'blog': ['posts', 'post-categories'],
-  'users': 'users'
+  'users': 'users',
+  'pages': ['homes', 'sells', 'lets']
 });
 
 // Start Keystone to connect to your database and initialise the web server
