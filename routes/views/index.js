@@ -12,9 +12,11 @@ exports = module.exports = function(req, res) {
 
 	// Load page content from database
   view.on('init', (next) => {
-    keystone.list('Landing')
+    keystone.list('Home')
       .model.find()
       .exec((err, result) => {
+        console.log('Result found:');
+        console.dir(result);
         if (Array.isArray(result)) {
           locals.data = result[0];
         }
@@ -22,7 +24,7 @@ exports = module.exports = function(req, res) {
       });
   });
 
-  const viewName = 'Home';
+  const viewName = 'index';
 	// Render the view
   locals.section = viewName;
 	view.render(viewName, { layout: 'public' });

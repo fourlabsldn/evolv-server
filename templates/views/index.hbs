@@ -11,8 +11,8 @@
   <img class="main-logo" src="img/logo-london.svg" alt="Evolv-london">
 
   <div class="main-headers">
-    <h1 class="main-header">Constantly evolv(ing)</h1>
-    <h2 class="main-subheader">Luxury London Living</h2>
+    <h1 class="main-header">{{data.section_1.main_heading}}</h1>
+    <h2 class="main-subheader">{{data.section_1.main_subheading}}</h2>
   </div>
 
   <div class="buttons-container">
@@ -22,8 +22,8 @@
 </section>
 
 <section class="page-section grey-bg">
-  <h1>A little history of Evolv.</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum rerum itaque veritatis possimus, maxime minus modi id delectus, nostrum at unde sint velit error, suscipit repellat voluptatum quas deleniti recusandae!</p>
+  <h1>{{data.section_2.heading}}</h1>
+  {{{data.section_2.content}}}
 
   <div class="tabs">
     <input id="evolv_history1" type="radio" name="items_tabs" checked>
@@ -31,38 +31,33 @@
     <input id="evolv_history3" type="radio" name="items_tabs">
     <input id="evolv_history4" type="radio" name="items_tabs">
 
-    <label class="tab-label" for="evolv_history1"><i class="fa fa-suitcase"></i> <span>Item 1</span></label>
-    <label class="tab-label" for="evolv_history2"><i class="fa fa-rocket"></i><span>Item 2</span></label>
-    <label class="tab-label" for="evolv_history3"><i class="fa fa-car"></i><span>Item 3</span></label>
-    <label class="tab-label" for="evolv_history4"><i class="fa fa-university"></i><span>Item 4</span></label>
+    <label class="tab-label" for="evolv_history1"><i class="fa fa-suitcase"></i> <span>{{data.section_2.tab_1.title}}</span></label>
+    <label class="tab-label" for="evolv_history2"><i class="fa fa-rocket"></i><span>{{data.section_2.tab_2.title}}</span></label>
+    <label class="tab-label" for="evolv_history3"><i class="fa fa-car"></i><span>{{data.section_2.tab_3.title}}</span></label>
+    <label class="tab-label" for="evolv_history4"><i class="fa fa-university"></i><span>{{data.section_2.tab_4.title}}</span></label>
 
     <div class="tab-content">
-      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque incidunt deleniti temporibus animi sequi minus exercitationem.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore adipisci, nam quas dolor vitae dolorem quis aspernatur consectetur, est optio natus molestias nulla soluta earum ducimus, mollitia. Aut, in, voluptate!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, nihil inventore maxime neque vero laborum quae delectus est culpa doloremque, saepe, sint expedita accusamus reprehenderit alias sapiente! Veniam, sit, nam.</p>
+    {{{data.section_2.tab_1.content}}}
     </div>
 
     <div class="tab-content">
-      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, natus, ut perspiciatis quidem porro pariatur repellendus unde atque quas et in aliquam ea vero tempora, non dolorum dolorem accusantium id.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quod molestias quis perferendis dicta totam, illum aperiam itaque corporis quam eos pariatur natus modi. Explicabo blanditiis voluptas sapiente iste velit!</p>
+      {{{data.section_2.tab_2.content}}}
     </div>
 
     <div class="tab-content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat quod laboriosam totam eaque voluptates aliquid aspernatur quos ducimus perspiciatis temporibus saepe earum commodi vel veniam tenetur, optio, est corporis cupiditate.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, nihil inventore maxime neque vero laborum quae delectus est culpa doloremque, saepe, sint expedita accusamus reprehenderit alias sapiente! Veniam, sit, nam.</p>
+      {{{data.section_2.tab_3.content}}}
     </div>
 
     <div class="tab-content">
-      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat iste labore soluta corporis consequatur, et ex ipsa, odit culpa distinctio, totam obcaecati, modi placeat eos. Facere aliquid corporis optio deleniti.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quod molestias quis perferendis dicta totam, illum aperiam itaque corporis quam eos pariatur natus modi. Explicabo blanditiis voluptas sapiente iste velit!</p>
+      {{{data.section_2.tab_4.content}}}
     </div>
   </div>
 
 </section>
 
 <section class="page-section light-blue-bg">
-  <h1>Recent listings</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ut itaque, voluptas dicta, repellendus amet aliquid.</p>
+  <h1>{{data.section_3.heading}}</h1>
+  {{{data.section_3.content}}}
 </section>
 
 <section class="page-section image-tiles">
