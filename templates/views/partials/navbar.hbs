@@ -40,7 +40,7 @@
           <a href="/contact"> <span> Contact </span></a>
         </li>
         <li>
-          <a href="/valuation"> <span class="navbar-button">Get a valuation</span></a>
+          <a href="#" class="js-valuation-modal-toggle"> <span class="navbar-button">Get a valuation</span></a>
         </li>
       </nav>
       <div class="website-search">
@@ -64,4 +64,28 @@
            value="Rent"
            />
   </form>
+</div>
+
+<div class="js-navbar-modal-valuation-modal modal-background modal--hidden">
+  <main class="js-modal-content modal-content">
+      <button class="modal-closeBtn js-modal-closeBtn"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+      <script>
+        var valuationFormConfig = {
+          // Load valuation Modal from server
+          onLoad: function (xdiv) {
+            var req = new XMLHttpRequest();
+            req.open('GET', '/valuation', true);
+            req.send();
+            req.onreadystatechange =function () {
+              if (req.readyState == 4 && req.status == 200) {
+                xdiv.innerHTML = req.responseText;
+              }
+            };
+          }
+        }
+      </script>
+      <x-div data-controller="/scripts/fl-form.js" data-config="valuationFormConfig"></x-div>
+
+  </main>
 </div>

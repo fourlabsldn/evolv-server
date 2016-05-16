@@ -11,8 +11,8 @@ const sass = require('gulp-sass');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const imagemin = require('gulp-imagemin');
-const uglify = require('gulp-uglify');
 const cssmin = require('gulp-cssmin');
+const DepLinker = require('dep-linker');
 
 const paths = {
 	src: [
@@ -34,7 +34,8 @@ const paths = {
 			'!./front-end-src/js/**/_*.*',
 			'!./front-end-src/js/**/_*/*'
 		],
-		dest: './public/js/'
+		dest: './public/js/',
+    all: ['./front-end-src/js/**/*']
 	},
 	assets: {
 		src: './front-end-src/assets/**/*.*',
@@ -81,13 +82,12 @@ gulp.task('rollup', () => {
       plugins: [
   			babel({ exclude: 'node_modules/**', presets: ['es2015-rollup'] })
   		] }))
-    .pipe(uglify())
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.js.dest));
 });
 
 gulp.task('watch:rollup', () => {
-	gulp.watch(paths.js.src, ['rollup']);
+	gulp.watch(paths.js.all, ['rollup']);
 });
 
 gulp.task('assets', () => {
@@ -97,6 +97,10 @@ gulp.task('assets', () => {
 
 gulp.task('watch:assets', () => {
 	gulp.watch(paths.js.src, ['assets']);
+});
+
+gulp.task('dependencies', () => {
+  return DepLinker.copyDependenciesTo('./public/scripts');
 });
 
 gulp.task('img', () => {
@@ -141,4 +145,4 @@ gulp.task('open', () => {
 });
 
 gulp.task('default', ['rollup', 'watch', 'runKeystone', 'open']);
-gulp.task('build-watch', ['rollup', 'sass', 'assets', 'img', 'watch']);
+gulp.task('build-watch', ['dependencies', 'rollup', 'sass', 'assets', 'img', 'watch']);

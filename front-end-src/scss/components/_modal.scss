@@ -1,0 +1,59 @@
+$modal-transition-time: .3s;
+
+.modal-background {
+  @extend .section-content-width;
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  top: 0;
+
+
+  z-index: 999999;
+  display: flex;
+  background-color: hsla(0, 0, 0, .5);
+
+  visibility:visible;
+  opacity:1;
+  transition:
+    visibility 0s linear,
+    opacity $modal-transition-time linear;
+
+  &.modal--hidden {
+    visibility:hidden;
+    opacity:0;
+    transition:
+      visibility 0s linear $modal-transition-time,
+      opacity $modal-transition-time linear 0s;
+  }
+}
+
+.modal-content {
+  position: relative;
+  margin: auto; //Center container given that parent is flex.
+  background-color: $grey;
+  transition: transform ($modal-transition-time * 1.5) ease 0s;
+  .modal--hidden & {
+    transform: scale(0.7);
+  }
+}
+
+.modal-closeBtn {
+  display: block;
+  position: absolute;
+  top: 0;
+  right:0;
+  padding: 10px 15px;
+
+  border: none;
+  background-color: inherit;
+  color: inherit;
+
+  &:hover {
+    filter: brightness(90%);
+  }
+  &:active {
+    filter: brightness(80%);
+  }
+}

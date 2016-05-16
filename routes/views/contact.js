@@ -6,10 +6,12 @@ exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
   const locals = res.locals;
 
-  const formTitle = 'Contact us';
-  const successMessage = 'Thank you. We will contact you soon.';
-  const excludeFields = ['createdAt'];
-  const contactForm = new ContactForm(Enquiry, formTitle, successMessage, excludeFields);
+  const contactForm = new ContactForm({
+    databaseModel: Enquiry,
+    formTitle: 'Contact us',
+    successMessage: 'Thank you. We will contact you soon.',
+    exclude: ['createdAt']
+  });
   locals.data = contactForm.getForm();
 
   // On POST requests, add the Enquiry item to the database

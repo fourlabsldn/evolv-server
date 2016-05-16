@@ -42,12 +42,12 @@ exports = module.exports = function(app) {
 	app.get('/let', routes.views.let);
 	app.get('/sell', routes.views.sell);
   app.all('/register', routes.views.register);
+  app.all('/contact', routes.views.contact);
 	app.all('/valuation', routes.views.valuation);
 
 	// Keynote.js demo views
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
-	app.all('/contact', routes.views.contact);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

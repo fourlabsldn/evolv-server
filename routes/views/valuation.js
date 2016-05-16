@@ -6,10 +6,13 @@ exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
   const locals = res.locals;
 
-  const formTitle = 'Get a valuation';
-  const successMessage = 'Thank you. We will contact you soon.';
-  const excludeFields = ['sentAt'];
-  const contactForm = new ContactForm(ValuationRequest, formTitle, successMessage, excludeFields);
+  const contactForm = new ContactForm({
+    databaseModel: ValuationRequest,
+    formTitle: 'Get a valuation',
+    successMessage: 'Thank you. We will contact you soon.',
+    exclude: ['sentAt'],
+    formAction: '/valuation'
+  });
   locals.data = contactForm.getForm();
 
   // On POST requests, add the Enquiry item to the database
@@ -17,8 +20,7 @@ exports = module.exports = (req, res) => {
 
   const viewName = 'valuation';
   locals.section = viewName;
+
   // Render the view
-  view.render(viewName, {
-    layout: 'public'
-  });
+  view.render(viewName, { layout: null });
 };
