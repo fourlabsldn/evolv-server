@@ -1,40 +1,48 @@
-<section class="page-section full-height-minus-navbar flex sell_firstSection">
+<!-- SECTION 1 -->
+<section class="page-section full-height-minus-navbar flex let_firstSection">
   <div class="main-headers">
-    <h1 class="main-header">Selling your property</h1>
-    <h2 class="main-subheader">Exceptional service, outstanding results</h2>
+    <h1 class="main-header">{{data.section_1.main_heading}}</h1>
+    <h2 class="main-subheader">{{data.section_1.main_subheading}}</h2>
   </div>
 </section>
-<section class="grey-bg page-section">
-  <h1>A very personal approach</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <div>
-    <button class="flat-btn page-section_button">Sell with Evolv.</button>
-  </div>
-</section>
-<section class="page-section white-bg">
-  <div class="TwoColumns">
-    <div class="TwoColumns_column">
-      <p class="TwoColumns_text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
-      </p>
-      <p class="sell_signature">
-        Mr P.J
-      </p>
+
+<!-- SECTION 2 -->
+{{#or data.section_2.heading data.section_2.content}}
+  <section class="grey-bg page-section">
+    <h1>{{data.section_2.heading}}</h1>
+    <p>{{data.section_2.content}}</p>
+  </section>
+{{/or}}
+
+<!-- SECTION 3 -->
+{{#or data.section_3.heading data.section_3.column_1.content}}
+  <section class="page-section white-bg">
+    <h1>{{data.section_3.heading}}</h1>
+    <p>{{data.section_3.content}}</p>
+
+    {{#or data.section_3.column_1.content data.section_3.column_2.content}}
+      <div class="TwoColumns">
+        <div class="TwoColumns_column">
+          <h3 class="TwoColumns_header">{{data.section_3.column_1.heading}}</h3>
+          <p class="TwoColumns_text">{{data.section_3.column_1.content}}</p>
+        </div>
+        <div class="TwoColumns_column">
+          <h3 class="TwoColumns_header">{{data.section_3.column_2.heading}}</h3>
+          <p class="TwoColumns_text">{{data.section_3.column_2.content}}</p>
+        </div>
+      </div>
+    {{/or}}
+
+  </section>
+{{/or}}
+
+<!-- SECTION 4 -->
+{{#or data.section_4.heading data.section_4.content}}
+  <section class="light-blue-bg page-section">
+    <h1>{{data.section_4.heading}}</h1>
+    <p>{{data.section_4.content}}</p>
+    <div>
+      <button class="flat-btn page-section_button">Register your search</button>
     </div>
-    <div class="TwoColumns_column">
-      <p class="TwoColumns_text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      </p>
-      <p class="sell_signature">
-        Mrs J.S
-      </p>
-    </div>
-  </div>
-</section>
-<section class="light-blue-bg page-section">
-  <h1>Looking to buy?</h1>
-  <p>Register your details and tell us what you are looking for</p>
-  <div>
-    <button class="flat-btn page-section_button">Register your search</button>
-  </div>
-</section>
+  </section>
+{{/or}}
