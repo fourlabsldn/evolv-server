@@ -30,11 +30,30 @@ $modal-transition-time: .3s;
 }
 
 .modal-content {
+  position: relative;
   margin: auto; //Center container given that parent is flex.
   background-color: $grey;
   transition: transform ($modal-transition-time * 1.5) ease 0s;
-
   .modal--hidden & {
     transform: scale(0.7);
+  }
+}
+
+.modal-closeBtn {
+  display: block;
+  position: absolute;
+  top: 0;
+  right:0;
+  padding: 10px 15px;
+
+  border: none;
+  background-color: inherit;
+  color: inherit;
+
+  &:hover {
+    filter: brightness(90%);
+  }
+  &:active {
+    filter: brightness(80%);
   }
 }
