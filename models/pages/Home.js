@@ -12,6 +12,9 @@ const Home = new keystone.List('Home', {
 });
 
 Home.add(
+  {
+    page_name: { type: Types.Text, hidden: true, default: 'Home', required: true }
+  },
   'Section 1',
   {
     section_1: {
@@ -23,22 +26,22 @@ Home.add(
   {
     section_2: {
       heading: { type: Types.Text, required: true, default: 'A little history of Evolv.', label: 'Heading' },
-      content: { type: Types.Html, wysiwyg: true, height: 400, label: 'Content'  },
+      content: { type: Types.Textarea, height: 500, label: 'Content'  },
       tab_1: {
         title: { type: Types.Text, required: true, default: 'Item 1', label: 'Tab 1 - Heading' },
-        content: { type: Types.Html, wysiwyg: true, height: 200, label: 'Tab 1 - Content' }
+        content: { type: Types.Textarea, height: 400, label: 'Tab 1 - Content' }
       },
       tab_2: {
         title: { type: Types.Text, required: true, default: 'Item 2', label: 'Tab 2 - Heading' },
-        content: { type: Types.Html, wysiwyg: true, height: 200, label: 'Tab 2 - Content' }
+        content: { type: Types.Textarea, height: 400, label: 'Tab 2 - Content' }
       },
       tab_3: {
         title: { type: Types.Text, required: true, default: 'Item 3', label: 'Tab 3 - Heading' },
-        content: { type: Types.Html, wysiwyg: true, height: 200, label: 'Tab 3 - Content' }
+        content: { type: Types.Textarea, height: 400, label: 'Tab 3 - Content' }
       },
       tab_4: {
         title: { type: Types.Text, required: true, default: 'Item 4', label: 'Tab 4 - Heading' },
-        content: { type: Types.Html, wysiwyg: true, height: 200, label: 'Tab 4 - Content' }
+        content: { type: Types.Textarea, height: 400, label: 'Tab 4 - Content' }
       }
     }
   },
@@ -46,7 +49,7 @@ Home.add(
   {
     section_3: {
       heading: { type: Types.Text, required: true, default: 'Recent listings', label: 'Heading' },
-      content: { type: Types.Html, wysiwyg: true, height: 400, label: 'Content' }
+      content: { type: Types.Textarea, height: 500, label: 'Content' }
     }
   }
 );

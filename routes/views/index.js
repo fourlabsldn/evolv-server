@@ -15,8 +15,6 @@ exports = module.exports = function(req, res) {
     keystone.list('Home')
       .model.find()
       .exec((err, result) => {
-        console.log('Result found:');
-        console.dir(result);
         if (Array.isArray(result)) {
           locals.data = result[0];
         }
