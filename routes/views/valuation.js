@@ -20,8 +20,7 @@ exports = module.exports = (req, res) => {
 
   const viewName = 'valuation';
   locals.section = viewName;
+
   // Render the view
-  view.render(viewName, {
-    layout: null
-  });
+  view.render(viewName, { layout: null });
 };

@@ -26,17 +26,13 @@ exports.initLocals = function(req, res, next) {
 
   // Navbar valuation form
   const ValuationRequest = keystone.list('ValuationRequest');
-  const formTitle = 'Get a valuation';
-  const successMessage = 'Thank you. We will contact you soon.';
-  const excludeFields = ['sentAt'];
-  const formTarget = '/valuation';
-  const valuationForm = new ContactForm(
-    ValuationRequest,
-    formTitle,
-    successMessage,
-    excludeFields,
-    formTarget
-  );
+  const valuationForm = new ContactForm({
+    databaseModel: ValuationRequest,
+    formTitle: 'Get a valuation',
+    successMessage: 'Thank you. We will contact you soon.',
+    exclude: ['sentAt'],
+    formAction: '/valuation'
+  });
   locals.valuationForm = valuationForm.getForm();
 
 	next();
