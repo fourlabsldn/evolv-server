@@ -10,14 +10,14 @@ module.exports = class ContactForm {
    * @param  {String} method = 'POST' [description]
    * @return {Object}
    */
-  constructor(databaseModel, formTitle, successMessage, exclude = [], method = 'POST') {
+  constructor(databaseModel, formTitle, successMessage, exclude = [], formTarget) {
     this.databaseModel = databaseModel;
 
     this.fields = {
       formFields: this.generateFields(exclude),
       formTitle,
       successMessage,
-      method
+      formTarget
     };
   }
 

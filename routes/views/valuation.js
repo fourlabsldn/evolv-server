@@ -19,6 +19,6 @@ exports = module.exports = (req, res) => {
   locals.section = viewName;
   // Render the view
   view.render(viewName, {
-    layout: 'public'
+    layout: null
   });
 };

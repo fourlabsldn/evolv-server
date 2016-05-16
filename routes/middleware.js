@@ -29,7 +29,14 @@ exports.initLocals = function(req, res, next) {
   const formTitle = 'Get a valuation';
   const successMessage = 'Thank you. We will contact you soon.';
   const excludeFields = ['sentAt'];
-  const valuationForm = new ContactForm(ValuationRequest, formTitle, successMessage, excludeFields);
+  const formTarget = '/valuation';
+  const valuationForm = new ContactForm(
+    ValuationRequest,
+    formTitle,
+    successMessage,
+    excludeFields,
+    formTarget
+  );
   locals.valuationForm = valuationForm.getForm();
 
 	next();
