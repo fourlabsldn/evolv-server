@@ -2,16 +2,16 @@ const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
 /**
- * Landing Model
+ * Home Model
  * =============
  */
 
-const Landing = new keystone.List('Landing', {
+const Home = new keystone.List('Home', {
 	// nocreate: true,
   // nodelete: true
 });
 
-Landing.add(
+Home.add(
   'Section 1',
   {
     section_1: {
@@ -51,5 +51,5 @@ Landing.add(
   }
 );
 
-Landing.defaultColumns = 'section_1.main_heading, section_1.main_subheading';
-Landing.register();
+Home.defaultColumns = 'section_1.main_heading, section_1.main_subheading';
+Home.register();
