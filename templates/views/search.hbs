@@ -95,7 +95,14 @@
         >
           <div class="prop-tile-crop">
             <a href="/property/{{slug}}">
-              <img src="{{images_urls.[0]}}" alt="placeholder" />
+
+              <img src="
+              {{#if images.[0]}}
+                {{cloudinaryUrl images.[0] width=515 height=386 crop='lfill' gravity='center'}}
+              {{else}}
+                {{images_urls.[0]}}
+              {{/if}}
+              " alt="placeholder" />
             </a>
           </div>
           <div class="prop-tile-description">
