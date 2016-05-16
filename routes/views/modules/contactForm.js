@@ -3,22 +3,18 @@
 module.exports = class ContactForm {
   /**
    * @method constructor
-   * @param  {keystond.list} databaseModel [description]
-   * @param  {String} formTitle [description]
-   * @param  {String} successMessage [description]
-   * @param  {Array<String>} exclude = [] [description]
-   * @param  {String} method = 'POST' [description]
+   * @param  {Object}         config - Contact form configuration fields
+   * @param  {keystond.list}  config.databaseModel
+   * @param  {String}         config.formTitle
+   * @param  {String}         config.successMessage
+   * @param  {Array<String>}  config.exclude = [] [description]
+   * @param  {String}         config.formAction -Which URL to call when sending the form.
    * @return {Object}
    */
-  constructor(databaseModel, formTitle, successMessage, exclude = [], formTarget) {
-    this.databaseModel = databaseModel;
-
-    this.fields = {
-      formFields: this.generateFields(exclude),
-      formTitle,
-      successMessage,
-      formTarget
-    };
+  constructor(config) {
+    this.databaseModel = config.databaseModel;
+    this.fields = config;
+    this.fields.formFields = this.generateFields(config.exclude || []);
   }
 
   getForm() {
