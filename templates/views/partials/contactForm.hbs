@@ -1,11 +1,12 @@
 <!--  Expects a context with the following variables
+    {String} formAction
     {String} submissionSuccessful
     {String} successMessage
     {String} formTitle
     {Array} formFields
 -->
 
-<form method="post" class="ContactForm_container" action="{{formTarget}}">
+<form method="post" class="ContactForm_container" action="{{formAction}}">
 
   {{#if submissionSuccessful}}
     <p>{{successMessage}}</p>
