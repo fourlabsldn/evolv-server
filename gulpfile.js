@@ -12,6 +12,7 @@ const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const imagemin = require('gulp-imagemin');
 const cssmin = require('gulp-cssmin');
+const DepLinker = require('dep-linker');
 
 const paths = {
 	src: [
@@ -98,6 +99,10 @@ gulp.task('watch:assets', () => {
 	gulp.watch(paths.js.src, ['assets']);
 });
 
+gulp.task('dependencies', () => {
+  return DepLinker.copyDependenciesTo('./public/scripts');
+});
+
 gulp.task('img', () => {
 	gulp.src(paths.img.src)
   .pipe(imagemin({
@@ -140,4 +145,4 @@ gulp.task('open', () => {
 });
 
 gulp.task('default', ['rollup', 'watch', 'runKeystone', 'open']);
-gulp.task('build-watch', ['rollup', 'sass', 'assets', 'img', 'watch']);
+gulp.task('build-watch', ['dependencies', 'rollup', 'sass', 'assets', 'img', 'watch']);
