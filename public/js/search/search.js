@@ -1572,16 +1572,17 @@ Object.keys = Object.keys || function (o) {
 };
 
 var MapController = function () {
-  function MapController(targetSelector) {
+  function MapController(mapContainer) {
     babelHelpers.classCallCheck(this, MapController);
 
     this.markers = [];
-    this.map = this.initMap(targetSelector);
+    this.map = this.initMap(mapContainer);
+    return this;
   }
 
   babelHelpers.createClass(MapController, [{
     key: 'initMap',
-    value: function initMap(targetSelector) {
+    value: function initMap(targetObject) {
       var options = {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         zoom: 14,
@@ -1589,7 +1590,7 @@ var MapController = function () {
         maxZoom: 17
       };
 
-      var map = new google.maps.Map(document.querySelector(targetSelector), options);
+      var map = new google.maps.Map(targetObject, options);
       return map;
     }
   }, {

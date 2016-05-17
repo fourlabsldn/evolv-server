@@ -51,7 +51,9 @@ const MAP_LABEL_SELECTOR = '.js-map-label';
 
 (function showOnMap() {
   // Create map and instantiate a controller
-  const mapController = new MapController(MAP_TARGET_SELECTOR);
+  const mapContainer = document.querySelector(MAP_TARGET_SELECTOR);
+  if (!mapContainer) { return; }
+  const mapController = new MapController(mapContainer);
 
   // Add a property marker to map
   mapController.createMarkersFromCoordinates([PROPERTY_INFO.address]);

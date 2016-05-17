@@ -2,12 +2,13 @@
 import MarkerClusterer from './_MarkerClusterer.js';
 
 export default class MapController {
-  constructor(targetSelector) {
+  constructor(mapContainer) {
     this.markers = [];
-    this.map = this.initMap(targetSelector);
+    this.map = this.initMap(mapContainer);
+    return this;
   }
 
-  initMap(targetSelector) {
+  initMap(targetObject) {
     const options = {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       zoom: 14,
@@ -15,7 +16,7 @@ export default class MapController {
       maxZoom: 17,
     };
 
-    const map = new google.maps.Map(document.querySelector(targetSelector), options);
+    const map = new google.maps.Map(targetObject, options);
     return map;
   }
 
