@@ -135,8 +135,8 @@
 
   <script>
   // TODO: remove this for something that works
-  {{#if location.geo.length}}
-    var PROPERTY_INFO = { "address" : { "latitude": {{location.geo.[1]}}, "longitude": {{location.geo.[0]}} } };
+  {{#if hasGeoInfo}}
+    var PROPERTY_INFO = { "address" : { "latitude": {{location.latitude}}, "longitude": {{location.longitude}} } };
   {{/if}}
   </script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>

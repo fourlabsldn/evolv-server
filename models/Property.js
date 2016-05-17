@@ -44,6 +44,20 @@ Property.add({
   locationDescription: { type: Types.Html, wysiwyg: true, height: 400 }
 });
 
+Property.schema.virtual('location.latitude').get(function () {
+  const geo = this.location.geo || [];
+  return geo[1];
+});
+
+Property.schema.virtual('location.longitude').get(function () {
+  const geo = this.location.geo || [];
+  return geo[0];
+});
+
+Property.schema.virtual('hasGeoInfo').get(function () {
+  const geo = this.location.geo || [];
+  return geo.length > 0;
+});
 
 Property.schema.pre('save', function (next) {
   // Insert geolocation data
