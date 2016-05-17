@@ -9,16 +9,18 @@ import MapController from './search/_MapController.js';
 const MAP_TARGET_SELECTOR = '.js-property-map';
 const MAP_LABEL_SELECTOR = '.js-map-label';
 
-(function addMetaProperties() {
-  const mediaProperties = `
-  <meta property="og:url"           content="http://www.evolv.london" />
-	<meta property="og:type"          content="website" />
-	<meta property="og:title"         content="Evolv" />
-	<meta property="og:description"   content="Luxury London Living" />
-	<meta property="og:image"         content="/img/prop-img-4.jpg" />`;
-
-  document.head.innerHTML += mediaProperties;
-}());
+// TODO: Add these meta properties so we have a nice thumbnail when sharing
+// a link to the property.
+// (function addMetaProperties() {
+//   const mediaProperties = `
+//   <meta property="og:url"           content="http://www.evolv.london" />
+// 	<meta property="og:type"          content="website" />
+// 	<meta property="og:title"         content="Evolv" />
+// 	<meta property="og:description"   content="Luxury London Living" />
+// 	<meta property="og:image"         content="/img/prop-img-4.jpg" />`;
+//
+//   document.head.innerHTML += mediaProperties;
+// }());
 
 
 (function controlPropertyTabs() {

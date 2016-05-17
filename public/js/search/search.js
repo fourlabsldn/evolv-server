@@ -1724,7 +1724,7 @@ var MapController = function () {
       var markerClustererOptions = {
         styles: [{
           textColor: 'white',
-          url: 'img/marker.svg',
+          url: '/img/marker.svg',
           height: 52,
           width: 31
         }],

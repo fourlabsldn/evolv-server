@@ -36,6 +36,7 @@ Property.add({
       { value: 'freehold', label: 'Freehold' },
       { value: 'leasehold', label: 'Leasehold' }
     ] },
+  location: { type: Types.Location },
   postcode: { type: String, required: true, initial: true },
   houseNumber: { type: String },
   street: { type: String },
@@ -51,7 +52,16 @@ Property.schema.virtual('images_urls').get(function () {
   if (!this.images || this.images.length === 0) {
     return [placeholderImage];
   }
+
 	return this.images.map(image => image.secure_url);
+});
+
+Property.schema.pre('save', function (next) {
+  // Get geolocation data
+  const region = 'UK';
+  const updateRecord = true;
+  this._.location.googleLookup(region, updateRecord, () => {});
+  next();
 });
 
 Property.defaultColumns = 'street, houseNumber|20%, postcode|20%, type|20%';
