@@ -44,9 +44,26 @@ Property.add({
         { value: 'freehold', label: 'Freehold' },
         { value: 'leasehold', label: 'Leasehold' }
       ] },
+  details: {
+    1: { type: Types.Text },
+    2: { type: Types.Text },
+    3: { type: Types.Text },
+    4: { type: Types.Text },
+    5: { type: Types.Text },
+    6: { type: Types.Text }
+  },
   summary: { type: Types.Html, wysiwyg: true, height: 150 },
 	description: { type: Types.Html, wysiwyg: true, height: 400 },
   locationDescription: { type: Types.Html, wysiwyg: true, height: 400 }
+});
+
+Property.schema.virtual('details.isFilled').get(function () {
+  console.log(this.details[1]);
+  return this.details[1].length > 0;
+});
+Property.schema.virtual('isFilled').get(function () {
+  console.log(this.details[1]);
+  return this.details[1].length > 0;
 });
 
 Property.schema.virtual('location.latitude').get(function () {
