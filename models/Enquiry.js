@@ -1,5 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
+const email = require('../utils/email');
+const databaseRecordToHtml = require('./utils/databaseRecordToHtml');
 
 /**
  * Enquiry Model
@@ -24,41 +26,37 @@ Enquiry.add({
 	createdAt: { type: Date, default: Date.now }
 });
 
-Enquiry.schema.pre('save', function(next) {
+Enquiry.schema.pre('save', function (next) {
 	this.wasNew = this.isNew;
 	next();
 });
 
-Enquiry.schema.post('save', function() {
+Enquiry.schema.post('save', function () {
 	if (this.wasNew) {
 		this.sendNotificationEmail();
 	}
 });
 
-Enquiry.schema.methods.sendNotificationEmail = function(callback) {
-
-	if ('function' !== typeof callback) {
-		callback = function() {};
+Enquiry.schema.methods.sendNotificationEmail = function (callback) {
+  if (typeof callback !== 'function') {
+		callback = () => {};
 	}
 
-	var enquiry = this;
+  const users = keystone.list('User');
+  const emailSubject = 'New Enquiry for Evolv';
+  const emailHeading = `<h1>${emailSubject}</h1>`;
+  const emailBody = databaseRecordToHtml(Enquiry, this);
+  const emailContent = emailHeading + emailBody;
 
-	keystone.list('User').model.find().where('isAdmin', true).exec(function(err, admins) {
-
-		if (err) return callback(err);
-
-		new keystone.Email('enquiry-notification').send({
-			to: admins,
-			from: {
-				name: 'Evolv',
-				email: 'contact@evolv.com'
-			},
-			subject: 'New Enquiry for Evolv',
-			enquiry: enquiry
-		}, callback);
-
-	});
-
+  users.getAdminEmails()
+  .then((adminEmails) => {
+    return email.send({
+      to: adminEmails,
+      subject: emailSubject,
+      html: emailContent
+    });
+  })
+  .then(callback);
 };
 
 Enquiry.defaultSort = '-createdAt';

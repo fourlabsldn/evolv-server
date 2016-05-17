@@ -1,5 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
+const email = require('../utils/email');
+const databaseRecordToHtml = require('./utils/databaseRecordToHtml');
 
 /**
  * Registration Model
@@ -39,32 +41,25 @@ Registration.schema.post('save', function () {
 });
 
 Registration.schema.methods.sendNotificationEmail = function (callback) {
-	if (typeof callback !== 'function') {
+  if (typeof callback !== 'function') {
 		callback = () => {};
 	}
 
-	const registration = this;
+  const users = keystone.list('User');
+  const emailSubject = 'New Registration for Evolv';
+  const emailHeading = `<h1>${emailSubject}</h1>`;
+  const emailBody = databaseRecordToHtml(Registration, this);
+  const emailContent = emailHeading + emailBody;
 
-	keystone
-		.list('User')
-		.model
-		.find()
-		.where('isAdmin', true)
-		.exec((err, admins) => {
-			if (err) {
-        callback(err);
-        return;
-      }
-			new keystone.Email('registration-notification').send({
-					to: admins,
-					from: {
-						name: 'Evolv',
-						email: 'contact@evolv.com'
-					},
-					subject: 'New Registration for Evolv',
-					registration
-				}, callback);
-		});
+  users.getAdminEmails()
+  .then((adminEmails) => {
+    return email.send({
+      to: adminEmails,
+      subject: emailSubject,
+      html: emailContent
+    });
+  })
+  .then(callback);
 };
 
 Registration.defaultSort = '-sentAt';

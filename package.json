@@ -15,6 +15,7 @@
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
+    "nodemailer": "^2.4.1",
     "swag": "^0.7.0",
     "underscore": "^1.8.3",
     "x-div": "^1.0.2"

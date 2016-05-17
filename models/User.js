@@ -21,13 +21,31 @@ User.schema.virtual('canAccessKeystone').get(function() {
 	return this.isAdmin;
 });
 
-
 /**
  * Relationships
  */
 
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
+/**
+ * Collection functions
+ */
+
+User.getAdminEmails = function () {
+  return new Promise((resolve, reject) => {
+    const userModel = User.model;
+    const findAdminQuery = userModel.find().where('isAdmin', true);
+    findAdminQuery.exec((err, admins) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      const adminEmails = admins.map(admin => admin.email).join(', ');
+      resolve(adminEmails);
+    });
+  });
+};
 
 /**
  * Registration

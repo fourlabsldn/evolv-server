@@ -1,5 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
+const email = require('../utils/email');
+const databaseRecordToHtml = require('./utils/databaseRecordToHtml');
 
 /**
  * ValuationRequest Model
@@ -36,28 +38,21 @@ ValuationRequest.schema.methods.sendNotificationEmail = function (callback) {
 		callback = () => {};
 	}
 
-	const registration = this;
+  const users = keystone.list('User');
+  const emailSubject = 'New Valuation Request for Evolv';
+  const emailHeading = `<h1>${emailSubject}</h1>`;
+  const emailBody = databaseRecordToHtml(ValuationRequest, this);
+  const emailContent = emailHeading + emailBody;
 
-	keystone
-		.list('User')
-		.model
-		.find()
-		.where('isAdmin', true)
-		.exec((err, admins) => {
-			if (err) {
-        callback(err);
-        return;
-      }
-			new keystone.Email('evaluation-request-notification').send({
-					to: admins,
-					from: {
-						name: 'Evolv',
-						email: 'contact@evolv.com'
-					},
-					subject: 'New Valuation Request for Evolv',
-					registration
-				}, callback);
-		});
+  users.getAdminEmails()
+  .then((adminEmails) => {
+    return email.send({
+      to: adminEmails,
+      subject: emailSubject,
+      html: emailContent
+    });
+  })
+  .then(callback);
 };
 
 ValuationRequest.defaultSort = '-sentAt';
