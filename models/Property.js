@@ -49,8 +49,9 @@ Property.schema.pre('save', function (next) {
   // Insert geolocation data
   const region = 'UK';
   const updateRecord = true;
-  this._.location.googleLookup(region, updateRecord, () => {});
-  next();
+  this._.location.googleLookup(region, updateRecord, () => {
+    next();
+  });
 });
 
 Property.defaultColumns = 'location|70%, type|20%';

@@ -368,29 +368,35 @@ module.exports = function () {
 
 
 	// TODO: separate html from here
-	_helpers.imageSlider = (imagesUrlsArray = []) => {
+	_helpers.imageSlider = function (images = []) {
 		let sliderContent = '';
-		imagesUrlsArray.forEach((url, index) => {
-			const labelToPrev = index > 0
-				? `<label for="img-${index - 1}" class="prev"><i class="fa fa-angle-left"></i></label>`
-				: '';
-			const labelToNext = index + 1 < imagesUrlsArray.length
-				? `<label for="img-${index + 1}" class="next"><i class="fa fa-angle-right"></i></label>`
-				: '';
-			const checked = index === 0 ? 'checked' : '';
 
-			sliderContent += `
-			<input type="radio" name="radio-btn" id="img-${index}" ${checked} />
-			<li class="slide-container">
-			<div class="slide">
-				<img src="${url}" />
-					</div>
-			<div class="slider-nav">
-				${labelToPrev}
-				${labelToNext}
-			</div>
-			</li>`;
-		});
+    const imagesUrlsArray = (images.length > 0)
+      ? images.map(img => img.secure_url)
+      : [placeholderImage];
+
+    imagesUrlsArray
+      .forEach((url, index) => {
+        const labelToPrev = index > 0
+          ? `<label for="img-${index - 1}" class="prev"><i class="fa fa-angle-left"></i></label>`
+          : '';
+        const labelToNext = index + 1 < imagesUrlsArray.length
+          ? `<label for="img-${index + 1}" class="next"><i class="fa fa-angle-right"></i></label>`
+          : '';
+        const checked = index === 0 ? 'checked' : '';
+
+        sliderContent += `
+  			<input type="radio" name="radio-btn" id="img-${index}" ${checked} />
+  			<li class="slide-container">
+  			<div class="slide">
+          <img src="${url}" />
+  					</div>
+  			<div class="slider-nav">
+  				${labelToPrev}
+  				${labelToNext}
+  			</div>
+  			</li>`;
+      });
 
 		return sliderContent;
 	};

@@ -3,7 +3,7 @@
     <article class="property-article">
       <div class="article-row property-article-header">
         <h1>
-          {{#if location.street}}{{location.street}},{{/if}}
+          {{#if location.street1}}{{location.street1}},{{/if}}
           {{location.city}} {{location.postcode}}</h1>
 
           <!--  TODO: Add a link to this button -->
@@ -16,7 +16,7 @@
         <div class="tab-content property-tab">
           <div class="img-slider property-tab-content">
             <ul class="slider">
-              {{{imageSlider images_urls}}}
+              {{{imageSlider images}}}
             </ul>
           </div>
         </div>
@@ -35,10 +35,12 @@
           </div>
         {{/if}}
 
-        <input id="map_tab" type="radio" name="article_property">
-        <div class="tab-content property-tab">
-          <div class="js-property-map property-map property-tab-content"></div>
-        </div>
+        {{#if location.geo.length}}
+          <input id="map_tab" type="radio" name="article_property">
+          <div class="tab-content property-tab">
+            <div class="js-property-map property-map property-tab-content"></div>
+          </div>
+        {{/if}}
 
         <div class="article-row article-tabs-bottom-bar">
           <nav class="article-tabs-labels js-property-article-tab-labels">
@@ -53,7 +55,9 @@
               <label class="article-tabs-button" for="epc_tab"><li class="article-tabs-button-text">EPC</li></label>
             {{/if}}
 
-            <label class="article-tabs-button js-map-label" for="map_tab"><li class="article-tabs-button-text">Map</li></label>
+            {{#if location.geo.length}}
+              <label class="article-tabs-button js-map-label" for="map_tab"><li class="article-tabs-button-text">Map</li></label>
+            {{/if}}
           </nav>
           <ul class="property-article-side-buttons">
             <li class="js-article-print article-tabs-button"><i class="fa fa-print"></i></li>
@@ -131,8 +135,9 @@
 
   <script>
   // TODO: remove this for something that works
-   var PROPERTY_INFO = { "address" : { "latitude": {{location.geo.[1]}}, "longitude": {{location.geo.[0]}} } };
-
+  {{#if location.geo.length}}
+    var PROPERTY_INFO = { "address" : { "latitude": {{location.geo.[1]}}, "longitude": {{location.geo.[0]}} } };
+  {{/if}}
   </script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="/js/property.js"></script>
