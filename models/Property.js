@@ -57,15 +57,6 @@ Property.add({
   locationDescription: { type: Types.Html, wysiwyg: true, height: 400 }
 });
 
-Property.schema.virtual('details.isFilled').get(function () {
-  console.log(this.details[1]);
-  return this.details[1].length > 0;
-});
-Property.schema.virtual('isFilled').get(function () {
-  console.log(this.details[1]);
-  return this.details[1].length > 0;
-});
-
 Property.schema.virtual('location.latitude').get(function () {
   const geo = this.location.geo || [];
   return geo[0];

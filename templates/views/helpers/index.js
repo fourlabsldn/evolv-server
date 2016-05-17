@@ -401,6 +401,24 @@ module.exports = function () {
 		return sliderContent;
 	};
 
+  _helpers.detailsList = function (details = []) {
+    let list = '';
+    for (const key of Object.keys(details)) {
+      const text = details[key];
+      if (typeof text !== 'string') {
+        continue;
+      }
+      list += `\n<li>${text}</li>`;
+    }
+
+    return list;
+  };
+
+  _helpers.feetToMeters = function (value = 0) {
+    const conversionFactor = 0.092903;
+    return Math.floor(value * conversionFactor);
+  };
+
 	_helpers.ifeq = (a, b, options) => {
 		if (a === b) {
 			return options.fn(this);
