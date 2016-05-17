@@ -8,7 +8,7 @@ const Types = keystone.Field.Types;
 
 const Property = new keystone.List('Property', {
 	map: { name: 'location.street1' },
-	autokey: { path: 'slug', from: 'postcode', unique: true }
+	autokey: { path: 'slug', from: 'location.postcode', unique: true }
 });
 
 Property.add({
