@@ -1,8 +1,6 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
-// CONSTANTS
-const placeholderImage = '/img/property-placeholder.svg';
 /**
  * Property Model
  * ==========
@@ -46,10 +44,6 @@ Property.add({
   locationDescription: { type: Types.Html, wysiwyg: true, height: 400 }
 });
 
-Property.schema.pre('save', function (next) {
-  this.placeholderImage = placeholderImage;
-  next();
-});
 
 Property.schema.pre('save', function (next) {
   // Insert geolocation data

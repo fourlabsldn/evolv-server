@@ -7,6 +7,7 @@ const Swag = require('swag');
 
 // Declare Constants
 const CLOUDINARY_HOST = 'http://res.cloudinary.com';
+const placeholderImage = '/img/property-placeholder.svg';
 
 // Collection of templates to interpolate
 const linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
@@ -182,7 +183,7 @@ module.exports = function () {
 	// `{{{cloudinaryUrl image width=640 height=480 crop='fill' gravity='north'}}}`
 	// `{{#each images}} {{cloudinaryUrl width=640 height=480}} {{/each}}`
 	//
-	// Returns an src-string for a cloudinary image
+	// Returns an src-string for a cloudinary image or for a default placeholder image
 
 	_helpers.cloudinaryUrl = function(context, options) {
 
@@ -204,7 +205,7 @@ module.exports = function () {
 			return cloudinary.url(imageName, options.hash);
 		}
 		else {
-			return null;
+			return placeholderImage;
 		}
 	};
 
