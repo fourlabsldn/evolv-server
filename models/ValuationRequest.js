@@ -40,7 +40,7 @@ ValuationRequest.schema.methods.sendNotificationEmail = function (callback) {
 
   const users = keystone.list('User');
   const emailSubject = 'New Valuation Request for Evolv';
-  const emailHeading = `<h2>${emailSubject}</h2>`;
+  const emailHeading = `<h3>${emailSubject}</h3>`;
   const emailBody = databaseRecordToHtml(ValuationRequest, this);
   const emailContent = emailHeading + emailBody;
 

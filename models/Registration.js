@@ -47,7 +47,7 @@ Registration.schema.methods.sendNotificationEmail = function (callback) {
 
   const users = keystone.list('User');
   const emailSubject = 'New Registration for Evolv';
-  const emailHeading = `<h2>${emailSubject}</h2>`;
+  const emailHeading = `<h3>${emailSubject}</h3>`;
   const emailBody = databaseRecordToHtml(Registration, this);
   const emailContent = emailHeading + emailBody;
 
