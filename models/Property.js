@@ -12,7 +12,12 @@ const Property = new keystone.List('Property', {
 });
 
 Property.add({
-  location: { type: Types.Location, required: true, initial: true },
+  location: {
+    type: Types.Location,
+    defaults: { country: 'United Kingdom' },
+    required: true,
+    initial: true
+  },
 	images: { type: Types.CloudinaryImages },
 	floorPlan: { type: Types.CloudinaryImage },
 	epc: { type: Types.CloudinaryImage },
@@ -46,12 +51,12 @@ Property.add({
 
 Property.schema.virtual('location.latitude').get(function () {
   const geo = this.location.geo || [];
-  return geo[1];
+  return geo[0];
 });
 
 Property.schema.virtual('location.longitude').get(function () {
   const geo = this.location.geo || [];
-  return geo[0];
+  return geo[1];
 });
 
 Property.schema.virtual('hasGeoInfo').get(function () {
@@ -61,7 +66,7 @@ Property.schema.virtual('hasGeoInfo').get(function () {
 
 Property.schema.pre('save', function (next) {
   // Insert geolocation data
-  const region = 'UK';
+  const region = 'United Kingdom';
   const updateRecord = true;
   this._.location.googleLookup(region, updateRecord, () => {
     next();

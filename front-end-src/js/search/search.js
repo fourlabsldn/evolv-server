@@ -71,7 +71,8 @@ function initPage() {
   const searchController = new SearchController(searchControllerConfig);
 
   // Create map and instantiate a controller
-  const mapController = new MapController(MAP_TARGET_SELECTOR);
+  const mapContainer = document.querySelector(MAP_TARGET_SELECTOR);
+  const mapController = new MapController(mapContainer);
 
   fillSearchFromQueryParameters(searchController, mapController);
 }
