@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const sanitizeHtml = require('sanitize-html');
 
 const smtpConfig = {
   host: 'smtp.sendgrid.net',
@@ -25,7 +26,13 @@ const transporter = nodemailer.createTransport(smtpConfig);
  * @return {Promise}
  */
 function send(mailOptions) {
-  mailOptions.from = mailOptions.from || 'noreply@delivery.evolv.london';
+  mailOptions.from = mailOptions.from || '"Evolv" <noreply@delivery.evolv.london>';
+
+  // Clean all option strings to prevent XSS attacks
+
+  mailOptions.html = typeof mailOptions.html === 'string'
+    ? sanitizeHtml(mailOptions.html)
+    : undefined;
 
   return new Promise((resolve, reject) => {
     // send mail with defined transport object

@@ -44,7 +44,7 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 
   const users = keystone.list('User');
   const emailSubject = 'New Enquiry for Evolv';
-  const emailHeading = `<h1>${emailSubject}</h1>`;
+  const emailHeading = `<h2>${emailSubject}</h2>`;
   const emailBody = databaseRecordToHtml(Enquiry, this);
   const emailContent = emailHeading + emailBody;
 
