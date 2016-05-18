@@ -277,6 +277,12 @@ function getFilterCriteria(filter) {
   return criteria;
 }
 
+/**
+ * @method targetMatchesFilters
+ * @param  {HTMLElement} target - Property tile with data properties to be filtered
+ * @param  {Array<HTMLElement>} filters - Array with the 'select' html elements
+ * @return {Boolean}
+ */
 function targetMatchesFilters(target, filters) {
   let matched = true;
 
@@ -294,8 +300,19 @@ function targetMatchesFilters(target, filters) {
     // Check against all criteria for the filter;
     for (const criterion of criteria) {
       const targetPropertyValue = getTargetProperty(target, criterion) || '';
+
+      // This works buy is not a good piece of code. Refactor when there is
+      // some time.
       // If it matches any criterion, then it matches the filter.
-      if (searchMatch(value, targetPropertyValue)) {
+      if (criterion === 'price') {
+        const targetPropertyValueInt = parseInt(targetPropertyValue, 10);
+        const valueInt = parseInt(value, 10);
+        const noNaNValue = !isNaN(targetPropertyValueInt) && !isNaN(valueInt);
+        if (noNaNValue && targetPropertyValueInt < valueInt) {
+          filterMatched = true;
+          break;
+        }
+      } else if (searchMatch(value, targetPropertyValue)) {
         filterMatched = true;
         break;
       }

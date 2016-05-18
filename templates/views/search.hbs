@@ -37,13 +37,23 @@
 
       <select class="js-search-input search-bar-btn" data-criteria="price" required>
         <option value="" selected>Price</option>
-        <option> < 1,000,000</option>
-        <option> < 1,500,000</option>
-        <option> < 2,000,000</option>
-        <option> < 2,500,000</option>
-        <option> < 3,000,000</option>
-        <option> < 4,000,000</option>
-        <option> < 5,000,000</option>
+        {{#is acquisitionMode "buy"}}
+          <option value="1000000"> < 1,000,000</option>
+          <option value="1500000"> < 1,500,000</option>
+          <option value="2000000"> < 2,000,000</option>
+          <option value="2500000"> < 2,500,000</option>
+          <option value="3000000"> < 3,000,000</option>
+          <option value="4000000"> < 4,000,000</option>
+          <option value="5000000"> < 5,000,000</option>
+        {{else}}
+          <option value="1000"> < 1,000</option>
+          <option value="1500"> < 1,500</option>
+          <option value="2000"> < 2,000</option>
+          <option value="2500"> < 2,500</option>
+          <option value="3000"> < 3,000</option>
+          <option value="4000"> < 4,000</option>
+          <option value="5000"> < 5,000</option>
+        {{/is}}
       </select>
 
       <select class="js-search-input search-bar-btn" data-criteria="details" required>
