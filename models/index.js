@@ -1,3 +1,10 @@
+// -------------------------------------------------------------------
+//
+//        This file is used to extend model functionalities
+//
+// -------------------------------------------------------------------
+
+const keystone = require('keystone');
 
 /**
  * Executes a query in a database model
@@ -6,7 +13,7 @@
  * @param  {} value - Antything the model property value should be.
  * @return {Promise} - Will resolve into an array of items.
  */
-module.exports = function findWhere(criterion, value) {
+keystone.List.prototype.findWhere = function findWhere(criterion, value) {
   return new Promise((resolve, reject) => {
     const model = this.model;
     const query = model.find().where(criterion, value);

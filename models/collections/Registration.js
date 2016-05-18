@@ -1,7 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 const email = require('../utils/email');
-const databaseRecordToHtml = require('./utils/databaseRecordToHtml');
+const databaseRecordToHtml = require('../utils/databaseRecordToHtml');
 
 /**
  * Registration Model

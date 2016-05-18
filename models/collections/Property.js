@@ -1,6 +1,5 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-const findWhere = require('./utils/findWhere');
 /**
  * Property Model
  * ==========
@@ -86,15 +85,13 @@ Property.schema.pre('save', function (next) {
  * Collection functions
  */
 
-Property.findWhere = findWhere;
-
 /**
  * @method getFeatured
  * @return {Promise} Will resolve into an array or featured properties
  */
-Property.getFeatured = getFeatured() {
+Property.getFeatured = function () {
   return this.findWhere('featured', true);
-}
+};
 
 
 Property.defaultColumns = 'location|70%, type|20%';

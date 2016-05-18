@@ -1,7 +1,5 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-const findWhere = require('./utils/findWhere');
-
 /**
  * User Model
  * ==========
@@ -31,8 +29,6 @@ User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 /**
  * Collection functions
  */
-
-User.findWhere = findWhere;
 
 User.getAdminEmails = function () {
   return this.findWhere('isAdmin', true)
