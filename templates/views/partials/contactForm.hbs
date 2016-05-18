@@ -19,12 +19,18 @@
           <p class="ContactForm_errorMessage"> {{errorMessage}} </p>
         {{/if}}
 
-        <{{tag}} type={{type}} placeholder="{{placeholder}}" name="{{name}}" class="ContactForm_input-{{type}}" {{#if required}}required{{/if}}>
-            {{#each options}}
-                <option value="{{value}}">
-                    {{label}}
-                </option>
-            {{/each}}
+        <{{tag}}
+          type={{type}}
+          placeholder="{{placeholder}}"
+          name="{{name}}"
+          class="ContactForm_input-{{type}}"
+          {{#if required}}required{{/if}}
+        >
+            {{~#each options~}}
+              <option value="{{value}}">
+                  {{label}}
+              </option>
+            {{~/each~}}
         </{{tag}}>
       {{/each}}
 
