@@ -153,10 +153,12 @@
 
 
   <script>
-  // TODO: remove this for something that works
-  {{#if hasGeoInfo}}
-    var PROPERTY_INFO = { "address" : { "latitude": {{location.latitude}}, "longitude": {{location.longitude}} } };
-  {{/if}}
+    {{#if hasGeoInfo}}
+      var PROPERTY_INFO = { "address" : { "latitude": {{location.latitude}}, "longitude": {{location.longitude}} } };
+    {{/if}}
+
+    // Info for navbar
+    var PAGE_INFO = { name: "{{../acquisitionMode}}" }
   </script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="/js/property.js"></script>
