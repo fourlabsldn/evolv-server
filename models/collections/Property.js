@@ -21,9 +21,9 @@ Property.add({
 	images: { type: Types.CloudinaryImages },
 	floorPlan: { type: Types.CloudinaryImage },
 	epc: { type: Types.CloudinaryImage },
-  sell: {
+  buy: {
     available: { type: Boolean },
-    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'sell.available': true } }
+    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'buy.available': true } }
   },
   rent: {
     available: { type: Boolean },

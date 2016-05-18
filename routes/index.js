@@ -18,26 +18,25 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var keystone = require('keystone');
-var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+const keystone = require('keystone');
+const middleware = require('./middleware');
+const importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
-var routes = {
+const routes = {
 	views: importRoutes('./views')
 };
 
 // Setup Route Bindings
-exports = module.exports = function(app) {
-
+exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/rent', routes.views.search);
-	app.get('/buy?', routes.views.search);
+	app.get('/rent', (req, res) => routes.views.search(req, res, 'rent'));
+	app.get('/buy?', (req, res) => routes.views.search(req, res, 'buy'));
 	app.get('/property/:slug', routes.views.property);
 	app.get('/let', routes.views.let);
 	app.get('/sell', routes.views.sell);
