@@ -26,7 +26,7 @@ function loadHomeContent(next, locals) {
 
   // Add loaded content to 'locals' to make it accessible to the view
   Promise.all(queries)
-  .then((homeContent, featuredProperties) => {
+  .then(([homeContent, featuredProperties]) => {
     if (Array.isArray(homeContent)) {
       locals.data = homeContent[0];
     }

@@ -61,22 +61,15 @@
 </section>
 
 <section class="page-section image-tiles">
-  <a href="/property.html" class="tile">
-    <img src="/img/prop-img-1.jpg" alt="" />
-    <button class="flat-btn">144 Alpha Street</button>
-  </a>
-  <a href="/property.html" class="tile">
-    <img src="/img/prop-img-2.jpg" alt="" />
-    <button class="flat-btn">82B Beta Row</button>
-  </a>
-  <a href="/property.html" class="tile">
-    <img src="/img/prop-img-3.jpg" alt="" />
-    <button class="flat-btn">322 Charlie Mews</button>
-  </a>
-  <a href="/property.html" class="tile">
-    <img src="/img/prop-img-4.jpg" alt="" />
-    <button class="flat-btn">12 Delta Road</button>
-  </a>
+  {{#each featuredProperties}}
+    <a href="/property/{{slug}}" class="tile">
+      <img
+        src="{{cloudinaryUrl images.[0] width=515 height=386 crop='lfill' gravity='center'}}"
+        alt="{{location.street1}}"
+       />
+      <button class="flat-btn">{{location.street1}}</button>
+    </a>
+  {{/each}}
 </section>
 
 <script src="js/index.js"></script>
