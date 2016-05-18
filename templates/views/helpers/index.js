@@ -385,40 +385,7 @@ module.exports = function () {
 		return number ? `${number} sq ft` : '';
 	};
 
-
-	// TODO: separate html from here
-	_helpers.imageSlider = function (images = []) {
-		let sliderContent = '';
-
-    const imagesUrlsArray = (images.length > 0)
-      ? images.map(img => img.secure_url)
-      : [placeholderImage];
-
-    imagesUrlsArray
-      .forEach((url, index) => {
-        const labelToPrev = index > 0
-          ? `<label for="img-${index - 1}" class="prev"><i class="fa fa-angle-left"></i></label>`
-          : '';
-        const labelToNext = index + 1 < imagesUrlsArray.length
-          ? `<label for="img-${index + 1}" class="next"><i class="fa fa-angle-right"></i></label>`
-          : '';
-        const checked = index === 0 ? 'checked' : '';
-
-        sliderContent += `
-  			<input type="radio" name="radio-btn" id="img-${index}" ${checked} />
-  			<li class="slide-container">
-  			<div class="slide">
-          <img src="${url}" />
-  					</div>
-  			<div class="slider-nav">
-  				${labelToPrev}
-  				${labelToNext}
-  			</div>
-  			</li>`;
-      });
-
-		return sliderContent;
-	};
+  _helpers.tabs = require('./tabs');
 
   _helpers.detailsList = function (details = []) {
     let list = '';
@@ -444,6 +411,24 @@ module.exports = function () {
 		}
 		return options.inverse(this);
 	};
+
+  _helpers.srcSet = function (cloudinaryImage, ...widths) {
+    let urlSet = '';
+    widths.forEach((width) => {
+      if (typeof width !== 'number') { return; }
+      const options = {
+        hash: {
+          width,
+          crop: 'lfill',
+          gravity: 'center'
+        }
+      };
+      const url = _helpers.cloudinaryUrl(cloudinaryImage, options);
+      urlSet += `\n ${url} ${width}w,`;
+    });
+
+    return urlSet;
+  };
 
 	// Register library helpers
 	const helperRegisterer = {
