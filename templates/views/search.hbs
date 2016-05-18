@@ -86,7 +86,7 @@
     {{#each data.properties}}
       <!-- The data-attributes will be used in the search -->
       <div class="prop-tile"
-        data-price="{{sell.price}}"
+        data-price="{{lookup (lookup this ../acquisitionMode) 'price'}}"
         data-postcode="{{location.postcode}}"
         data-street="{{location.street1}}"
         data-bedrooms="{{bedrooms}}"
