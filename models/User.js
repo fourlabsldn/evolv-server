@@ -1,12 +1,13 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
+const findWhere = require('./utils/findWhere');
 
 /**
  * User Model
  * ==========
  */
 
-var User = new keystone.List('User');
+const User = new keystone.List('User');
 
 User.add({
 	name: { type: Types.Name, required: true, index: true },
@@ -17,7 +18,7 @@ User.add({
 });
 
 // Provide access to Keystone
-User.schema.virtual('canAccessKeystone').get(function() {
+User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 
@@ -31,20 +32,15 @@ User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
  * Collection functions
  */
 
-User.getAdminEmails = function () {
-  return new Promise((resolve, reject) => {
-    const userModel = User.model;
-    const findAdminQuery = userModel.find().where('isAdmin', true);
-    findAdminQuery.exec((err, admins) => {
-      if (err) {
-        reject(err);
-        return;
-      }
+User.findWhere = findWhere;
 
-      const adminEmails = admins.map(admin => admin.email).join(', ');
-      resolve(adminEmails);
+User.getAdminEmails = function () {
+  return this.findWhere('isAdmin', true)
+    .then((admins) => {
+      const adminsEmails = admins.map(admin => admin.email);
+      const commaSeparatedAdminEmails = adminsEmails.join(', ');
+      return commaSeparatedAdminEmails;
     });
-  });
 };
 
 /**
