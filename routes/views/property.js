@@ -29,7 +29,7 @@ exports = module.exports = (req, res, acquisitionMode) => {
       })
       .exec((err, result) => {
         if (!result) {
-          res.sendStatus(404);
+          res.render('404');
           return;
         }
         locals.data.property = result;

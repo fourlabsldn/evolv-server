@@ -23,7 +23,7 @@ keystone.init({
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
-		defaultLayout: 'admin-ui',
+		defaultLayout: 'public',
 		helpers: new require('./templates/views/helpers')(), // eslint-ignore-line new-cap
 		extname: '.hbs'
 	}).engine,
