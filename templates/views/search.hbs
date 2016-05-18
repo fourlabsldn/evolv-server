@@ -117,8 +117,12 @@
             </h2>
 
             <p class="prop-tile-buy-info">
-              <span class="prop-tile-price"> {{#if sell.price}}£ {{sell.price}}{{/if}}</span>
-              <span class="prop-tile-ownership">{{ownership}}</span>
+              <span class="prop-tile-price">
+                {{propertyPrice this ../section}}
+              </span>
+              {{#is ../section "buy"}}
+                <span class="prop-tile-ownership">{{ownership}}</span>
+              {{/is}}
             </p>
           </div>
         </div>

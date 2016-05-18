@@ -352,7 +352,11 @@ module.exports = function () {
 	// =========================================================================
 	// Helpers
 	// =========================================================================
-	// TODO: Make formatCurrency actually do something
+  _helpers.propertyPrice = (property, section) => {
+    const price = property[section].price;
+    return _helpers.formatCurrency(price);
+  };
+
 	_helpers.formatCurrency = (rawNumber) => {
     const num = Number(rawNumber);
     const result = num
