@@ -1,4 +1,10 @@
 
+.property-warning{
+  background-color: $orange;
+  color: white;
+  padding: $padding-el-tiny;
+  margin-bottom: 15px;
+}
 .property-article {
   background-color: $white;
   text-align: left;

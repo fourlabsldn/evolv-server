@@ -1,5 +1,14 @@
 {{#with data.property}}
   <section class="page-section grey-bg">
+
+    {{#unless (lookup (lookup this ../acquisitionMode) 'available')}}
+      <article class="property-warning">
+        <h2>
+          {{propertyUnavailableMessage this}}
+        </h2>
+      </article>
+    {{/unless}}
+
     <article class="property-article">
       <div class="article-row property-article-header">
         <h1>

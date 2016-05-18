@@ -26,7 +26,7 @@ exports = module.exports = (req, res, acquisitionMode) => {
     keystone.list('Property')
       .model.findOne({
 				slug: locals.filters.slug
-			})
+      })
       .exec((err, result) => {
         locals.data.property = result;
         return next(err);
