@@ -20,7 +20,5 @@ exports = module.exports = (req, res) => {
 
   // Render the view
   const viewName = 'let';
-  view.render(viewName, {
-    layout: 'public'
-  });
+  view.render(viewName);
 };

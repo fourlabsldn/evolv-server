@@ -24,7 +24,7 @@ exports = module.exports = (req, res, acquisitionMode) => {
 
   // Render the view
   const viewName = 'search';
-	view.render(viewName, { layout: 'public' });
+	view.render(viewName);
 };
 
 function getProperties(next, locals, acquisitionMode) {

@@ -20,7 +20,5 @@ exports = module.exports = (req, res) => {
   const viewName = 'contact';
   locals.section = viewName;
   // Render the view
-  view.render(viewName, {
-    layout: 'public'
-  });
+  view.render(viewName);
 };

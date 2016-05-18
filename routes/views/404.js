@@ -3,7 +3,7 @@ exports = module.exports = (req, res) => {
 
   // respond with html page
   if (req.accepts('html')) {
-    res.render('404', { url: req.url, layout: 'public' });
+    res.render('404', { url: req.url });
     return;
   }
 

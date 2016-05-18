@@ -15,7 +15,7 @@ exports = module.exports = function (req, res) {
   const viewName = 'index';
 	// Render the view
   locals.section = viewName;
-	view.render(viewName, { layout: 'public' });
+	view.render(viewName);
 };
 
 function loadHomeContent(next, locals) {

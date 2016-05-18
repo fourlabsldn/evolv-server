@@ -23,21 +23,22 @@ exports = module.exports = (req, res, acquisitionMode) => {
 
 	// Load correct property
   view.on('init', (next) => {
-    keystone.list('Property')
-      .model.findOne({
-				slug: locals.filters.slug
-      })
-      .exec((err, result) => {
-        if (!result) {
+    const propertyModel = keystone.list('Property').model;
+    const propertyQuery = propertyModel.findOne({
+			slug: locals.filters.slug
+    });
+
+    propertyQuery.exec((err, result) => {
+        if (result) {
+          locals.data.property = result;
+          next(err);
+        } else {
           res.render('404');
-          return;
         }
-        locals.data.property = result;
-        next(err);
       });
   });
 
 	// Render the view
 	const viewName = 'property';
-	view.render(viewName, { layout: 'public' });
+	view.render(viewName);
 };
