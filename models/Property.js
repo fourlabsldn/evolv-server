@@ -12,6 +12,7 @@ const Property = new keystone.List('Property', {
 });
 
 Property.add({
+  featured: { type: Boolean },
   location: {
     type: Types.Location,
     defaults: { country: 'United Kingdom' },
@@ -80,6 +81,26 @@ Property.schema.pre('save', function (next) {
     next();
   });
 });
+
+/**
+ * Collection functions
+ */
+
+Property.getFeatured = function () {
+  return new Promise((resolve, reject) => {
+    const propertyModel = Property.model;
+    const findFeaturedQuery = propertyModel.find().where('featured', true);
+
+    findFeaturedQuery.exec((err, featuredProperties) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(featuredProperties);
+      }
+    });
+  });
+};
+
 
 Property.defaultColumns = 'location|70%, type|20%';
 Property.register();
