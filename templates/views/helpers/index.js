@@ -352,8 +352,11 @@ module.exports = function () {
 	// =========================================================================
 	// Helpers
 	// =========================================================================
-  _helpers.propertyPrice = (property, section) => {
-    const price = property[section].price;
+  _helpers.propertyPrice = (property, acquisitionMode) => {
+    if (!(property && acquisitionMode)) {
+      return '';
+    }
+    const price = property[acquisitionMode].price;
     return _helpers.formatCurrency(price);
   };
 

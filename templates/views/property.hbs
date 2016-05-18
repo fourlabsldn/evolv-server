@@ -72,13 +72,17 @@
           <div class="property-article-left-column">
             <!-- TODO: Add capitalisation to CSS in here -->
             <ul class="property-info-list">
-              {{#if price}}
-               <!-- TODO: add a helper to format currency -->
-                <li>{{formatCurrency price}}</li>
+
+              {{#if (propertyPrice this ../acquisitionMode)}}
+                <li>{{propertyPrice this ../../acquisitionMode}}</li>
               {{/if}}
-              {{#if ownership}}
-                <li>{{ownership}}</li>
-              {{/if}}
+
+              {{#is ../acquisitionMode 'buy'}}
+                {{#if ownership}}
+                  <li>{{ownership}}</li>
+                {{/if}}
+              {{/is}}
+
               {{#if bedrooms}}
                 <li>{{bedrooms}} beds</li>
               {{/if}}
@@ -121,9 +125,11 @@
                 <li>{{bedrooms}} bedrooms</li>
               {{/if}}
 
-              {{#if ownership}}
-                <li>{{ownership}}</li>
-              {{/if}}
+              {{#is ../acquisitionMode 'buy'}}
+                {{#if ownership}}
+                  <li>{{ownership}}</li>
+                {{/if}}
+              {{/is}}
 
               {{#if size}}
                 <li>Aprox {{size}} sq ft ({{feetToMeters size}} sq m)</li>
@@ -131,7 +137,7 @@
             </ul>
           </div>
         </div>
-        <a class="article-row sole-button" href="/buy">< back to search</a>
+        <a class="article-row sole-button" href="/{{../acquisitionMode}}">< back to search</a>
       </div>
     </article>
   </section>

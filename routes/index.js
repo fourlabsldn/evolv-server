@@ -37,7 +37,11 @@ exports = module.exports = function (app) {
 	app.get('/', routes.views.index);
 	app.get('/rent', (req, res) => routes.views.search(req, res, 'rent'));
 	app.get('/buy?', (req, res) => routes.views.search(req, res, 'buy'));
-	app.get('/property/:slug', routes.views.property);
+
+  app.get('/property/rent/:slug', (req, res) => routes.views.property(req, res, 'rent'));
+  app.get('/property/buy/:slug', (req, res) => routes.views.property(req, res, 'buy'));
+
+	app.get('/buy/property/:slug', routes.views.property);
 	app.get('/let', routes.views.let);
 	app.get('/sell', routes.views.sell);
   app.all('/register', routes.views.register);

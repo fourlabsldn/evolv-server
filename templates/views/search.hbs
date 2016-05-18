@@ -96,7 +96,7 @@
         data-longitude="{{location.longitude}}"
         >
           <div class="prop-tile-crop">
-            <a href="/property/{{slug}}">
+            <a href="/property/{{../acquisitionMode}}/{{slug}}">
 
               <img
                 src="{{cloudinaryUrl images.[0] width=515 height=386 crop='lfill' gravity='center'}}"
@@ -118,9 +118,9 @@
 
             <p class="prop-tile-buy-info">
               <span class="prop-tile-price">
-                {{propertyPrice this ../section}}
+                {{propertyPrice this ../acquisitionMode}}
               </span>
-              {{#is ../section "buy"}}
+              {{#is ../acquisitionMode "buy"}}
                 <span class="prop-tile-ownership">{{ownership}}</span>
               {{/is}}
             </p>
