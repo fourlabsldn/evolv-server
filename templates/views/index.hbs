@@ -64,9 +64,17 @@
   {{#each featuredProperties}}
     <a href="/property/{{slug}}" class="tile">
       <img
-        src="{{cloudinaryUrl images.[0]}}"
+      	srcset="
+          {{cloudinaryUrl images.[0] width=1240 crop='lfill' gravity='center'}}  1240w,
+          {{cloudinaryUrl images.[0] width=1020 crop='lfill' gravity='center'}}  1020w,
+          {{cloudinaryUrl images.[0] width=820 crop='lfill' gravity='center'}}  820w,
+          {{cloudinaryUrl images.[0] width=620 crop='lfill' gravity='center'}}  620w,
+          {{cloudinaryUrl images.[0] width=310 crop='lfill' gravity='center'}}  310w
+         "
+      	sizes="(max-width: 768px) 100vw, 50vw"
+        src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
         alt="{{location.street1}}"
-       />
+      />
       <button class="flat-btn">{{location.street1}}</button>
     </a>
   {{/each}}
