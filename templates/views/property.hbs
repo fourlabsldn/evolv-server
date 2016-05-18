@@ -26,9 +26,9 @@
           <div class="img-slider property-tab-content">
             {{#tabs images.length}}
               <img
-                srcset="{{srcSet images.[0] 1240 1020 820 620 310}}"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+                srcset="{{srcSet (lookup ../images @index) 1200 900 820 620 310}}"
+                sizes="(max-width: 768px) 100vw, 70vw"
+                src="{{cloudinaryUrl (lookup ../images @index) width=700 crop='lfill' gravity='center'}}"
                 alt="{{location.street1}}"
               />
             {{/tabs}}
