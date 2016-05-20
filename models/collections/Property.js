@@ -8,11 +8,10 @@ const Types = keystone.Field.Types;
 const Property = new keystone.List('Property', {
 	map: { name: 'location.street1' },
 	autokey: { path: 'slug', from: 'location.postcode', unique: true },
-	defaultSort: '-location',
+	defaultSort: '-location'
 });
 
 Property.add({
-  featured: { type: Boolean },
   location: {
     type: Types.Location,
     defaults: { country: 'United Kingdom' },
@@ -24,11 +23,13 @@ Property.add({
 	epc: { type: Types.CloudinaryImage },
   buy: {
     available: { type: Boolean, label: 'Available for sale' },
-    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'buy.available': true } }
+		featured: { type: Boolean, dependsOn: { 'buy.available': true }, label: 'Sales Featured' },
+    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'buy.available': true }, label: 'Sales Price' }
   },
   rent: {
-    available: { type: Boolean, label: 'Available to rent' },
-    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'rent.available': true } }
+    available: { type: Boolean, label: 'Available to let' },
+		featured: { type: Boolean, dependsOn: { 'rent.available': true }, label: 'Letting Featured' },
+    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'rent.available': true }, label: 'Lettings Price' }
   },
   bedrooms: { type: Number },
   size: { type: Number },
@@ -91,7 +92,7 @@ Property.schema.pre('save', function (next) {
  * @return {Promise} Will resolve into an array or featured properties
  */
 Property.getFeatured = function () {
-  return this.findWhere('featured', true);
+  return this.findWhere({ $or: [{ 'buy.featured': true }, { 'rent.featured': true }] });
 };
 
 
