@@ -7,7 +7,8 @@ const Types = keystone.Field.Types;
 
 const Property = new keystone.List('Property', {
 	map: { name: 'location.street1' },
-	autokey: { path: 'slug', from: 'location.postcode', unique: true }
+	autokey: { path: 'slug', from: 'location.postcode', unique: true },
+	defaultSort: '-location',
 });
 
 Property.add({
@@ -22,11 +23,11 @@ Property.add({
 	floorPlan: { type: Types.CloudinaryImage },
 	epc: { type: Types.CloudinaryImage },
   buy: {
-    available: { type: Boolean },
+    available: { type: Boolean, label: 'Available for sale' },
     price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'buy.available': true } }
   },
   rent: {
-    available: { type: Boolean },
+    available: { type: Boolean, label: 'Available to rent' },
     price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'rent.available': true } }
   },
   bedrooms: { type: Number },
@@ -35,8 +36,8 @@ Property.add({
     type: Types.Select,
     index: true,
     options: [
-      { value: 'apartment', label: 'House' },
-      { value: 'house', label: 'Apartment' },
+      { value: 'house', label: 'House' },
+      { value: 'apartment', label: 'Apartment' },
       { value: 'office', label: 'Office' }
     ] },
     ownership: {
