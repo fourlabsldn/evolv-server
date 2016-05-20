@@ -88,12 +88,13 @@
             <ul class="property-info-list">
 
               {{#if (propertyPrice this ../acquisitionMode)}}
-                <li>{{propertyPrice this ../../acquisitionMode}}</li>
+                <li>{{propertyPrice this ../../acquisitionMode}} {{#is ../../acquisitionMode 'rent'}} per week{{/is}}</li>
               {{/if}}
+
 
               {{#is ../acquisitionMode 'buy'}}
                 {{#if ownership}}
-                  <li>{{ownership}}</li>
+                  <li>{{titleize ownership}}</li>
                 {{/if}}
               {{/is}}
 
@@ -101,7 +102,7 @@
                 <li>{{bedrooms}} beds</li>
               {{/if}}
               {{#if type}}
-                <li>{{type}}</li>
+                <li>{{titleize type}}</li>
               {{/if}}
               {{#if size}}
                 <li>{{formatSize size}}</li>
