@@ -31,10 +31,9 @@
     <input id="evolv_history3" type="radio" name="items_tabs">
     <input id="evolv_history4" type="radio" name="items_tabs">
 
-    <label class="tab-label" for="evolv_history1"><i class="fa fa-suitcase"></i> <span>{{data.section_2.tab_1.title}}</span></label>
-    <label class="tab-label" for="evolv_history2"><i class="fa fa-rocket"></i><span>{{data.section_2.tab_2.title}}</span></label>
-    <label class="tab-label" for="evolv_history3"><i class="fa fa-car"></i><span>{{data.section_2.tab_3.title}}</span></label>
-    <label class="tab-label" for="evolv_history4"><i class="fa fa-university"></i><span>{{data.section_2.tab_4.title}}</span></label>
+    <label class="tab-label" for="evolv_history1"><i class="fa fa-{{data.section_2.tab_1.icon}}"></i> <span>{{data.section_2.tab_1.title}}</span></label>
+    <label class="tab-label" for="evolv_history2"><i class="fa fa-{{data.section_2.tab_2.icon}}"></i><span>{{data.section_2.tab_2.title}}</span></label>
+    <label class="tab-label" for="evolv_history3"><i class="fa fa-{{data.section_2.tab_3.icon}}"></i><span>{{data.section_2.tab_3.title}}</span></label>
 
     <div class="tab-content">
     <p>{{data.section_2.tab_1.content}}</p>
