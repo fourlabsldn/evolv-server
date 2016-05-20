@@ -28,7 +28,7 @@
               <img
                 srcset="{{srcSet (lookup ../images @index) 1200 900 820 620 310}}"
                 sizes="(max-width: 768px) 100vw, 70vw"
-                src="{{cloudinaryUrl (lookup ../images @index) width=700 crop='lfill' gravity='center'}}"
+                src="{{cloudinaryUrl (lookup ../images @index) width=700 crop='lfill' gravity='center' flags='progressive'}}"
                 alt="{{location.street1}}"
               />
             {{/tabs}}
