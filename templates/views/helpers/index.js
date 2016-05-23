@@ -48,7 +48,6 @@ module.exports = function () {
   _helpers.feetToMeters = require('./custom/feetToMeters');
   _helpers.srcSet = require('./custom/srcSet');
 
-
 	// Register library helpers
 	const helperRegisterer = {
 		registerHelper(helperName, helperFunc) {

@@ -1,5 +1,6 @@
 /* globals PROPERTY_INFO*/
 import assert from './_shared/assert.js';
+import ModalController from './_shared/ModalController';
 
 assert(PROPERTY_INFO, 'No PROPERTY_INFO object provided.');
 
@@ -71,4 +72,11 @@ const MAP_LABEL_SELECTOR = '.js-map-label';
       mapController.centerOnMarkers();
     }, 50);
   });
+}());
+
+
+(function bookViewingModal() {
+  const modalEl = document.querySelector('.js-book-viewing-modal');
+  const toggleButton = document.querySelector('.js-book-viewing-toggle');
+  return new ModalController(modalEl, toggleButton);
 }());

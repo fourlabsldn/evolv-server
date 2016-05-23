@@ -1,0 +1,7 @@
+{{#if isAjaxRequest}}
+  {{> contactForm ../this.data}}
+{{else}}
+  <section class="page-section white-bg">
+    {{> contactForm data}}
+  </section>
+{{/if}}

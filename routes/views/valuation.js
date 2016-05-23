@@ -22,6 +22,8 @@ exports = module.exports = (req, res) => {
   const viewName = 'valuation';
   locals.section = viewName;
 
-  const renderOptions = isAjaxRequest(req) ? { layout: null } : {};
-  view.render(viewName, renderOptions);
+  locals.isAjaxRequest = isAjaxRequest(req);
+  const renderOptions = locals.isAjaxRequest ? { layout: null } : {};
+
+  view.render('form', renderOptions);
 };

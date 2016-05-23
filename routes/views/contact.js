@@ -20,7 +20,10 @@ exports = module.exports = (req, res) => {
 
   const viewName = 'contact';
   locals.section = viewName;
+
+  locals.isAjaxRequest = isAjaxRequest(req);
+  const renderOptions = locals.isAjaxRequest ? { layout: null } : {};
+
   // Render the view
-  const renderOptions = isAjaxRequest(req) ? { layout: null } : {};
-  view.render(viewName, renderOptions);
+  view.render('form', renderOptions);
 };
