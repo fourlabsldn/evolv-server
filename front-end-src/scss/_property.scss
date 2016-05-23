@@ -16,12 +16,12 @@
   padding: $padding-el-big (2 * $padding-el-big);
   width: 100%;
 
-  h1 {
+  > h1 {
     font-size: $font-big;
     margin: auto 0;
   }
 
-  h2 {
+  > h2 {
     font-size: $font-big;
     margin: auto 0;
   }
