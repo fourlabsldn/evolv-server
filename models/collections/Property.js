@@ -77,7 +77,7 @@ Property.schema.virtual('hasGeoInfo').get(function () {
 Property.schema.pre('save', function (next) {
   // Insert geolocation data
   const region = 'United Kingdom';
-  const updateRecord = true;
+  const updateRecord = 'overwrite';
   this._.location.googleLookup(region, updateRecord, () => {
     next();
   });
