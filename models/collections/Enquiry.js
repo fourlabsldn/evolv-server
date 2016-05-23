@@ -43,19 +43,15 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 		callback = () => {};
 	}
 
-  const users = keystone.list('User');
   const emailSubject = 'New Enquiry for Evolv';
   const emailHeading = `<h3>${emailSubject}</h3>`;
   const emailBody = databaseRecordToHtml(Enquiry, this);
   const emailContent = emailHeading + emailBody;
 
-  users.getAdminEmails()
-  .then((adminEmails) => {
-    return email.send({
-      to: adminEmails,
+  email.send({
+      to: 'sales@evolv.london, lettings@evolv.london',
       subject: emailSubject,
       html: emailContent
-    });
   })
   .then(callback);
 };

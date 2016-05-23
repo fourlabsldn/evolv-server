@@ -45,19 +45,15 @@ Registration.schema.methods.sendNotificationEmail = function (callback) {
 		callback = () => {};
 	}
 
-  const users = keystone.list('User');
   const emailSubject = 'New Registration for Evolv';
   const emailHeading = `<h3>${emailSubject}</h3>`;
   const emailBody = databaseRecordToHtml(Registration, this);
   const emailContent = emailHeading + emailBody;
 
-  users.getAdminEmails()
-  .then((adminEmails) => {
-    return email.send({
-      to: adminEmails,
-      subject: emailSubject,
-      html: emailContent
-    });
+  email.send({
+    to: 'sales@evolv.london, lettings@evolv.london',
+    subject: emailSubject,
+    html: emailContent
   })
   .then(callback);
 };
