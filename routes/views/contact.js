@@ -1,6 +1,7 @@
 const keystone = require('keystone');
 const Enquiry = keystone.list('Enquiry');
 const ContactForm = require('./helpers/contactForm');
+const isAjaxRequest = require('./helpers/isAjaxRequest');
 
 exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
@@ -20,5 +21,6 @@ exports = module.exports = (req, res) => {
   const viewName = 'contact';
   locals.section = viewName;
   // Render the view
-  view.render(viewName);
+  const renderOptions = isAjaxRequest(req) ? { layout: null } : {};
+  view.render(viewName, renderOptions);
 };

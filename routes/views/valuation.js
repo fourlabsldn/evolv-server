@@ -1,6 +1,7 @@
 const keystone = require('keystone');
 const ValuationRequest = keystone.list('ValuationRequest');
 const ContactForm = require('./helpers/contactForm');
+const isAjaxRequest = require('./helpers/isAjaxRequest');
 
 exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
@@ -21,18 +22,6 @@ exports = module.exports = (req, res) => {
   const viewName = 'valuation';
   locals.section = viewName;
 
-  // Render the view
-  const ajaxSources = ['XMLHttpRequest', 'fetch'];
-  const requestSource = req.headers['x-requested-with'];
-  const pageRequestedViaAjax = ajaxSources.indexOf(requestSource) > -1;
-
-  // Send just form if it was requested via ajax
-  const renderOptions = pageRequestedViaAjax ? { layout: null } : {};
-
-  console.log(
-    `ajaxSources : ${JSON.stringify(ajaxSources)} ,
-    requestSource: "${requestSource}",
-    pageRequestedViaAjax: ${pageRequestedViaAjax}
-    `);
+  const renderOptions = isAjaxRequest(req) ? { layout: null } : {};
   view.render(viewName, renderOptions);
 };
