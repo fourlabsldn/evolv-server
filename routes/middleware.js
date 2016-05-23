@@ -21,6 +21,7 @@ const _ = require('underscore');
 exports.initLocals = function (req, res, next) {
 	const locals = res.locals;
 	locals.user = req.user;
+  locals.googleMapsKey = process.env.GOOGLE_BROWSER_KEY;
 	next();
 };
 
