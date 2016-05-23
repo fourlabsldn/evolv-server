@@ -1,6 +1,6 @@
 const keystone = require('keystone');
 const Enquiry = keystone.list('Enquiry');
-const ContactForm = require('./modules/contactForm');
+const ContactForm = require('./helpers/contactForm');
 
 exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
