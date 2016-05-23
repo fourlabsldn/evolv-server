@@ -6,6 +6,7 @@ const isAjaxRequest = require('./helpers/isAjaxRequest');
 exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
   const locals = res.locals;
+  locals.title = 'Register';
 
   const contactForm = new ContactForm({
     databaseModel: Registration,

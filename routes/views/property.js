@@ -31,6 +31,7 @@ exports = module.exports = (req, res, acquisitionMode) => {
     propertyQuery.exec((err, result) => {
         if (result) {
           locals.data.property = result;
+          locals.title = result.location.street1;
           next(err);
         } else {
           res.render('404');

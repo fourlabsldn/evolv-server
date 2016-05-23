@@ -6,6 +6,7 @@ const isAjaxRequest = require('./helpers/isAjaxRequest');
 exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
   const locals = res.locals;
+  locals.title = 'Contact us';
 
   const contactForm = new ContactForm({
     databaseModel: Enquiry,

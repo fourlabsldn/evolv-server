@@ -4,6 +4,7 @@ exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
   const locals = res.locals;
   locals.data = {};
+  locals.title = 'Sell';
 
   // Load page content from database
   view.on('init', (next) => {

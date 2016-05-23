@@ -9,9 +9,10 @@ const keystone = require('keystone');
  *                                  	buy also the name of a field in the Property collection.
  * @return {[type]} [description]
  */
-exports = module.exports = (req, res, acquisitionMode) => {
+exports = module.exports = (req, res, acquisitionMode = '') => {
   const view = new keystone.View(req, res);
   const locals = res.locals;
+  locals.title = acquisitionMode;
 
   locals.acquisitionMode = acquisitionMode;
   locals.filters = {
