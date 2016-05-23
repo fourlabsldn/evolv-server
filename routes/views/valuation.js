@@ -22,5 +22,17 @@ exports = module.exports = (req, res) => {
   locals.section = viewName;
 
   // Render the view
-  view.render(viewName, { layout: null });
+  const ajaxSources = ['XMLHttpRequest', 'fetch'];
+  const requestSource = req.headers['x-requested-with'];
+  const pageRequestedViaAjax = ajaxSources.indexOf(requestSource) > -1;
+
+  // Send just form if it was requested via ajax
+  const renderOptions = pageRequestedViaAjax ? { layout: null } : {};
+
+  console.log(
+    `ajaxSources : ${JSON.stringify(ajaxSources)} ,
+    requestSource: "${requestSource}",
+    pageRequestedViaAjax: ${pageRequestedViaAjax}
+    `);
+  view.render(viewName, renderOptions);
 };

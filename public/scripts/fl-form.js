@@ -148,8 +148,11 @@ var FlForm = function () {
       // Prepare request options
       var method = form.getAttribute('method') || 'GET';
       var body = method.toUpperCase() === 'POST' ? new FormData(form) : undefined;
+      var headers = new Headers();
+      headers.append("X-Requested-With", "fetch");
       var fetchOptions = {
         method: method,
+        headers: headers,
         body: body,
         cache: 'default',
         mode: config.mode,

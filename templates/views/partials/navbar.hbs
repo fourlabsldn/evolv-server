@@ -76,6 +76,7 @@
           onLoad: function (xdiv) {
             var req = new XMLHttpRequest();
             req.open('GET', '/valuation', true);
+            req.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             req.send();
             req.onreadystatechange =function () {
               if (req.readyState == 4 && req.status == 200) {
