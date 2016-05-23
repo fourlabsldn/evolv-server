@@ -3,6 +3,11 @@
   padding: 2em 5em;
   max-width: 600px;
   margin: auto;
+
+  @media (max-width: $screen-xs-max) {
+    padding-left: $padding-side-xs-screen;
+    padding-right: $padding-side-xs-screen;
+  }
 }
 .ContactForm_mainTitle {
 
