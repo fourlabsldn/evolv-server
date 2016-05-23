@@ -24,14 +24,20 @@
         <input id="photos_tab" type="radio" name="article_property" checked>
         <div class="tab-content property-tab">
           <div class="img-slider property-tab-content">
-            {{#tabs images.length}}
-              <img
-                srcset="{{srcSet (lookup ../images @index) 1200 900 820 620 310}}"
-                sizes="(max-width: 768px) 100vw, 70vw"
-                src="{{cloudinaryUrl (lookup ../images @index) width=700 crop='lfill' gravity='center' flags='progressive'}}"
-                alt="{{location.street1}}"
-              />
-            {{/tabs}}
+            {{#if images.length}}
+              {{#tabs images.length}}
+                <img
+                  srcset="{{srcSet (lookup ../images @index) 1200 900 820 620 310}}"
+                  sizes="(max-width: 768px) 100vw, 70vw"
+                  src="{{cloudinaryUrl (lookup ../images @index) width=700 crop='lfill' gravity='center' flags='progressive'}}"
+                  alt="{{location.street1}}"
+                />
+              {{/tabs}}
+            {{else}}
+              {{#tabs 1}}
+                <img src="{{cloudinaryUrl}}" alt="{{location.street1}}" />
+              {{/tabs}}
+            {{/if}}
           </div>
         </div>
 
