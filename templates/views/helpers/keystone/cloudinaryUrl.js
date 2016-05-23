@@ -12,7 +12,6 @@ const placeholderImage = '/img/property-placeholder.svg';
 // Returns an src-string for a cloudinary image or for a default placeholder image
 
 module.exports = function cloudinaryUrl(context, options) {
-
   // if we dont pass in a context and just kwargs
   // then `this` refers to our default scope block and kwargs
   // are stored in context.hash
@@ -23,8 +22,10 @@ module.exports = function cloudinaryUrl(context, options) {
     context = this;
   }
 
-  // safe guard to ensure context is never null
-  context = context === null ? undefined : context;
+  options = options || {};
+  options.hash.flags = options.hash.flags
+      ? options.hash.flags + ', progressive'
+      : 'progressive';
 
   if ((context) && (context.public_id)) {
     const imageName = context.public_id.concat('.', context.format);
