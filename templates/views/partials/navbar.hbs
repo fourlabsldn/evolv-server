@@ -71,22 +71,8 @@
       <button class="modal-closeBtn js-modal-closeBtn"><i class="fa fa-times" aria-hidden="true"></i></button>
 
       <script>
-        var valuationFormConfig = {
-          // Load valuation Modal from server
-          onLoad: function (xdiv) {
-            var req = new XMLHttpRequest();
-            req.open('GET', '/valuation', true);
-            req.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            req.send();
-            req.onreadystatechange =function () {
-              if (req.readyState == 4 && req.status == 200) {
-                xdiv.innerHTML = req.responseText;
-              }
-            };
-          }
-        }
+        var valuationFormConfig = { load: '/valuation' }; // Load valuation Modal from server
       </script>
       <x-div data-controller="/scripts/fl-form.js" data-config="valuationFormConfig"></x-div>
-
   </main>
 </div>

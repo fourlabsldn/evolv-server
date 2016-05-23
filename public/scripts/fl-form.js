@@ -106,6 +106,8 @@ assert.warn = function warn(condition, errorMessage) {
 
 var FlForm = function () {
   function FlForm(xdiv) {
+    var _this = this;
+
     var config = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
     babelHelpers.classCallCheck(this, FlForm);
 
@@ -120,23 +122,42 @@ var FlForm = function () {
     this.setupEventListeners();
 
     // trigger load event
-    this.config.onLoad(xdiv);
+    this.loadInitialContent().then(function () {
+      _this.config.onLoad(xdiv);
+    });
   }
 
-  /**
-   * @method submitForm
-   * @param  {HTMLElement} form - The form element to be submitted.
-   * @return {Promise}  - A promise to be resolved with the response content
-   * 												when the form submission response arrive
-   * 												or with null if there is no submission URL.
-   */
-
-
   babelHelpers.createClass(FlForm, [{
+    key: 'loadInitialContent',
+    value: function loadInitialContent() {
+      var _this2 = this;
+
+      var config = arguments.length <= 0 || arguments[0] === undefined ? this.config : arguments[0];
+
+      var url = typeof config.load === 'string' ? config.load : undefined;
+
+      if (!url) {
+        return Promise.resolve();
+      }
+
+      return this.sendRequest(url, 'get').then(function (res) {
+        return _this2.processFormResponse(res);
+      }).catch(function (err) {
+        return assert.warn(false, err);
+      });
+    }
+
+    /**
+     * @method submitForm
+     * @param  {HTMLElement} form - The form element to be submitted.
+     * @return {Promise}  - A promise to be resolved with the response content
+     * 												when the form submission response arrive
+     * 												or with null if there is no submission URL.
+     */
+
+  }, {
     key: 'submitForm',
     value: function submitForm(form) {
-      var config = arguments.length <= 1 || arguments[1] === undefined ? this.config : arguments[1];
-
       // Check that a valid element triggered the submit event.
       assert(form.tagName === 'FORM', 'Submit event was fired without a form element.');
 
@@ -148,30 +169,19 @@ var FlForm = function () {
       // Prepare request options
       var method = form.getAttribute('method') || 'GET';
       var body = method.toUpperCase() === 'POST' ? new FormData(form) : undefined;
-      var headers = new Headers();
-      headers.append("X-Requested-With", "fetch");
-      var fetchOptions = {
-        method: method,
-        headers: headers,
-        body: body,
-        cache: 'default',
-        mode: config.mode,
-        credentials: config.credentials
-      };
 
-      // Send request
-      return fetch(url, fetchOptions);
+      return this.sendRequest(url, method, body);
     }
   }, {
     key: 'processFormResponse',
     value: function processFormResponse(response, status) {
-      var _this = this;
+      var _this3 = this;
 
       // If we have a response object rather than plain text,
       // then come back when we have plain text.
       if (response instanceof Response) {
         response.text().then(function (text) {
-          _this.processFormResponse(text, response.status);
+          _this3.processFormResponse(text, response.status);
         });
         return;
       }
@@ -203,7 +213,7 @@ var FlForm = function () {
   }, {
     key: 'setupEventListeners',
     value: function setupEventListeners() {
-      var _this2 = this;
+      var _this4 = this;
 
       var xdiv = arguments.length <= 0 || arguments[0] === undefined ? this.xdiv : arguments[0];
 
@@ -213,8 +223,8 @@ var FlForm = function () {
 
         // Now we just submit and process the reponse
         var form = e.target;
-        _this2.submitForm(form).then(function (res) {
-          return _this2.processFormResponse(res);
+        _this4.submitForm(form).then(function (res) {
+          return _this4.processFormResponse(res);
         }).catch(function (err) {
           return assert.warn(false, err);
         });
@@ -226,6 +236,25 @@ var FlForm = function () {
       var xdiv = arguments.length <= 1 || arguments[1] === undefined ? this.xdiv : arguments[1];
 
       xdiv.innerHTML = content;
+    }
+  }, {
+    key: 'sendRequest',
+    value: function sendRequest(url, method, body) {
+      var config = arguments.length <= 3 || arguments[3] === undefined ? this.config : arguments[3];
+
+      // Prepare request options
+      var headers = new Headers({ 'X-Requested-With': 'fetch' });
+      var fetchOptions = {
+        method: method,
+        body: body,
+        headers: headers,
+        cache: 'default',
+        mode: config.mode,
+        credentials: config.credentials
+      };
+
+      // Send request
+      return fetch(url, fetchOptions);
     }
   }]);
   return FlForm;
