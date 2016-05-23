@@ -9,8 +9,6 @@
  */
 
 const _ = require('underscore');
-const ContactForm = require('./views/modules/contactForm');
-const keystone = require('keystone');
 
 /**
 	Initialises the standard view locals
@@ -20,7 +18,7 @@ const keystone = require('keystone');
 	or replace it with your own templates / logic.
 */
 
-exports.initLocals = function(req, res, next) {
+exports.initLocals = function (req, res, next) {
 	const locals = res.locals;
 	locals.user = req.user;
 	next();
