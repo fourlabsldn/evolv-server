@@ -61,12 +61,12 @@ Property.add({
 
 Property.schema.virtual('location.latitude').get(function () {
   const geo = this.location.geo || [];
-  return geo[0];
+  return geo[1];
 });
 
 Property.schema.virtual('location.longitude').get(function () {
   const geo = this.location.geo || [];
-  return geo[1];
+  return geo[0];
 });
 
 Property.schema.virtual('hasGeoInfo').get(function () {
