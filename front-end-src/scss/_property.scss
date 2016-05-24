@@ -41,10 +41,7 @@
 
 .article-tabs {
   @extend .navy-bg;
-  align-items: flex-end;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  display: block;
   list-style: none;
   padding: 0;
 }
