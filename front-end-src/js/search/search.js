@@ -12,8 +12,8 @@ const SEARCH_INFO_SELECTOR = '.js-search-info';
 /**
  * Display properties on the map
  * @function showOnMap
- * @param  {Array} coordinates Each item in the 'coordinate' array
- *                 must have a 'latitude' and a 'longitude' property
+ * @param  {Array<Object>} coordinates Each item in the 'coordinate' array
+ *                 must have a 'latitude', a 'longitude' and a 'url' property
  * @param  {Object} mapController
  * @return {void}
  */
@@ -59,6 +59,7 @@ function initPage() {
         }
 
         coordinates.push({
+          url: tile.dataset.url,
           latitude: tile.dataset.latitude,
           longitude: tile.dataset.longitude
         });

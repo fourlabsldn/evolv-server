@@ -1,4 +1,6 @@
 /* globals google*/
+/* eslint-env browser */
+
 import MarkerClusterer from './_MarkerClusterer.js';
 
 export default class MapController {
@@ -13,46 +15,19 @@ export default class MapController {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       zoom: 14,
       scrollwheel: false,
-      maxZoom: 17,
+      maxZoom: 17
     };
 
     const map = new google.maps.Map(targetObject, options);
     return map;
   }
 
-  createRandomMarkers(amount = 5, map = this.map) {
-    const lngSpan = 0.17;
-    const latSpan = 0.03;
-    const myLatLng = new google.maps.LatLng(51.500524, -0.1769147);
-    const markers = [];
-
-    if (map === this.map) {
-      this.clearAllMarkers(this.markers);
-      this.markers = markers;
-    }
-
-    // Create some markers
-    for (let i = 1; i < amount; i++) {
-      const location = new google.maps.LatLng(
-        myLatLng.lat() - latSpan / 2 + latSpan * Math.random(),
-        myLatLng.lng() - lngSpan / 2 + lngSpan * Math.random());
-
-      const marker = new google.maps.Marker({
-        position: location,
-        map,
-      });
-
-      markers.push(marker);
-    }
-
-    this.createCluster(markers, map);
-    this.centerOnMarkers(markers, map);
-    return markers;
-  }
-
   /**
    * @method createMarkersFromCoordinates
-   * @param  {Array} coordinates Each element must have a latitude and a longitude
+   * @param  {Array<Object>} coordinates Each element must have a latitude and a longitude
+   * @param  {String} coordinates[].latitude
+   * @param  {String} coordinates[].latitude
+   * @param  {String} coordinates[].url
    * @param  {Object} map   Google Maps Object
    * @return {Array[Object]}
    */
@@ -69,10 +44,16 @@ export default class MapController {
       const location = new google.maps.LatLng(coord.latitude, coord.longitude);
       const marker = new google.maps.Marker({
         position: location,
-        map,
+        icon: '/img/marker.svg',
+        map
       });
 
       markers.push(marker);
+
+      // Make marker clickable
+      google.maps.event.addListener(marker, 'click', () => {
+        window.location.href = coord.url;
+      });
     }
 
     this.centerOnMarkers(markers, map);
@@ -95,9 +76,9 @@ export default class MapController {
         textColor: 'white',
         url: '/img/marker.svg',
         height: 52,
-        width: 31,
+        width: 31
       }],
-      minimumClusterSize: 1,
+      minimumClusterSize: 2
     };
 
     const markerCluster = new MarkerClusterer(map, markers, markerClustererOptions);

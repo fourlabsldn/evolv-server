@@ -1450,42 +1450,13 @@ var MapController = function () {
       var map = new google.maps.Map(targetObject, options);
       return map;
     }
-  }, {
-    key: 'createRandomMarkers',
-    value: function createRandomMarkers() {
-      var amount = arguments.length <= 0 || arguments[0] === undefined ? 5 : arguments[0];
-      var map = arguments.length <= 1 || arguments[1] === undefined ? this.map : arguments[1];
-
-      var lngSpan = 0.17;
-      var latSpan = 0.03;
-      var myLatLng = new google.maps.LatLng(51.500524, -0.1769147);
-      var markers = [];
-
-      if (map === this.map) {
-        this.clearAllMarkers(this.markers);
-        this.markers = markers;
-      }
-
-      // Create some markers
-      for (var i = 1; i < amount; i++) {
-        var location = new google.maps.LatLng(myLatLng.lat() - latSpan / 2 + latSpan * Math.random(), myLatLng.lng() - lngSpan / 2 + lngSpan * Math.random());
-
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-
-        markers.push(marker);
-      }
-
-      this.createCluster(markers, map);
-      this.centerOnMarkers(markers, map);
-      return markers;
-    }
 
     /**
      * @method createMarkersFromCoordinates
-     * @param  {Array} coordinates Each element must have a latitude and a longitude
+     * @param  {Array<Object>} coordinates Each element must have a latitude and a longitude
+     * @param  {String} coordinates[].latitude
+     * @param  {String} coordinates[].latitude
+     * @param  {String} coordinates[].url
      * @param  {Object} map   Google Maps Object
      * @return {Array[Object]}
      */
@@ -1508,16 +1479,26 @@ var MapController = function () {
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = coordinates[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var _loop = function _loop() {
           var coord = _step.value;
 
           var location = new google.maps.LatLng(coord.latitude, coord.longitude);
           var marker = new google.maps.Marker({
             position: location,
+            icon: '/img/marker.svg',
             map: map
           });
 
           markers.push(marker);
+
+          // Make marker clickable
+          google.maps.event.addListener(marker, 'click', function () {
+            window.location.href = coord.url;
+          });
+        };
+
+        for (var _iterator = coordinates[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          _loop();
         }
       } catch (err) {
         _didIteratorError = true;
@@ -1586,7 +1567,7 @@ var MapController = function () {
           height: 52,
           width: 31
         }],
-        minimumClusterSize: 1
+        minimumClusterSize: 2
       };
 
       var markerCluster = new MarkerClusterer(map, markers, markerClustererOptions);
