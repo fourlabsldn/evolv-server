@@ -234,6 +234,7 @@
 @media (max-width: $screen-xs-max) {
   .article-row {
     flex-flow: row wrap;
+    padding: 0;
 
     h1, h2, h3 {
       text-align: center;
@@ -253,10 +254,13 @@
     }
   }
 
+
   .article-tabs-bottom-bar {
     display: block;
     text-align: center;
-    .property-article-side-buttons,
+    .property-article-side-buttons {
+      display: none;
+    }
     .article-tabs-labels{
       padding: 0;
       display: inline;
@@ -268,7 +272,11 @@
   }
 
   .property-info-list {
-    text-align: center;
+    text-align: left;
+    li {
+      display: block;
+      border: 0;
+    }
   }
 
   .property-article-header-info,
