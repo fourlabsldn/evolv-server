@@ -218,16 +218,8 @@ function hideAndShow() {
   var toggleNavbarBtn = document.querySelector('.js-navbar-toggle-button');
   var navbar = document.querySelector('.navbar');
   var showNavbarClass = 'show-navbar';
-
-  var minimumDelay = 100;
-  var lastNavbarChange = Date.now();
-  function enoughDelay() {
-    if (Date.now() - lastNavbarChange < minimumDelay) {
-      return false;
-    }
-    lastNavbarChange = Date.now();
-    return true;
-  }
+  var mousePosition = { x: 0, y: 0 };
+  var isHomeScreen = window.PAGE_INFO !== undefined && window.PAGE_INFO.name === 'home';
 
   function isSmallScreen() {
     return window.innerWidth <= 768;
@@ -241,17 +233,44 @@ function hideAndShow() {
     document.body.classList.remove(showNavbarClass);
   }
 
-  toggleNavbarBtn.addEventListener('mouseenter', function () {
-    if (!isSmallScreen() && enoughDelay()) {
-      showNavbar();
-    }
-  });
+  function registerMouseMove(e) {
+    mousePosition.x = e.pageX;
+    mousePosition.y = e.pageY;
+  }
 
-  navbar.addEventListener('mouseleave', function () {
-    if (!isSmallScreen() && enoughDelay()) {
+  function mouseOutOfNavbar() {
+    var navbox = navbar.getBoundingClientRect();
+    var tolerance = 100; // Amount out of navbar where it still shouldn't hide.
+    var insideVertically = navbox.top < mousePosition.y && mousePosition.y < navbox.bottom + tolerance;
+    var insideHorizontally = navbox.left < mousePosition.x && mousePosition.x < navbox.right;
+    return !(insideVertically && insideHorizontally);
+  }
+
+  function checkIfShouldHideNavbar() {
+    console.log('Checking');
+    if (mouseOutOfNavbar()) {
+      window.removeEventListener('mousemove', registerMouseMove);
       hideNavbar();
+    } else {
+      requestAnimationFrame(checkIfShouldHideNavbar);
     }
-  });
+  }
+
+  if (isHomeScreen) {
+    toggleNavbarBtn.addEventListener('mouseenter', function () {
+      if (!isSmallScreen()) {
+        showNavbar();
+      }
+    });
+
+    navbar.addEventListener('mouseleave', function (e) {
+      if (!isSmallScreen()) {
+        registerMouseMove(e);
+        window.addEventListener('mousemove', registerMouseMove);
+        checkIfShouldHideNavbar();
+      }
+    });
+  }
 }
 
 function activeButton(pageNameParam) {
