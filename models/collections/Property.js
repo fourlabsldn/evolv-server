@@ -32,7 +32,7 @@ Property.add({
     price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'rent.available': true }, label: 'Lettings Price' }
   },
   bedrooms: { type: Number },
-  size: { type: Number },
+  size: { type: Number, label: 'Size (sq ft)'},
   type: {
     type: Types.Select,
     index: true,
