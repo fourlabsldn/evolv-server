@@ -523,6 +523,9 @@ var ModalController = function () {
   }, {
     key: 'clickIsOutsideContent',
     value: function clickIsOutsideContent(e) {
+      if (e.pageX === 0 && e.pageY === 0) {
+        return;
+      }
       var contentRect = this.modalContent.getBoundingClientRect();
 
       var insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;

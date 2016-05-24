@@ -60,6 +60,7 @@ export default class ModalController {
   }
 
   clickIsOutsideContent(e) {
+    if (e.pageX === 0 && e.pageY === 0) { return; }
     const contentRect = this.modalContent.getBoundingClientRect();
 
     const insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;
