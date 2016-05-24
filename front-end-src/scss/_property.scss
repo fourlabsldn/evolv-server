@@ -254,20 +254,15 @@
   }
 
   .article-tabs-bottom-bar {
-    flex-flow: row wrap;
-    & > * {
-      flex-grow: 2;
-      flex-shrink: 1;
-      text-align: center;
-    }
-
+    display: block;
+    text-align: center;
     .property-article-side-buttons,
     .article-tabs-labels{
       padding: 0;
-      display: flex;
+      display: inline;
       & > * {
-        padding-bottom: $padding-el-medium;
-        padding-top: $padding-el-medium;
+        padding-bottom: $padding-el-big;
+        padding-top: $padding-el-big;
       }
     }
   }
