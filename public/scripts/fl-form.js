@@ -207,7 +207,7 @@ var FlForm = function () {
         return null;
       } : this.config.onResponse;
 
-      this.config.credentials = config.credentials ? 'include' : 'omit';
+      this.config.credentials = config.credentials ? 'include' : '';
       this.config.mode = config.credentials ? 'cors' : 'same-origin';
     }
   }, {
