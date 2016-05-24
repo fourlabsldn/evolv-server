@@ -19,6 +19,7 @@
     "sanitize-html": "^1.11.4",
     "swag": "^0.7.0",
     "underscore": "^1.8.3",
+    "whatwg-fetch": "^1.0.0",
     "x-div": "^1.0.2"
   },
   "devDependencies": {
