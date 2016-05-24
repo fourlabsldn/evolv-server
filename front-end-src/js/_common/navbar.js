@@ -3,7 +3,6 @@
 
 import assert from '../_shared/assert';
 import ArrayHighlighter from '../_shared/ActiveHighlighter';
-import ModalController from '../_shared/ModalController';
 
 function hideAndShow() {
   const toggleNavbarBtn = document.querySelector('.js-navbar-toggle-button');
@@ -163,16 +162,6 @@ function initSearchBarButtons() {
     searchForm.action = rentBtnTarget;
     searchForm.submit();
   });
-
-  // Setup valuation modal
-  const valuationModalSelector = '.js-navbar-modal-valuation-modal';
-  const valuationModal = document.querySelector(valuationModalSelector);
-  assert(valuationModal && valuationModal.nodeName, 'No valuation modal found.');
-
-  const modalToggleSelector = '.js-valuation-modal-toggle';
-  const modalToggle = document.querySelector(modalToggleSelector);
-
-  new ModalController(valuationModal, modalToggle); // eslint-disable-line no-new
 }
 
 

@@ -214,88 +214,6 @@ var ActiveHighlighter = function ActiveHighlighter() {
   }
 };
 
-var modalHiddenClass = 'modal--hidden';
-var modalContentSelector = '.js-modal-content';
-var closeBtnSelector = '.js-modal-closeBtn';
-
-var ModalController = function () {
-  function ModalController(modalEl, toggleButton) {
-    var _this = this;
-
-    babelHelpers.classCallCheck(this, ModalController);
-
-    assert(modalEl, 'No modal element provided');
-    this.modalEl = modalEl;
-
-    this.modalContent = modalEl.querySelector(modalContentSelector);
-    assert(this.modalContent, 'No modal content element found.');
-
-    this.closeBtn = modalEl.querySelector(closeBtnSelector);
-    assert(this.modalContent, 'No close button found for modal.');
-    this.closeBtn.addEventListener('click', function () {
-      return _this.close();
-    });
-
-    if (toggleButton) {
-      this.toggleButton = toggleButton;
-      this.toggleButton.addEventListener('click', function () {
-        return _this.isOpen() ? _this.close() : _this.open();
-      });
-    }
-
-    this.controllerClickListener = this.closeController.bind(this);
-
-    // Set listeners for current state
-    if (this.isOpen()) {
-      this.open();
-    } else {
-      this.close();
-    }
-  }
-
-  babelHelpers.createClass(ModalController, [{
-    key: 'isOpen',
-    value: function isOpen() {
-      return !this.modalEl.classList.contains(modalHiddenClass);
-    }
-  }, {
-    key: 'open',
-    value: function open() {
-      this.modalEl.classList.remove(modalHiddenClass);
-      // Click has to be in the capturing phase, otherwise the bubbling click from
-      // the toggle button will immediately close the modal.
-      document.body.addEventListener('click', this.controllerClickListener, true);
-    }
-  }, {
-    key: 'close',
-    value: function close() {
-      this.modalEl.classList.add(modalHiddenClass);
-      document.body.removeEventListener('click', this.controllerClickListener, true);
-    }
-  }, {
-    key: 'closeController',
-    value: function closeController(e) {
-      var modalOpen = this.isOpen();
-      if (this.clickIsOutsideContent(e) && modalOpen) {
-        this.close();
-      } else if (!modalOpen) {
-        assert(false, 'Problem in openCloseController. Triggered with modal closed.');
-      }
-    }
-  }, {
-    key: 'clickIsOutsideContent',
-    value: function clickIsOutsideContent(e) {
-      var contentRect = this.modalContent.getBoundingClientRect();
-
-      var insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;
-      var insideHorizontally = contentRect.left < e.pageX && e.pageX < contentRect.right;
-
-      return !(insideVertically && insideHorizontally);
-    }
-  }]);
-  return ModalController;
-}();
-
 function hideAndShow() {
   var toggleNavbarBtn = document.querySelector('.js-navbar-toggle-button');
   var navbar = document.querySelector('.navbar');
@@ -476,16 +394,6 @@ function initSearchBarButtons() {
     searchForm.action = rentBtnTarget;
     searchForm.submit();
   });
-
-  // Setup valuation modal
-  var valuationModalSelector = '.js-navbar-modal-valuation-modal';
-  var valuationModal = document.querySelector(valuationModalSelector);
-  assert(valuationModal && valuationModal.nodeName, 'No valuation modal found.');
-
-  var modalToggleSelector = '.js-valuation-modal-toggle';
-  var modalToggle = document.querySelector(modalToggleSelector);
-
-  new ModalController(valuationModal, modalToggle); // eslint-disable-line no-new
 }
 
 function controlNavbar(pageName) {
@@ -544,7 +452,91 @@ var Elevator = function Elevator(n) {
   }, s(n);
 };
 
+var modalHiddenClass = 'modal--hidden';
+var modalContentSelector = '.js-modal-content';
+var closeBtnSelector = '.js-modal-closeBtn';
+
+var ModalController = function () {
+  function ModalController(modalEl, toggleButton) {
+    var _this = this;
+
+    babelHelpers.classCallCheck(this, ModalController);
+
+    assert(modalEl, 'No modal element provided');
+    this.modalEl = modalEl;
+
+    this.modalContent = modalEl.querySelector(modalContentSelector);
+    assert(this.modalContent, 'No modal content element found.');
+
+    this.closeBtn = modalEl.querySelector(closeBtnSelector);
+    assert(this.modalContent, 'No close button found for modal.');
+    this.closeBtn.addEventListener('click', function () {
+      return _this.close();
+    });
+
+    if (toggleButton) {
+      this.toggleButton = toggleButton;
+      this.toggleButton.addEventListener('click', function () {
+        return _this.isOpen() ? _this.close() : _this.open();
+      });
+    }
+
+    this.controllerClickListener = this.closeController.bind(this);
+
+    // Set listeners for current state
+    if (this.isOpen()) {
+      this.open();
+    } else {
+      this.close();
+    }
+  }
+
+  babelHelpers.createClass(ModalController, [{
+    key: 'isOpen',
+    value: function isOpen() {
+      return !this.modalEl.classList.contains(modalHiddenClass);
+    }
+  }, {
+    key: 'open',
+    value: function open() {
+      this.modalEl.classList.remove(modalHiddenClass);
+      // Click has to be in the capturing phase, otherwise the bubbling click from
+      // the toggle button will immediately close the modal.
+      document.body.addEventListener('click', this.controllerClickListener, true);
+    }
+  }, {
+    key: 'close',
+    value: function close() {
+      this.modalEl.classList.add(modalHiddenClass);
+      document.body.removeEventListener('click', this.controllerClickListener, true);
+    }
+  }, {
+    key: 'closeController',
+    value: function closeController(e) {
+      var modalOpen = this.isOpen();
+      if (this.clickIsOutsideContent(e) && modalOpen) {
+        this.close();
+      } else if (!modalOpen) {
+        assert(false, 'Problem in openCloseController. Triggered with modal closed.');
+      }
+    }
+  }, {
+    key: 'clickIsOutsideContent',
+    value: function clickIsOutsideContent(e) {
+      var contentRect = this.modalContent.getBoundingClientRect();
+
+      var insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;
+      var insideHorizontally = contentRect.left < e.pageX && e.pageX < contentRect.right;
+
+      return !(insideVertically && insideHorizontally);
+    }
+  }]);
+  return ModalController;
+}();
+
 controlNavbar();
 
 window.elevator = Elevator;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJjb21tb24uanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IG5hdmJhckNvbnRyb2wgZnJvbSAnLi9fY29tbW9uL25hdmJhci5qcyc7XG5uYXZiYXJDb250cm9sKCk7XG5cbmltcG9ydCBlbGV2YXRvciBmcm9tICcuL19jb21tb24vZWxldmF0b3IuanMnO1xud2luZG93LmVsZXZhdG9yID0gZWxldmF0b3I7XG4iXSwiZmlsZSI6ImNvbW1vbi5qcyIsInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+
+window.ModalController = ModalController;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJjb21tb24uanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IG5hdmJhckNvbnRyb2wgZnJvbSAnLi9fY29tbW9uL25hdmJhci5qcyc7XG5uYXZiYXJDb250cm9sKCk7XG5cbmltcG9ydCBlbGV2YXRvciBmcm9tICcuL19jb21tb24vZWxldmF0b3IuanMnO1xud2luZG93LmVsZXZhdG9yID0gZWxldmF0b3I7XG5cbmltcG9ydCBNb2RhbENvbnRyb2xsZXIgZnJvbSAnLi9fY29tbW9uL01vZGFsQ29udHJvbGxlci5qcyc7XG53aW5kb3cuTW9kYWxDb250cm9sbGVyID0gTW9kYWxDb250cm9sbGVyO1xuIl0sImZpbGUiOiJjb21tb24uanMiLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

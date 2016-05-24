@@ -1,0 +1,34 @@
+<script type="text/javascript">
+  var modal = document.createElement('modal');
+  modal.classList.add('modal-background');
+  modal.classList.add('modal--hidden');
+
+  var main = document.createElement('main');
+  main.classList.add('js-modal-content');
+  main.classList.add('modal-content');
+  modal.appendChild(main);
+
+  var closeBtn = document.createElement('button');
+  closeBtn.classList.add('modal-closeBtn');
+  closeBtn.classList.add('js-modal-closeBtn');
+  closeBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+  main.appendChild(closeBtn);
+
+  var randName = 'config' + Math.floor(Math.random() * 10000);
+  window[randName] = {
+    load: '{{formAddress}}'
+  };
+  var xdiv = document.createElement('x-div');
+  xdiv.dataset.controller = '/scripts/fl-form.js';
+  xdiv.dataset.config = randName;
+  main.appendChild(xdiv);
+
+  var thisEl = document.currentScript;
+  var container = thisEl.parentElement;
+  container.insertBefore(modal, thisEl);
+
+  window.addEventListener('load', function () {
+    var toggleButton = document.querySelector('.{{toggleButton}}');
+    new ModalController(modal, toggleButton);
+  })
+</script>

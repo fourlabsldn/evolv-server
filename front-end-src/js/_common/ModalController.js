@@ -1,5 +1,5 @@
 /* eslint-env browser */
-import assert from './assert';
+import assert from '../_shared/assert';
 
 const modalHiddenClass = 'modal--hidden';
 const modalContentSelector = '.js-modal-content';

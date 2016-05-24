@@ -16,16 +16,7 @@
           {{location.city}} {{location.postcode}}</h1>
 
         <button class="flat-btn js-book-viewing-toggle">Book a viewing</button>
-
-        <modal class="js-book-viewing-modal modal-background modal--hidden">
-          <main class="js-modal-content modal-content">
-              <button class="modal-closeBtn js-modal-closeBtn"><i class="fa fa-times" aria-hidden="true"></i></button>
-              <script>
-                var bookViewingForm = { load: '/contact' }; // Load valuation Modal from server
-              </script>
-              <x-div data-controller="/scripts/fl-form.js" data-config="bookViewingForm"></x-div>
-          </main>
-        </modal>
+        {{>formModal formAddress='/contact' toggleButton='js-book-viewing-toggle'}}
 
       </div>
 
