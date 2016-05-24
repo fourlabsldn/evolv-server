@@ -60,11 +60,12 @@ export default class ModalController {
   }
 
   clickIsOutsideContent(e) {
-    if (e.pageX === 0 && e.pageY === 0) { return; }
+    // Take care of bug in chrome that shows wrong info for option selection
+    if (e.target.nodeName === 'SELECT') { return; }
     const contentRect = this.modalContent.getBoundingClientRect();
 
-    const insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;
-    const insideHorizontally = contentRect.left < e.pageX && e.pageX < contentRect.right;
+    const insideVertically = contentRect.top < e.clientY && e.clientY < contentRect.bottom;
+    const insideHorizontally = contentRect.left < e.clientX && e.clientX < contentRect.right;
 
     return !(insideVertically && insideHorizontally);
   }

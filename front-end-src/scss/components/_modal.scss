@@ -10,7 +10,6 @@ $modal-transition-time: .3s;
   top: 0;
   left: 0;
 
-
   z-index: 999999;
   display: flex;
   background-color: hsla(0, 0, 0, .5);
@@ -49,7 +48,7 @@ $modal-transition-time: .3s;
 
   border: none;
   background-color: inherit;
-  color: inherit;
+  color: $navy;
 
   &:hover {
     filter: brightness(90%);

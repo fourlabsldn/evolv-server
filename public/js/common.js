@@ -523,13 +523,14 @@ var ModalController = function () {
   }, {
     key: 'clickIsOutsideContent',
     value: function clickIsOutsideContent(e) {
-      if (e.pageX === 0 && e.pageY === 0) {
+      // Take care of bug in chrome that shows wrong info for option selection
+      if (e.target.nodeName === 'SELECT') {
         return;
       }
       var contentRect = this.modalContent.getBoundingClientRect();
 
-      var insideVertically = contentRect.top < e.pageY && e.pageY < contentRect.bottom;
-      var insideHorizontally = contentRect.left < e.pageX && e.pageX < contentRect.right;
+      var insideVertically = contentRect.top < e.clientY && e.clientY < contentRect.bottom;
+      var insideHorizontally = contentRect.left < e.clientX && e.clientX < contentRect.right;
 
       return !(insideVertically && insideHorizontally);
     }
