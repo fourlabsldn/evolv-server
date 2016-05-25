@@ -1,3 +1,7 @@
+
+  {{name.full}}
+
+
 <div class="staffSlider">
 
 	<a class="staffSlider-arrow-right">
@@ -9,56 +13,24 @@
 	</a>
 
 	<div class="staffSlider-content">
-		<div class="staffSlider-member">
-			<h1 class="staffSlider-member-tile">Bill Gates</h1>
-			<h3 class="staffSlider-member-role">Director</h3>
-			<img class="staffSlider-member-image" src="http://www.zmchamber.com/uploads/2/6/7/1/26719269/9739752_orig.jpg" alt="Staff Image" />
-			<p class="staffSlider-member-bio">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<a class="staffSlider-member-email">
-      bill@mics.com
-    </a>
-		</div>
 
-		<div class="staffSlider-member">
-			<h1 class="staffSlider-member-tile">Bill Gates</h1>
-			<h3 class="staffSlider-member-role">Director</h3>
-			<img class="staffSlider-member-image" src="http://www.zmchamber.com/uploads/2/6/7/1/26719269/9739752_orig.jpg" alt="Staff Image" />
-			<p class="staffSlider-member-bio">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<a class="staffSlider-member-email">
-      bill@mics.com
-    </a>
-		</div>
+    {{#each this}}
+  		<div class="staffSlider-member">
+  			<h1 class="staffSlider-member-tile">{{name.full}}</h1>
+  			<h3 class="staffSlider-member-role">{{position}}</h3>
+  			<img class="staffSlider-member-image"
+        srcset="{{srcSet photo 1240 1020 820 620 500 310}}"
+        src="{{cloudinaryUrl photo width=700 crop='lfill' gravity='center'}}"
+        alt="{{name.full}}"
+        />
+  			<p class="staffSlider-member-bio">
+  				{{bio}}
+  			</p>
+  			<a class="staffSlider-member-email">
+        {{email}}
+      </a>
+  		</div>
+    {{/each}}
 
-		<div class="staffSlider-member">
-			<h1 class="staffSlider-member-tile">Bill Gates</h1>
-			<h3 class="staffSlider-member-role">Director</h3>
-			<img class="staffSlider-member-image" src="http://www.zmchamber.com/uploads/2/6/7/1/26719269/9739752_orig.jpg" alt="Staff Image" />
-			<p class="staffSlider-member-bio">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<a class="staffSlider-member-email">
-      bill@mics.com
-    </a>
-		</div>
-
-		<div class="staffSlider-member">
-			<h1 class="staffSlider-member-tile">Bill Gates</h1>
-			<h3 class="staffSlider-member-role">Director</h3>
-			<img class="staffSlider-member-image" src="http://www.zmchamber.com/uploads/2/6/7/1/26719269/9739752_orig.jpg" alt="Staff Image" />
-			<p class="staffSlider-member-bio">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<a class="staffSlider-member-email">
-      bill@mics.com
-    </a>
-		</div>
 	</div>
 </div>

@@ -13,6 +13,7 @@ const Staff = new keystone.List('Staff', {
 Staff.add({
   name: { type: Types.Name, required: true, initial: true },
   position: { type: Types.Text, required: true, initial: true },
+  email: { type: Types.Email },
 	bio: { type: Types.Textarea, height: 500 },
   photo: { type: Types.CloudinaryImage }
 });
