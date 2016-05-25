@@ -133,7 +133,7 @@
       flex-grow: 4;
       padding: 14px;
       text-align: left;
-      p {
+      > p {
         font-size: $font-small !important;
         margin: 0;
       }

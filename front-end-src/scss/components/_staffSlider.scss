@@ -14,6 +14,18 @@
 
   cursor: pointer;
   z-index: 1;
+
+  :active {
+    color: $orange;
+  }
+  :visited, :focus{
+    color: inherit;
+  }
+  @include xs-screen {
+    font-size: 2.8em;
+    top: 4em;
+    bottom: auto;
+  }
 }
 .staffSlider-arrow-right {
   right: -.5em;
@@ -32,37 +44,47 @@
 
 .staffSlider-content {
   max-width: 100%;
-  overflow: scroll;
   white-space: nowrap;
+  font-size: $font-medium;
+  color: $darkmost-blue;
 
-  @include scroll-bars(transparent, transparent, .5em);
+  overflow: scroll;
+  overflow: -moz-scrollbars-none;
+  @include scroll-bars(transparent, transparent, 0em);
 }
 
 .staffSlider-member {
-  display: inline-block;
+  display: inline-table;
   width: 48%;
   margin: 1%;
   white-space: normal;
   @include xs-screen {
     width: 98%;
-    margin: 1%;
   }
 }
 .staffSlider-member-tile {
-
+  font-size: calc(#{$font-big} - 2px);
+  font-weight: bold;
+  font-family: 'Lato';
+  margin: 0;
 }
 .staffSlider-member-role {
-
+  font-size: calc(#{$font-big} - 2px);
+  font-weight: lighter;
+  margin: 0 0 1em;
 }
 .staffSlider-img-crop {
-  @include crop-img(60%);
+  @include crop-img(65%);
 }
 .staffSlider-member-image {
   width: 100%;
 }
 .staffSlider-member-bio {
-
+  font-size: inherit;
+  font-weight: lighter;
+  margin-bottom: 0;
 }
 .staffSlider-member-email {
-
+  margin-top: .5em;
+  color: $orange;
 }

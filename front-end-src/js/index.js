@@ -22,16 +22,22 @@ new ActiveHighlighter({ // eslint-disable-line no-new
   let ongoingAnimation = null;
 
   function scrollTo(value, container = content) {
-    console.log('Scrolling');
     const currentScroll = container.scrollLeft;
     const scrollDiff = value - currentScroll;
-    const newScroll = currentScroll + scrollDiff / 8;
-    container.scrollLeft = newScroll;
     if (Math.abs(scrollDiff) < 10) {
       container.scrollLeft = value;
-    } else {
-      ongoingAnimation = requestAnimationFrame(() => scrollTo(value, container));
+      return;
     }
+
+    const easedDisplacement = scrollDiff / 8;
+    const minimumDisplacement = 10;
+    const displacement = scrollDiff > 0
+      ? Math.max(minimumDisplacement, easedDisplacement)
+      : Math.min(-minimumDisplacement, easedDisplacement);
+    const newScroll = currentScroll + displacement;
+
+    container.scrollLeft = newScroll;
+    ongoingAnimation = requestAnimationFrame(() => scrollTo(value, container));
   }
 
   rightArrow.addEventListener('click', () => {
