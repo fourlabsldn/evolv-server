@@ -20,6 +20,7 @@
     "swag": "^0.7.0",
     "underscore": "^1.8.3",
     "whatwg-fetch": "^1.0.0",
+    "winston": "^2.2.0",
     "x-div": "^1.0.2"
   },
   "devDependencies": {

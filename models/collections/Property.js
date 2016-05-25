@@ -1,5 +1,6 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
+const logger = require('../utils/logger');
 /**
  * Property Model
  * ==========
@@ -74,14 +75,18 @@ Property.schema.virtual('hasGeoInfo').get(function () {
   return geo.length > 0;
 });
 
-Property.schema.pre('save', function (next) {
+function setPropertyCoordinates(next) {
   // Insert geolocation data
   const region = 'United Kingdom';
   const updateRecord = 'overwrite';
-  this._.location.googleLookup(region, updateRecord, () => {
+  this._.location.googleLookup(region, updateRecord, (err) => {
+    if (err) {
+      logger.warn(err);
+    }
     next();
   });
-});
+}
+Property.schema.pre('save', setPropertyCoordinates);
 
 /**
  * Collection functions
