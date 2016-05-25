@@ -18,11 +18,13 @@
   		<div class="staffSlider-member">
   			<h1 class="staffSlider-member-tile">{{name.full}}</h1>
   			<h3 class="staffSlider-member-role">{{position}}</h3>
-  			<img class="staffSlider-member-image"
-        srcset="{{srcSet photo 1240 1020 820 620 500 310}}"
-        src="{{cloudinaryUrl photo width=700 crop='lfill' gravity='center'}}"
-        alt="{{name.full}}"
-        />
+        <div class="staffSlider-img-crop">
+          <img class="staffSlider-member-image"
+            srcset="{{srcSet photo 1240 1020 820 620 500 310}}"
+            src="{{cloudinaryUrl photo width=700 crop='lfill' gravity='center'}}"
+            alt="{{name.full}}"
+          />
+        </div>
   			<p class="staffSlider-member-bio">
   				{{bio}}
   			</p>

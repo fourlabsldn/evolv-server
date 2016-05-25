@@ -53,6 +53,9 @@
 .staffSlider-member-role {
 
 }
+.staffSlider-img-crop {
+  @include crop-img(60%);
+}
 .staffSlider-member-image {
   width: 100%;
 }
