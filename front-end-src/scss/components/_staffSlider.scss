@@ -1,0 +1,64 @@
+.staffSlider {
+  position: relative;
+}
+
+%staffSlider-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 1.5em;
+  margin: auto;
+
+  font-size: 5em;
+  text-shadow: 0px 0px 4px  $grey;
+
+  cursor: pointer;
+}
+.staffSlider-arrow-right {
+  right: -.5em;
+  @extend %staffSlider-arrow;
+  @include xs-screen {
+    right: 0;
+  }
+}
+.staffSlider-arrow-left {
+  left: -.5em;
+  @extend %staffSlider-arrow;
+  @include xs-screen {
+    left: 0;
+  }
+}
+
+.staffSlider-content {
+  max-width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
+
+  @include scroll-bars(transparent, transparent, .5em);
+}
+
+.staffSlider-member {
+  display: inline-block;
+  width: 48%;
+  margin: 1%;
+  white-space: normal;
+  @include xs-screen {
+    width: 98%;
+    margin: 1%;
+  }
+}
+.staffSlider-member-tile {
+
+}
+.staffSlider-member-role {
+
+}
+.staffSlider-member-image {
+  width: 100%;
+}
+.staffSlider-member-bio {
+
+}
+.staffSlider-member-email {
+
+}

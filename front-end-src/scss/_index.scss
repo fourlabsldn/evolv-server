@@ -130,7 +130,6 @@
     }
 
     .tab-content {
-      column-count: 2;
       flex-grow: 4;
       padding: 14px;
       text-align: left;
@@ -138,6 +137,9 @@
         font-size: $font-small !important;
         margin: 0;
       }
+    }
+    .tab-content--two-columns {
+      column-count: 2;
     }
   }
 }
@@ -154,9 +156,6 @@
         i {
           margin-bottom: 0px;
         }
-      }
-      .tab-content {
-        column-count: 1;
       }
     }
   }

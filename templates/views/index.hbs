@@ -34,21 +34,22 @@
     <label class="tab-label" for="evolv_history1"><i class="fa fa-{{data.section_2.tab_1.icon}}"></i> <span>{{data.section_2.tab_1.title}}</span></label>
     <label class="tab-label" for="evolv_history2"><i class="fa fa-{{data.section_2.tab_2.icon}}"></i><span>{{data.section_2.tab_2.title}}</span></label>
     <label class="tab-label" for="evolv_history3"><i class="fa fa-{{data.section_2.tab_3.icon}}"></i><span>{{data.section_2.tab_3.title}}</span></label>
+    <label class="tab-label" for="evolv_history4"><i class="fa fa-smile-o"></i><span>{{data.section_2.tab_4.title}}</span></label>
 
-    <div class="tab-content">
+    <div class="tab-content tab-content--two-columns">
     <p>{{data.section_2.tab_1.content}}</p>
     </div>
 
-    <div class="tab-content">
+    <div class="tab-content tab-content--two-columns">
       <p>{{data.section_2.tab_2.content}}</p>
     </div>
 
-    <div class="tab-content">
+    <div class="tab-content tab-content--two-columns">
       <p>{{data.section_2.tab_3.content}}</p>
     </div>
 
     <div class="tab-content">
-      <p>{{data.section_2.tab_4.content}}</p>
+      {{> staffSlider}}
     </div>
   </div>
 
