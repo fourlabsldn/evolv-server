@@ -40,6 +40,11 @@ Home.add(
         title: { type: Types.Text, required: true, default: 'Item 3', label: 'Tab 3 - Heading' },
 				icon: { type: Types.Text, required: true, default: 'asterisk', label: 'Tab 3 - Icon' },
         content: { type: Types.Textarea, height: 400, label: 'Tab 3 - Content' }
+      },
+      tab_4: {
+        title: { type: Types.Text, required: true, default: 'Item 4', label: 'Tab 4 - Heading' },
+        icon: { type: Types.Text, required: true, default: 'asterisk', label: 'Tab 4 - Icon' },
+        content: { type: Types.Textarea, height: 400, label: 'Tab 4 - Content' }
       }
     }
   },
