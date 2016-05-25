@@ -30,21 +30,6 @@ Sell.add(
       content: { type: Types.Textarea, height: 500, label: 'Content' }
     }
   },
-  'Section 3',
-  {
-    section_3: {
-      heading: { type: Types.Text, required: true, default: 'What we do', label: 'Heading' },
-      content: { type: Types.Textarea, height: 500, label: 'Content' },
-      column_1: {
-        heading: { type: Types.Text, required: true, default: 'Selling only', label: 'Column 1 - Heading' },
-        content: { type: Types.Textarea, height: 500, label: 'Column 1 - Content' }
-      },
-      column_2: {
-        heading: { type: Types.Text, required: true, default: 'Full Management', label: 'Column 2 - Heading' },
-        content: { type: Types.Textarea, height: 500, label: 'Column 2 - Content' }
-      }
-    }
-  },
   'Section 4',
   {
     section_4: {
