@@ -52,7 +52,9 @@ export default class MapController {
 
       // Make marker clickable
       google.maps.event.addListener(marker, 'click', () => {
-        window.location.href = coord.url;
+        if (coord.url && typeof coord.url === 'string') {
+          window.location.href = coord.url;
+        }
       });
     }
 
