@@ -50,6 +50,10 @@ footer a {
   list-style: none;
   font-size: $font-tiny;
 
+  nav {
+    min-width: calc(100% - 12em);
+  }
+
   li {
     display: inline;
     &:before {

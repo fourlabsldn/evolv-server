@@ -5,5 +5,5 @@ module.exports = function propertyPrice(property, acquisitionMode) {
     return '';
   }
   const price = property[acquisitionMode].price;
-  return formatCurrency(price);
+  return formatCurrency(price) + (acquisitionMode === 'rent' ? ' per week' : '');
 };

@@ -33,7 +33,7 @@ Property.add({
     price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'rent.available': true }, label: 'Lettings Price' }
   },
   bedrooms: { type: Number },
-  size: { type: Number, label: 'Size (sq ft)'},
+  size: { type: Number, label: 'Size (sq ft)' },
   type: {
     type: Types.Select,
     index: true,
@@ -45,7 +45,8 @@ Property.add({
     ownership: {
       type: Types.Select, options: [
         { value: 'freehold', label: 'Freehold' },
-        { value: 'leasehold', label: 'Leasehold' }
+        { value: 'leasehold', label: 'Leasehold' },
+				{ value: 'share of freehold', label: 'Share of Freehold' }
       ] },
   details: {
     1: { type: Types.Text },

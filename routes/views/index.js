@@ -22,7 +22,7 @@ function loadHomeContent(next, locals) {
   const queries = [
     keystone.list('Home').getAll(),
     keystone.list('Property').getFeatured(),
-    keystone.list('Staff').getAll()
+    keystone.list('Staff').getOrderedByIndex()
   ];
 
   // Add loaded content to 'locals' to make it accessible to the view
