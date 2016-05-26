@@ -49,7 +49,7 @@ exports = module.exports = function (app) {
 	app.all('/valuation', routes.views.valuation);
 
 	app.all('/terms', routes.views.terms);
-	// app.all('/privacy', routes.views.privacy);
+	app.all('/privacy', routes.views.privacy);
 
 	// Keynote.js demo views
 	app.get('/blog/:category?', routes.views.blog);

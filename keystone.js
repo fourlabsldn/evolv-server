@@ -99,7 +99,7 @@ keystone.set('nav', {
   'properties': 'properties',
   'blog': ['posts', 'post-categories'],
   'users': 'users',
-  'pages': ['homes', 'sells', 'lets', 'terms']
+  'pages': ['homes', 'sells', 'lets', 'terms', 'privacies']
 });
 
 // Start Keystone to connect to your database and initialise the web server
