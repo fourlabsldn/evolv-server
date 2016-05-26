@@ -15,8 +15,14 @@ Staff.add({
   position: { type: Types.Text, required: true, initial: true },
   email: { type: Types.Email },
 	bio: { type: Types.Textarea, height: 500 },
-  photo: { type: Types.CloudinaryImage }
+  photo: { type: Types.CloudinaryImage },
+  index: { type: Types.Number }
 });
 
-Staff.defaultColumns = 'name, position';
+// Order by index field
+Staff.getOrderedByIndex = function orderByIndex() {
+  return this.model.find().sort({ index: 1 });
+};
+
+Staff.defaultColumns = 'name, position, index';
 Staff.register();
