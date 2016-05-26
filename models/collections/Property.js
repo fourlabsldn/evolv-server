@@ -24,13 +24,13 @@ Property.add({
 	epc: { type: Types.CloudinaryImage },
   buy: {
     available: { type: Boolean, label: 'Available for sale' },
-		featured: { type: Boolean, dependsOn: { 'buy.available': true }, label: 'Sales Featured' },
-    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'buy.available': true }, label: 'Sales Price' }
+		featured: { type: Boolean, label: 'Sales Featured' },
+    price: { type: Types.Money, currency: 'en-gb', label: 'Sales Price' }
   },
   rent: {
     available: { type: Boolean, label: 'Available to let' },
-		featured: { type: Boolean, dependsOn: { 'rent.available': true }, label: 'Letting Featured' },
-    price: { type: Types.Money, currency: 'en-gb', dependsOn: { 'rent.available': true }, label: 'Lettings Price' }
+		featured: { type: Boolean, label: 'Letting Featured' },
+    price: { type: Types.Money, currency: 'en-gb', label: 'Lettings Price' }
   },
   bedrooms: { type: Number },
   size: { type: Number, label: 'Size (sq ft)' },
