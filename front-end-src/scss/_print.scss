@@ -1,69 +1,195 @@
-// @media print {
-//   .navbar-container,
-//   button,
-//   footer,
-//   .article-tabs-bottom-bar,
-//   .sole-button {
-//     display: none;
-//   }
-//   * {
-//     text-align: left;
-//     color: $navy;
-//     line-height: 1.2em;
-//     padding: 0;
-//     position: static;
-//
-//     &:before,
-//     &:after {
-//       display: none;
-//     }
-//   }
-//
-//   img {
-//     margin: auto;
-//     max-width: 500px;
-//   }
-//
-//   h1 {
-//     font-size: 24pt;
-//   }
-//
-//   h2 {
-//     font-size: 14pt;
-//     margin-top: 1em;
-//   }
-//
-//   *,
-//   h1,
-//   h2,
-//   h3,
-//   a,
-//   p {
-//     text-align: left;
-//   }
-//
-//   p,
-//   li,
-//   a,
-//   ul{
-//     font-size: 10pt;
-//   }
-//
-//   .property-info-list {
-//     display: static;
-//     left: 0;
-//     right: 0;
-//     li {
-//       padding-left: .5em;
-//       padding-right: .5em;
-//     }
-//   }
-//
-//   @page :left {
-//     margin: .5cm;
-//   }
-//
-//   @page :right {
-//     margin: .8cm;
-//   }
-// }
+@media print {
+
+  // Gutters
+  @page :left {
+    margin: .5cm;
+  }
+
+  @page :right {
+    margin: .8cm;
+  }
+
+  // Navbar
+  .navbar-container {
+    display: none;
+  }
+
+  //==========================================================================
+  //  Components
+  //==========================================================================
+  // Imageslider
+  .slider {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .slide-container {
+    flex: 1 0 300px;
+    max-width: 50%;
+    margin: 5px;
+  }
+  .slide {
+    position: relative;
+    opacity: 1;
+    @include crop-img(60%);
+    img {
+     opacity: 1;
+   }
+  }
+  .slider-nav {
+    display: none;
+  }
+
+  // Tabs
+  .tabs .tab-content {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    width: auto;
+
+    > img {
+      max-width: 300px;
+    }
+  }
+
+
+  // General
+  .page-section {
+    padding: 0;
+  }
+  button,
+  .flat-btn {
+    display: none;
+  }
+  //Property page
+  .article-tabs.tabs{
+    background-color: transparent;
+  }
+  .property-tab {
+    padding: 0;
+  }
+  .property-tab-content{
+    position: relative;
+  }
+  .property-map {
+    display: none;
+  }
+  .article-tabs-bottom-bar {
+    display: none;
+  }
+
+  .property-info-list{
+    list-style: disc;
+    li {
+      font-size: $font-small;
+      display: block;
+      border: 0;
+    }
+  }
+  .property-article-body-info,
+  .property-article-header-info,
+  .property-article-left-column,
+  .property-article-right-column {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 5px;
+
+    p, li {
+      font-size: $font-small;
+    }
+  }
+  .property-article-contact-info {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    li {
+      font-size: $font-small;
+      text-align: left;
+    }
+  }
+
+  // back-to-search button
+  .sole-button {
+    display: none;
+  }
+
+
+
+  // Footer
+  .footer-links-row {
+    display: block;
+    > * {
+      display: none;
+    }
+    .footer-logo-column {
+      display: block;
+    }
+  }
+  .bottom-shadow {
+    display: none;
+  }
+
+  //
+  // .navbar-container,
+  // button,
+  // footer,
+  // .article-tabs-bottom-bar,
+  // .sole-button {
+  //   display: none;
+  // }
+  // * {
+  //   text-align: left;
+  //   color: $navy;
+  //   line-height: 1.2em;
+  //   padding: 0;
+  //   position: static;
+  //
+  //   &:before,
+  //   &:after {
+  //     display: none;
+  //   }
+  // }
+  //
+  // img {
+  //   margin: auto;
+  //   max-width: 500px;
+  // }
+  //
+  // h1 {
+  //   font-size: 24pt;
+  // }
+  //
+  // h2 {
+  //   font-size: 14pt;
+  //   margin-top: 1em;
+  // }
+  //
+  // *,
+  // h1,
+  // h2,
+  // h3,
+  // a,
+  // p {
+  //   text-align: left;
+  // }
+  //
+  // p,
+  // li,
+  // a,
+  // ul{
+  //   font-size: 10pt;
+  // }
+  //
+  // .property-info-list {
+  //   display: static;
+  //   left: 0;
+  //   right: 0;
+  //   li {
+  //     padding-left: .5em;
+  //     padding-right: .5em;
+  //   }
+  // }
+  //
+
+}

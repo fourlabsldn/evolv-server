@@ -35,7 +35,6 @@
     "gulp": "^3.7.0",
     "gulp-cssmin": "^0.1.7",
     "gulp-jshint": "^1.9.0",
-    "gulp-livereload": "^3.8.1",
     "gulp-open": "^2.0.0",
     "gulp-postcss": "^6.1.1",
     "gulp-rollup": "^1.9.0",
