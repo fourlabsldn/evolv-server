@@ -1,0 +1,69 @@
+// @media print {
+//   .navbar-container,
+//   button,
+//   footer,
+//   .article-tabs-bottom-bar,
+//   .sole-button {
+//     display: none;
+//   }
+//   * {
+//     text-align: left;
+//     color: $navy;
+//     line-height: 1.2em;
+//     padding: 0;
+//     position: static;
+//
+//     &:before,
+//     &:after {
+//       display: none;
+//     }
+//   }
+//
+//   img {
+//     margin: auto;
+//     max-width: 500px;
+//   }
+//
+//   h1 {
+//     font-size: 24pt;
+//   }
+//
+//   h2 {
+//     font-size: 14pt;
+//     margin-top: 1em;
+//   }
+//
+//   *,
+//   h1,
+//   h2,
+//   h3,
+//   a,
+//   p {
+//     text-align: left;
+//   }
+//
+//   p,
+//   li,
+//   a,
+//   ul{
+//     font-size: 10pt;
+//   }
+//
+//   .property-info-list {
+//     display: static;
+//     left: 0;
+//     right: 0;
+//     li {
+//       padding-left: .5em;
+//       padding-right: .5em;
+//     }
+//   }
+//
+//   @page :left {
+//     margin: .5cm;
+//   }
+//
+//   @page :right {
+//     margin: .8cm;
+//   }
+// }
