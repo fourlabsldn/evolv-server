@@ -6,11 +6,14 @@ const isAjaxRequest = require('./helpers/isAjaxRequest');
 exports = module.exports = (req, res) => {
   const view = new keystone.View(req, res);
   const locals = res.locals;
-  locals.title = 'Register';
+  locals.isAjaxRequest = isAjaxRequest(req);
+  locals.title = (locals.isAjaxRequest && req.query.title)
+    ? req.query.title
+    : 'Register';
 
   const contactForm = new ContactForm({
     databaseModel: Registration,
-    formTitle: 'Register',
+    formTitle: locals.title,
     successMessage: 'Thank you for registering',
     exclude: ['sentAt']
   });
@@ -22,7 +25,6 @@ exports = module.exports = (req, res) => {
   const viewName = 'register';
   locals.section = viewName;
 
-  locals.isAjaxRequest = isAjaxRequest(req);
   const renderOptions = locals.isAjaxRequest ? { layout: null } : {};
 
   // Render the view
