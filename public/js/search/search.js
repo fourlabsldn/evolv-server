@@ -2149,14 +2149,22 @@ function targetMatchesFilters(target, filters) {
 
           var targetPropertyValue = getTargetProperty(target, criterion) || '';
 
-          // This works buy is not a good piece of code. Refactor when there is
+          // This works but is not a good piece of code. Refactor when there is
           // some time.
           // If it matches any criterion, then it matches the filter.
           if (criterion === 'price') {
-            var targetPropertyValueInt = parseInt(targetPropertyValue, 10);
             var valueInt = parseInt(value, 10);
+            var targetPropertyValueInt = parseInt(targetPropertyValue, 10);
             var noNaNValue = !isNaN(targetPropertyValueInt) && !isNaN(valueInt);
-            if (noNaNValue && targetPropertyValueInt < valueInt) {
+            if (noNaNValue && targetPropertyValueInt <= valueInt) {
+              filterMatched = true;
+              break;
+            }
+          } else if (criterion === 'bedrooms') {
+            var _valueInt = parseInt(value, 10);
+            var _targetPropertyValueInt = parseInt(targetPropertyValue, 10);
+            var _noNaNValue = !isNaN(_targetPropertyValueInt) && !isNaN(_valueInt);
+            if (_noNaNValue && _targetPropertyValueInt >= _valueInt) {
               filterMatched = true;
               break;
             }

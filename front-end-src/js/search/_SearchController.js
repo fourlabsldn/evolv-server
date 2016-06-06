@@ -301,14 +301,22 @@ function targetMatchesFilters(target, filters) {
     for (const criterion of criteria) {
       const targetPropertyValue = getTargetProperty(target, criterion) || '';
 
-      // This works buy is not a good piece of code. Refactor when there is
+      // This works but is not a good piece of code. Refactor when there is
       // some time.
       // If it matches any criterion, then it matches the filter.
       if (criterion === 'price') {
-        const targetPropertyValueInt = parseInt(targetPropertyValue, 10);
         const valueInt = parseInt(value, 10);
+        const targetPropertyValueInt = parseInt(targetPropertyValue, 10);
         const noNaNValue = !isNaN(targetPropertyValueInt) && !isNaN(valueInt);
-        if (noNaNValue && targetPropertyValueInt < valueInt) {
+        if (noNaNValue && targetPropertyValueInt <= valueInt) {
+          filterMatched = true;
+          break;
+        }
+      } else if (criterion === 'bedrooms') {
+        const valueInt = parseInt(value, 10);
+        const targetPropertyValueInt = parseInt(targetPropertyValue, 10);
+        const noNaNValue = !isNaN(targetPropertyValueInt) && !isNaN(valueInt);
+        if (noNaNValue && targetPropertyValueInt >= valueInt) {
           filterMatched = true;
           break;
         }
