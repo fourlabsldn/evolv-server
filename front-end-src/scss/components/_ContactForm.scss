@@ -9,8 +9,19 @@
     padding-right: $padding-side-xs-screen;
   }
 }
-.ContactForm_mainTitle {
 
+.ContactForm_address {
+  font-style: normal;
+  margin-bottom: 35px;
+  font-size: 1.5em;
+
+  .ContactForm_addressPhoneEmail {
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .ContactForm_addressPostal {
+    font-weight: 300;
+  }
 }
 
 .ContactForm_errorMessage {
