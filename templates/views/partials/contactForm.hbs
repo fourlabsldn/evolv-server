@@ -25,9 +25,14 @@
           name="{{name}}"
           class="ContactForm_input-{{type}}"
           {{#if required}}required{{/if}}
+          value={{content}}
         >
+            {{~#is tag 'textarea'~}}{{content}}{{~/is~}}
             {{~#each options~}}
-              <option value="{{value}}">
+              <option
+                value="{{value}}"
+                {{#if selected}}selected{{/if}}
+              >
                   {{label}}
               </option>
             {{~/each~}}

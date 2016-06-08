@@ -89,6 +89,20 @@ module.exports = class ContactForm {
             field.errorMessage = errors[field.name].message;
           }
         });
+
+        // Fill fields with submitted content
+        this.fields.formFields.forEach((field) => {
+          if (field.tag !== 'select') {
+            field.content = req.body[field.name];
+            return;
+          }
+          const selectedOptionValue = req.body[field.name];
+          for (const option of field.options) {
+            if (option.value === selectedOptionValue) {
+              option.selected = true;
+            }
+          }
+        });
       }
 
       next();
