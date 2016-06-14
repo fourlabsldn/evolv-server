@@ -31,7 +31,10 @@ exports = module.exports = (req, res, acquisitionMode = '') => {
 function getProperties(next, locals, acquisitionMode) {
   keystone.list('Property').findWhere(`${acquisitionMode}.available`, true)
   .then((results) => {
-    locals.data.properties = results;
+    const propertiesOrderedByPrice = results.sort((prop1, prop2) => {
+      return prop1[acquisitionMode].price - prop2[acquisitionMode].price;
+    });
+    locals.data.properties = propertiesOrderedByPrice;
     next();
   })
   .catch(next);
