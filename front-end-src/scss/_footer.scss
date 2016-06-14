@@ -12,9 +12,8 @@ footer a {
 
   padding: 20px 55px 50px 55px;
 
-
-  .footer-column{
-    flex-shrink: 1;
+  .footer-column {
+    flex: 1 0 200px;
     padding: 15px;
     list-style: none;
     font-size: $font-tiny;
@@ -78,20 +77,35 @@ footer a {
 //  Footer mobile styles
 //===============================
 
-@media (max-width: $screen-xs-max) {
+
+@media (max-width: $screen-md-max) {
+  .footer-column.go-to-top {
+    display: none;
+  }
+}
+
+/**
+ * This is a workaround for a bug in Safari's Webkit:
+ * https://bugs.webkit.org/show_bug.cgi?id=136041
+ */
+@media (max-width: $screen-sm-max) {
+  .footer-links-row {
+    display:block;
+  }
   .footer-column {
-    flex-basis: 1;
-    flex-grow: 3;
-    flex-shrink: 1;
-    min-width: 50%;
-    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    margin: 0 -2px;
+  }
+}
+@media (max-width: 700px) {
+  .footer-column {
+    display: block;
   }
   .footer-logo-column{
     img {
       width: auto;
     }
-  }
-  .go-to-top {
-    display: none;
   }
 }

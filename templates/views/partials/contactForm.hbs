@@ -13,6 +13,11 @@
   {{else}}
       <h1 class="ContactForm_mainTitle">{{formTitle}}</h1>
 
+      <address class="ContactForm_address">
+        <div class="ContactForm_addressPhoneEmail">020 7937 0612<br>info@evolv.london</div>
+        <div class="ContactForm_addressPostal">26a Adam and Eve Mews<br>Kensington, London W8 6UJ</div>
+      </address>
+
       <input type="hidden" name="action" value="register">
       {{#each formFields}}
         {{#if errorMessage}}
