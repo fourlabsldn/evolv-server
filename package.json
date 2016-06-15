@@ -11,7 +11,7 @@
     "fl-form": "^0.1.12",
     "gulp-imagemin": "^3.0.1",
     "handlebars": "^2.0.0",
-    "keystone": "https://github.com/keystonejs/keystone.git",
+    "keystone": "https://github.com/keystonejs/keystone.git#e56996ea2412eac68d03b4d8219559ca5e0b8edb",
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
