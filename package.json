@@ -11,7 +11,7 @@
     "fl-form": "^0.1.12",
     "gulp-imagemin": "^3.0.1",
     "handlebars": "^2.0.0",
-    "keystone": "https://github.com/keystonejs/keystone.git#0d4304e7b63608cfaa636de1d3cf98b2abd37b9b",
+    "keystone": "https://github.com/keystonejs/keystone.git#e56996ea2412eac68d03b4d8219559ca5e0b8edb",
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
@@ -51,16 +51,5 @@
     "dev": "gulp",
     "build-watch": "gulp build-watch"
   },
-  "main": "keystone.js",
-  "description": "Evolv's server implementation",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fourlabsldn/evolv-server.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fourlabsldn/evolv-server/issues"
-  },
-  "homepage": "https://github.com/fourlabsldn/evolv-server#readme"
+  "main": "keystone.js"
 }
