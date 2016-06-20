@@ -71,6 +71,7 @@
 .staffSlider-member-role {
   font-size: calc(#{$font-big} - 2px);
   font-weight: lighter;
+  -webkit-font-smoothing: subpixel-antialiased;
   margin: 0 0 1em;
 }
 .staffSlider-img-crop {
@@ -82,6 +83,7 @@
 .staffSlider-member-bio {
   font-size: inherit;
   font-weight: lighter;
+  -webkit-font-smoothing: subpixel-antialiased;
   margin-bottom: 0;
 }
 .staffSlider-member-email {

@@ -11,6 +11,8 @@
     border: 1px solid transparent;
     line-height: 1.5em;
     transition: color 0.2s ease;
+    -webkit-font-smoothing: subpixel-antialiased;
+
     &:before {
       margin-right: 10px;
     }
