@@ -6,8 +6,8 @@ const smtpConfig = {
   port: 587,
   secure: false,
   auth: {
-    user: 'evolv-mail',
-    pass: 'b5jkvsQqSncm'
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
   }
 };
 
