@@ -106,7 +106,7 @@
               {{/is}}
 
               {{#if bedrooms}}
-                <li>{{bedrooms}} beds</li>
+                <li>{{bedrooms}} {{inflect bedrooms "bed" "beds"}}</li>
               {{/if}}
               {{#if type}}
                 <li>{{titleize type}}</li>
@@ -144,7 +144,7 @@
               {{{detailsList details}}}
 
               {{#if bedrooms}}
-                <li>{{bedrooms}} bedrooms</li>
+                <li>{{bedrooms}} {{inflect bedrooms "bedroom" "bedrooms"}}</li>
               {{/if}}
 
               {{#is ../acquisitionMode 'buy'}}
@@ -154,7 +154,7 @@
               {{/is}}
 
               {{#if size}}
-                <li>Aprox {{size}} sq ft ({{feetToMeters size}} sq m)</li>
+                <li>Approx {{size}} sq ft ({{feetToMeters size}} sq m)</li>
               {{/if}}
             </ul>
           </div>
