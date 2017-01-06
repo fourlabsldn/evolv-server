@@ -27,13 +27,15 @@ function fillSearchFromQueryParameters(searchController) {
   const Arg = MakeArg(); // eslint-disable-line new-cap
   const getParameters = Arg.all();
   const getParametersKeys = Object.keys(getParameters);
+  console.log(getParametersKeys)
 
   for (const par of getParametersKeys) {
-    const filter = searchController.getFilterByCriterion(par);
+    const filter = searchController.getFilterByCriterion(par.replace('?', ''));
     if (filter) {
       let value = getParameters[par];
       value = (typeof value === 'string') ? value : value.toString();
       searchController.fillFilter(filter, value);
+      console.log("filling filter", filter, value)
     }
   }
 

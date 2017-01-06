@@ -83,7 +83,7 @@ const globalObj = {};
      * @return {Mixed}
      */
     Arg._access = function(obj, selector, value) {
-      var shouldSet = typeof value !== "undefined";
+      var shouldSet = value !== undefined;
       var selectorBreak = -1;
       var coerce_types = {
         'true'  : true,
@@ -134,98 +134,6 @@ const globalObj = {};
       return obj;
     };
 
-    /**
-     * Turns the specified object into a URL parameter string.
-     */
-    Arg.stringify = function(obj, keyPrefix) {
-
-      switch (typeof(obj)) {
-      case "object":
-        var segs = [];
-        var thisKey;
-        for (var key in obj) {
-
-          if (!obj.hasOwnProperty(key)) continue;
-          var val = obj[key];
-
-          if (typeof(key) === "undefined" || key.length === 0 || typeof(val) === "undefined" || val.length === 0) continue;
-
-          thisKey = keyPrefix ? keyPrefix+"."+key : key;
-
-          if (typeof obj.length !== "undefined") {
-            thisKey = keyPrefix ? keyPrefix+"["+key+"]" : key;
-          }
-
-          if (typeof val === "object") {
-            segs.push(Arg.stringify(val, thisKey));
-          } else {
-            segs.push(encodeURIComponent(thisKey)+"="+encodeURIComponent(val));
-          }
-
-        }
-        return segs.join("&");
-      }
-
-      return encodeURIComponent(obj);
-
-    };
-
-    /**
-     * Generates a URL with the given parameters.
-     * (object) = A URL to the current page with the specified parameters.
-     * (path, object) = A URL to the specified path, with the object of parameters.
-     * (path, object, object) = A URL to the specified path with the first object as query parameters,
-     * and the second object as hash parameters.
-     */
-    Arg.url = function(){
-
-      var sep = (Arg.urlUseHash ? Arg.hashQuerySeperator : Arg.querySeperator);
-      var segs = [location.pathname, sep];
-      var args = {};
-
-      switch (arguments.length) {
-      case 1: // Arg.url(params)
-        segs.push(Arg.stringify(arguments[0]));
-        break;
-      case 2: // Arg.url(path, params)
-        segs[0] = Arg._cleanPath(arguments[0]);
-        args = Arg.parse(arguments[0]);
-        args = Arg.merge(args, arguments[1]);
-        segs.push(Arg.stringify(args));
-        break;
-      case 3: // Arg.url(path, query, hash)
-        segs[0] = Arg._cleanPath(arguments[0]);
-        segs[1] = Arg.querySeperator;
-        segs.push(Arg.stringify(arguments[1]));
-        (typeof(arguments[2])==="string") ? segs.push(Arg.hashSeperator) : segs.push(Arg.hashQuerySeperator);
-        segs.push(Arg.stringify(arguments[2]));
-      }
-
-      var s = segs.join("");
-
-      // trim off sep if it's the last thing
-      if (s.indexOf(sep) == s.length - sep.length) {
-        s = s.substr(0, s.length - sep.length);
-      }
-
-      return s;
-
-    };
-
-    /** urlUseHash tells the Arg.url method to always put the parameters in the hash. */
-    Arg.urlUseHash = false;
-
-    /** The string that seperates the path and query parameters. */
-    Arg.querySeperator = "?";
-
-    /** The string that seperates the path or query, and the hash property. */
-    Arg.hashSeperator = "#";
-
-    /** The string that seperates the the path or query, and the hash query parameters. */
-    Arg.hashQuerySeperator = "#?";
-
-    /** When parsing values if they should be coerced into primitive types, ie Number, Boolean, Undefined */
-    Arg.coerceMode = true;
 
     /**
      * Gets all parameters from the current URL.
@@ -240,7 +148,7 @@ const globalObj = {};
      */
     Arg.get = function(selector, def){
       var val = Arg._access(Arg.all(), selector);
-      return typeof(val) === "undefined" ? def : val;
+      return val === undefined ? def : val;
     };
 
     /**
