@@ -1,111 +1,108 @@
 footer a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
-
 
 .footer-links-row {
-  @extend .navy-bg;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+	@extend .navy-bg;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding: 20px 55px 50px;
 
-  padding: 20px 55px 50px 55px;
+	.footer-column {
+		flex: 1 0 200px;
+		padding: 15px;
+		list-style: none;
+		font-size: $font-tiny;
+		line-height: 1.8em;
+	}
 
-  .footer-column {
-    flex: 1 0 200px;
-    padding: 15px;
-    list-style: none;
-    font-size: $font-tiny;
-    line-height: 1.8em;
-  }
-
-  h2 {
-    color: $orange;
-    margin-bottom: 12px;
-  }
+	h2 {
+		color: $orange;
+		margin-bottom: 12px;
+	}
 }
 
-.footer-logo-column{
-  img {
-    height: auto;
-    max-width: 110px;
-  }
+.footer-logo-column {
+	img {
+		height: auto;
+		max-width: 110px;
+	}
 }
 
-.go-to-top  {
-  button {
-    font-size: $font-medium;
-    padding: 10px 10px;
-  }
+.go-to-top {
+	button {
+		font-size: $font-medium;
+		padding: 10px;
+	}
 }
 
-.footer-bottom{
-  @extend .dark-blue-bg;
-  padding: 30px 70px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  list-style: none;
-  font-size: $font-tiny;
+.footer-bottom {
+	@extend .dark-blue-bg;
+	padding: 30px 70px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	list-style: none;
+	font-size: $font-tiny;
 
-  nav {
-    min-width: calc(100% - 12em);
-  }
+	nav {
+		min-width: calc(100% - 12em);
+	}
 
-  li {
-    display: inline;
-    &:before {
-      content: '| '
-    }
+	li {
+		display: inline;
 
-    &:first-child:before {
-      content: ''
-    }
-  }
+		&:before {
+			content: '| ';
+		}
+
+		&:first-child:before {
+			content: '';
+		}
+	}
 }
 
 .bottom-shadow {
-  display:block;
-  height: 40px;
-  background-color: $dark-blue;
-  filter: brightness(0.75);
-  box-shadow: inset 1px 15px 45px 0px rgba(0,0,0,0.55);
+	display: block;
+	height: 40px;
+	background-color: $dark-blue;
+	filter: brightness(0.75);
+	box-shadow: inset 1px 15px 45px 0 rgba(0,0,0,0.55);
 }
-
 //===============================
 //  Footer mobile styles
 //===============================
-
-
 @media (max-width: $screen-md-max) {
-  .footer-column.go-to-top {
-    display: none;
-  }
+	.footer-column.go-to-top {
+		display: none;
+	}
 }
-
 /**
  * This is a workaround for a bug in Safari's Webkit:
  * https://bugs.webkit.org/show_bug.cgi?id=136041
  */
 @media (max-width: $screen-sm-max) {
-  .footer-links-row {
-    display:block;
-  }
-  .footer-column {
-    display: inline-block;
-    box-sizing: border-box;
-    width: 50%;
-    margin: 0 -2px;
-  }
+	.footer-links-row {
+		display: block;
+	}
+
+	.footer-column {
+		display: inline-block;
+		box-sizing: border-box;
+		min-width: 50%;
+		margin: 0 -2px;
+	}
 }
 @media (max-width: 700px) {
-  .footer-column {
-    display: block;
-  }
-  .footer-logo-column{
-    img {
-      width: auto;
-    }
-  }
+	.footer-column {
+		display: block;
+	}
+
+	.footer-logo-column {
+		img {
+			width: auto;
+		}
+	}
 }

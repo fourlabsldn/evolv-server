@@ -1,17 +1,31 @@
-var babelHelpers = {};
-babelHelpers.typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+// Bug checking function that will throw an error whenever
+// the condition sent to it is evaluated to false
+function assert(condition, errorMessage) {
+  if (!condition) {
+    var completeErrorMessage = '';
+
+    if (assert.caller && assert.caller.name) {
+      completeErrorMessage = assert.caller.name + ': ';
+    }
+
+    completeErrorMessage += errorMessage;
+    throw new Error(completeErrorMessage);
+  }
+}
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
 } : function (obj) {
   return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
 };
 
-babelHelpers.classCallCheck = function (instance, Constructor) {
+var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 };
 
-babelHelpers.createClass = function () {
+var createClass = function () {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
@@ -29,31 +43,14 @@ babelHelpers.createClass = function () {
   };
 }();
 
-babelHelpers;
-
-// Bug checking function that will throw an error whenever
-// the condition sent to it is evaluated to false
-function assert(condition, errorMessage) {
-  if (!condition) {
-    var completeErrorMessage = '';
-
-    if (assert.caller && assert.caller.name) {
-      completeErrorMessage = assert.caller.name + ': ';
-    }
-
-    completeErrorMessage += errorMessage;
-    throw new Error(completeErrorMessage);
-  }
-}
-
 var Highlight = function () {
   function Highlight(el) {
-    babelHelpers.classCallCheck(this, Highlight);
+    classCallCheck(this, Highlight);
 
     this.setActive(el);
   }
 
-  babelHelpers.createClass(Highlight, [{
+  createClass(Highlight, [{
     key: 'translateX',
     value: function translateX(val) {
       assert(typeof val === 'number', 'translateX value is not a number');
@@ -115,7 +112,7 @@ var ActiveHighlighter = function ActiveHighlighter() {
   var activeIndex = _ref$activeIndex === undefined ? 0 : _ref$activeIndex;
   var _ref$highlightOnClick = _ref.highlightOnClick;
   var highlightOnClick = _ref$highlightOnClick === undefined ? false : _ref$highlightOnClick;
-  babelHelpers.classCallCheck(this, ActiveHighlighter);
+  classCallCheck(this, ActiveHighlighter);
 
   // NOTE: This module assumes that all tabs share a common parent.
   var buttonsArray = void 0;
@@ -286,7 +283,7 @@ function activeButton(pageNameParam) {
   }
 
   // If it wasn't successfull we try to get it from a global object
-  if (!navbarActiveButton && (typeof PAGE_INFO === 'undefined' ? 'undefined' : babelHelpers.typeof(PAGE_INFO)) === 'object' && typeof PAGE_INFO.name === 'string') {
+  if (!navbarActiveButton && (typeof PAGE_INFO === 'undefined' ? 'undefined' : _typeof(PAGE_INFO)) === 'object' && typeof PAGE_INFO.name === 'string') {
     pageName = PAGE_INFO.name;
     pageName = CSS.escape(pageName);
     navbarActiveButton = buttonsContainer.querySelector('[name=' + pageName + ']');
@@ -479,7 +476,7 @@ var ModalController = function () {
   function ModalController(modalEl, toggleButton) {
     var _this = this;
 
-    babelHelpers.classCallCheck(this, ModalController);
+    classCallCheck(this, ModalController);
 
     assert(modalEl, 'No modal element provided');
     this.modalEl = modalEl;
@@ -510,7 +507,7 @@ var ModalController = function () {
     }
   }
 
-  babelHelpers.createClass(ModalController, [{
+  createClass(ModalController, [{
     key: 'isOpen',
     value: function isOpen() {
       return !this.modalEl.classList.contains(modalHiddenClass);
@@ -562,4 +559,4 @@ controlNavbar();
 window.elevator = Elevator;
 
 window.ModalController = ModalController;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJjb21tb24uanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IG5hdmJhckNvbnRyb2wgZnJvbSAnLi9fY29tbW9uL25hdmJhci5qcyc7XG5uYXZiYXJDb250cm9sKCk7XG5cbmltcG9ydCBlbGV2YXRvciBmcm9tICcuL19jb21tb24vZWxldmF0b3IuanMnO1xud2luZG93LmVsZXZhdG9yID0gZWxldmF0b3I7XG5cbmltcG9ydCBNb2RhbENvbnRyb2xsZXIgZnJvbSAnLi9fY29tbW9uL01vZGFsQ29udHJvbGxlci5qcyc7XG53aW5kb3cuTW9kYWxDb250cm9sbGVyID0gTW9kYWxDb250cm9sbGVyO1xuIl0sImZpbGUiOiJjb21tb24uanMiLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJjb21tb24uanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IG5hdmJhckNvbnRyb2wgZnJvbSAnLi9fY29tbW9uL25hdmJhci5qcyc7XG5uYXZiYXJDb250cm9sKCk7XG5cbmltcG9ydCBlbGV2YXRvciBmcm9tICcuL19jb21tb24vZWxldmF0b3IuanMnO1xud2luZG93LmVsZXZhdG9yID0gZWxldmF0b3I7XG5cbmltcG9ydCBNb2RhbENvbnRyb2xsZXIgZnJvbSAnLi9fY29tbW9uL01vZGFsQ29udHJvbGxlci5qcyc7XG53aW5kb3cuTW9kYWxDb250cm9sbGVyID0gTW9kYWxDb250cm9sbGVyO1xuIl0sImZpbGUiOiJjb21tb24uanMifQ==
