@@ -234,8 +234,121 @@ var MakeArg = globalObj.MakeArg;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
 } : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 };
+
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
+
+  function AsyncGenerator(gen) {
+    var front, back;
+
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
+
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
+    }
+
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
+
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
+        }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
+
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
+
+        case "throw":
+          front.reject(value);
+          break;
+
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
+
+      front = front.next;
+
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
+
+    this._invoke = send;
+
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
+
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
+
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
+
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
+
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
+}();
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -1511,7 +1624,7 @@ var MapController = function () {
   }, {
     key: 'createMarkersFromCoordinates',
     value: function createMarkersFromCoordinates(coordinates) {
-      var map = arguments.length <= 1 || arguments[1] === undefined ? this.map : arguments[1];
+      var map = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.map;
 
       var markers = [];
 
@@ -1570,8 +1683,8 @@ var MapController = function () {
   }, {
     key: 'centerOnMarkers',
     value: function centerOnMarkers() {
-      var markers = arguments.length <= 0 || arguments[0] === undefined ? this.markers : arguments[0];
-      var map = arguments.length <= 1 || arguments[1] === undefined ? this.map : arguments[1];
+      var markers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.markers;
+      var map = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.map;
 
       var bounds = new google.maps.LatLngBounds();
       var _iteratorNormalCompletion2 = true;
@@ -1606,8 +1719,8 @@ var MapController = function () {
   }, {
     key: 'createCluster',
     value: function createCluster() {
-      var markers = arguments.length <= 0 || arguments[0] === undefined ? this.markers : arguments[0];
-      var map = arguments.length <= 1 || arguments[1] === undefined ? this.map : arguments[1];
+      var markers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.markers;
+      var map = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.map;
 
       var markerClustererOptions = {
         styles: [{
@@ -1625,7 +1738,7 @@ var MapController = function () {
   }, {
     key: 'clearAllMarkers',
     value: function clearAllMarkers() {
-      var markers = arguments.length <= 0 || arguments[0] === undefined ? this.markers : arguments[0];
+      var markers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.markers;
 
       while (markers.length) {
         markers.pop().setMap(null);
@@ -1636,7 +1749,7 @@ var MapController = function () {
   }, {
     key: 'triggerResize',
     value: function triggerResize() {
-      var map = arguments.length <= 0 || arguments[0] === undefined ? this.map : arguments[0];
+      var map = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.map;
 
       google.maps.event.trigger(map, 'resize');
       // map.setZoom(map.getZoom());
@@ -1693,9 +1806,8 @@ var SearchController = function () {
    * @param  {Function} filtersAppliedcallback   to be called with 'matches'
    * 																						 and 'nonMatches' as parameters
    */
-
   function SearchController() {
-    var config = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     classCallCheck(this, SearchController);
 
     var searchBarSelector = config.searchBarSelector;
@@ -1752,7 +1864,7 @@ var SearchController = function () {
     value: function _initFilterElements() {
       var _this = this;
 
-      var filters = arguments.length <= 0 || arguments[0] === undefined ? this.filters : arguments[0];
+      var filters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.filters;
 
       // Listen to changes to all filters so we can trigger a search
       var _iteratorNormalCompletion = true;
@@ -1794,9 +1906,9 @@ var SearchController = function () {
   }, {
     key: 'applyFilters',
     value: function applyFilters() {
-      var filters = arguments.length <= 0 || arguments[0] === undefined ? this.filters : arguments[0];
-      var targetsContainer = arguments.length <= 1 || arguments[1] === undefined ? this.targetsContainer : arguments[1];
-      var infoEl = arguments.length <= 2 || arguments[2] === undefined ? this.infoEl : arguments[2];
+      var filters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.filters;
+      var targetsContainer = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.targetsContainer;
+      var infoEl = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.infoEl;
 
       assert(filters, 'No filters provided.');
       assert(targetsContainer, 'No filter targets container provided');
@@ -1880,7 +1992,7 @@ var SearchController = function () {
   }, {
     key: 'fillFilter',
     value: function fillFilter(filterReference, value) {
-      var filters = arguments.length <= 2 || arguments[2] === undefined ? this.filters : arguments[2];
+      var filters = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.filters;
 
       var filter = void 0;
 
@@ -1925,7 +2037,7 @@ var SearchController = function () {
   }, {
     key: 'getFilterByCriterion',
     value: function getFilterByCriterion(criterion) {
-      var filters = arguments.length <= 1 || arguments[1] === undefined ? this.filters : arguments[1];
+      var filters = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.filters;
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
       var _iteratorError3 = undefined;

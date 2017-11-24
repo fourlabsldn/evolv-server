@@ -62,13 +62,12 @@ Highlight.prototype.setActive = function (el) {
 };
 
 function ActiveHighlighter() {
-	var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	var buttons = _ref.buttons;
-	var _ref$activeIndex = _ref.activeIndex;
-	var activeIndex = _ref$activeIndex === undefined ? 0 : _ref$activeIndex;
-	var _ref$highlightOnClick = _ref.highlightOnClick;
-	var highlightOnClick = _ref$highlightOnClick === undefined ? false : _ref$highlightOnClick;
+	var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+	    buttons = _ref.buttons,
+	    _ref$activeIndex = _ref.activeIndex,
+	    activeIndex = _ref$activeIndex === undefined ? 0 : _ref$activeIndex,
+	    _ref$highlightOnClick = _ref.highlightOnClick,
+	    highlightOnClick = _ref$highlightOnClick === undefined ? false : _ref$highlightOnClick;
 
 	// NOTE: This module assumes that all tabs share a common parent.
 	var buttonsArray = void 0;
@@ -188,7 +187,7 @@ new ActiveHighlighter({ // eslint-disable-line no-new
   var ongoingAnimation = null;
 
   function scrollTo(value) {
-    var container = arguments.length <= 1 || arguments[1] === undefined ? content : arguments[1];
+    var container = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : content;
 
     var currentScroll = container.scrollLeft;
     var scrollDiff = value - currentScroll;
